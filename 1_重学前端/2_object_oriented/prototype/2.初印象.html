@@ -1,0 +1,18 @@
+<script>
+    let arr = ['jay']
+    console.log(arr.concat("messi"));
+    console.log("arr 数组有三层", arr);
+    // arr.__proto__ == Array.prototype, arr没有prototype
+
+
+    function testFn() {}
+    console.log("fun 函数有三层", testFn);
+
+    let a1 = {}
+    let a2 = {}
+    console.log("a1 对象只有两层", a1);
+    console.log(Object.getPrototypeOf(a1) == Object.getPrototypeOf(a2));
+
+</script>
+
+参考教程：https://www.bilibili.com/video/BV17J411y7XZ?p=25

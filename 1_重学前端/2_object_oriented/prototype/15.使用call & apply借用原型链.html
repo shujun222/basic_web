@@ -1,0 +1,34 @@
+<script>
+    let lan = {
+        scores: [90, 30, 60, 99, 100, 80]
+    }  
+
+    // console.log(lan.max());
+    Object.setPrototypeOf(lan, {
+        max2() {return Math.max(...this.scores)},
+        // 留个疑问
+        // max: () => Math.max(...this.scores)
+    })
+    // 1. 如果往原型链中塞入方法了，对象就有max2方法了
+    console.log(lan.max2()); 
+
+
+    // 2. apply, call接用其它对象的方法
+    let sj = {
+        scores: [90, 30, 60, 99, 95, 80]
+    }
+    // console.log(sj.max2()); // sj对象没有max2方法的
+
+    // apply: 
+    console.log(lan.max2.apply(sj));
+
+    // call:
+    console.log(lan.max2.call(sj));
+
+
+    // 3. 专门讲解下apply Vs Call
+    console.log(Math.max.apply(null, sj.scores));
+    console.log(Math.max.call(null, ...sj.scores));
+
+
+</script>

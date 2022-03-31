@@ -1,0 +1,39 @@
+<script>
+    function User(){}
+    User.prototype.show = function(){
+        console.log("user.show");
+    }
+    User.prototype.name = function(){
+        console.log("user.name: leehom");
+    }
+    User.show2 = function() {
+        console.log("user.show2...");
+    }
+    
+    let user = new User()
+    console.dir(User);
+    console.log(user);
+    user.show()
+    // user.show2() // Uncaught TypeError: user.show2 is not a function
+    User.show2()
+ 
+
+    function Admin(){}
+    let admin = new Admin()
+    console.dir(Admin);
+    console.log("admin", admin);
+    
+    // 将Admin的原型从默认改为User.prototype
+    Admin.prototype = Object.create(User.prototype)
+    Admin.prototype.constructor = User
+    // 如果子类有，admin2.show()调用的是这个方法
+    // Admin.prototype.show = function() {
+    //     console.log("admin.show");
+    // }
+
+    let admin2 = new Admin()
+    console.dir(Admin);
+    console.log("admin2", admin2); // __proto__: User
+    // 如果Admin.prototype没有这个方法，会从__proto__: User中找
+    admin2.show()
+</script>

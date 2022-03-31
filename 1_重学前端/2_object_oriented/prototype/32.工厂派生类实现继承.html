@@ -1,0 +1,28 @@
+<script>
+    // 1. 父类
+    function User(name, age){
+        this.name = name;
+        this.age = age;
+    }
+    User.prototype.show = function() {
+        console.log(this.name, this.age);
+    }
+
+    // 2. 子类, 实现继承的另外一种方式，
+    // 产生实例的函数就是工厂类吗？
+    function Admin(name, age){
+        // User.call(this, name, age)
+
+        const instance = Object.create(User.prototype)
+        User.call(instance, name, age)
+        instance.play = function(){
+            console.log("play...");
+        }
+        return instance
+    }
+
+    let sj = Admin("sj", 33)
+    sj.show()
+    sj.play()
+
+</script>

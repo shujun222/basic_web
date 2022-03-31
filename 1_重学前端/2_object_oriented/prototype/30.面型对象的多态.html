@@ -1,0 +1,31 @@
+<script>
+    // 1. 父类
+    function User(){}
+    User.prototype.show = function() {
+        console.log("User.show");
+    }
+
+    // 2. 子类开始继承父类
+    function Admin(){}
+    Admin.prototype = Object.create(User.prototype)
+    Admin.prototype.show = function(){
+        console.log("Admin.show");
+    }
+
+    function Member(){}
+    Member.prototype = Object.create(User.prototype)
+    Member.prototype.show = function(){
+        console.log("Member.show");
+    }
+
+    function Player(){}
+    Player.prototype = Object.create(User.prototype)
+    Player.prototype.show = function(){
+        console.log("Player.show");
+    }
+
+    // 3. 测试多态
+    for (const obj of [new Admin(), new Member(), new Player()]) {
+        obj.show()
+    }
+</script>

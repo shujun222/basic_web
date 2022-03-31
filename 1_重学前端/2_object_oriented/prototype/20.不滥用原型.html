@@ -1,0 +1,19 @@
+<button onclick="hide()">click</button>
+
+<script>
+    function hide() {
+        console.log(666);
+        // 这里获取不到this.style, this始终指向调用对象本身, 此处是Window 
+        console.log("this", this);
+        console.log(this.style.display);
+    }
+
+    Object.prototype.hide = function() {
+        // 打印的是dom节点，也不说原型；this和原型就没关系，指向的始终是子类，即调用方
+        console.log("this", this); 
+        this.style.display = 'none'
+    }
+</script>
+
+<!-- 会覆盖掉上面的hide函数 -->
+<script src="./20.js"></script>

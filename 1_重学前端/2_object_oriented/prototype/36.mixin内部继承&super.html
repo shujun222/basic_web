@@ -1,0 +1,34 @@
+<script>
+    const Request = {
+        ajax () {
+            console.log("Request.ajax");
+        },
+
+        post: () => {
+            console.log("Request post");
+        }
+    }
+
+    // super是this.__proto__
+    const Member = {
+        __proto__: Request,
+
+        credit() {
+            console.log("Member.credit");
+
+            this.__proto__.ajax();
+            super.post();
+        }
+    }
+    
+    Member.credit()
+
+   
+    
+
+
+
+
+
+
+</script>

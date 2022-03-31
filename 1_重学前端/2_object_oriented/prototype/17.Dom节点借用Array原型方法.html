@@ -1,0 +1,19 @@
+ <button class="red">按钮1</button>
+ <button>按钮2</button>
+
+ <script>
+     let array = [1, 2, 3]
+     let answer = array.filter(item => item > 2)
+     console.log("answer", answer);
+     // 数组的原型链中有 filter方法
+     console.log(Array.prototype.filter);
+
+     let btns = document.querySelectorAll("button");
+     console.log("bnts", btns);
+     let answer2 = Array.prototype.filter.call(btns, item => item.hasAttribute('class'))
+     console.log("answer2", answer2);
+
+     let answer3 = [].filter.call(btns, item => item.hasAttribute('class'))
+     console.log("answer3", answer3);
+
+ </script>

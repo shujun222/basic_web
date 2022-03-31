@@ -1,0 +1,43 @@
+<script>
+    // 1. 父类
+    function User(name, age){
+        this.name = name;
+        this.age = age;
+    }
+    User.prototype.show = function() {
+        console.log(this.name, this.age);
+    }
+    
+    let user = new User("jay", 43);
+    user.show()
+
+    // 2. 子类开始继承父类
+    function Admin(name, age){
+        User.call(this, name, age)
+        // User(name, age)
+        // super(name, age)
+    }
+    Admin.prototype = Object.create(User.prototype)
+    let admin = new Admin("Leehom", 45)
+    admin.show()
+
+    function Member(...args){
+        User.apply(this, args)
+    }
+    Member.prototype = Object.create(User.prototype)
+    let member = new Member("messi", 35)
+    member.show()
+
+    // 3. 上面的继承太麻烦，可以定义extend,
+    function extend(sub, sup) {
+        sub.prototype = Object.create(sup.prototype)
+    }
+
+    function Member2(...args){
+        User.apply(this, args)
+    }
+    extend(Member2, User) // 这样方便
+    let member2 = new Member2("cr7", 37)
+    member2.show()
+
+</script>

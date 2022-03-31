@@ -1,0 +1,12 @@
+<script>
+    let sj = {name: 'sbjun'}
+    console.log(sj);
+    console.log(sj.hasOwnProperty("name"));
+
+    // 完全数据字典对象，不继承Object原型
+    let sj2 = Object.create(null, {
+        name: {value: "shujun"}
+    })
+    console.log(sj2);
+    console.log(sj2.hasOwnProperty("name"));
+</script>

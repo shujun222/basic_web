@@ -1,0 +1,55 @@
+<script>
+    // 上一堂课，单线继承不够灵活，使用组合可以代替
+    const Member = {
+        credit() {
+            console.log("Member.credit");
+        }
+    }
+
+    const Request = {
+        ajax () {
+            console.log("Request.ajax");
+        },
+
+        post: () => {
+            console.log("Request post");
+        }
+    }
+
+    function Admin() { }
+    Admin.prototype.role = function () {
+        console.log("Admin.role");
+    }
+
+    function test1() {
+        function User() { }
+        User.prototype = Object.create(Admin.prototype)
+
+        // 组合方式，往User原型中压入函数
+        // User.prototype.ajax = Request.ajax
+        // User.prototype.post = Request.post
+        // User.prototype.credit = Member.credit
+
+        // 但是上面那样一个个枚举，可能有点麻烦哦，so: 方法一：
+        Object.assign(User.prototype, Request, Member)
+
+        // 方法二：结构解析适合Request, Memeber, 但是不适合role方法，因为role方法不在User.prototype中，而是User.__proto__原型链上
+        // User.prototype = {
+        //     ...User.prototype,
+        //     ...Request,
+        //     ...Member
+        // }
+
+        console.dir(User.prototype)
+        let user = new User()
+        user.role()
+        user.ajax()
+        user.post()
+        user.credit()
+        console.log(user);
+    }
+    test1()
+
+
+
+</script>

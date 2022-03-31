@@ -1,0 +1,14 @@
+<script>
+    let sj = {
+        show() {console.log("sj show");},
+        render() {console.log("sj render");}
+    }
+    console.log(sj);
+
+    sj.__proto__.render = function() {
+        console.log("__proto__ render");
+    }
+
+    // 子类有方法，肯定是覆盖父类的
+    sj.render()
+</script>

@@ -1,0 +1,29 @@
+<script>
+
+    function User(name) {
+        this.name = name;    
+    }
+
+    User.prototype = {
+        constructor: User,
+        show() {
+            console.log("show", this.name);
+        },
+        show2: function() {
+            console.log("show2", this.name);
+        }
+    }
+
+    let sj = new User("sbjun");
+    console.log(sj);
+    console.log(sj.show2());
+
+    // 虽然不知道应用场景是啥，但是这个方法真的好秀呀，👍👍👍👍
+    function createByObject(obj, ...args) {
+        const constructor = Object.getPrototypeOf(obj).constructor
+        return new constructor(...args)
+    }
+    let sj2 = createByObject(sj, "shujun")
+    console.log(sj2.show(), sj2 == sj);
+
+</script>

@@ -1,0 +1,23 @@
+<script>
+    let son = {name: 'sj'}
+
+    let parent = {
+        name: 'xiaoping',
+        show() {
+            console.log("parent method:", this.name);
+            return 666
+        }
+    }
+
+    console.log("parent", parent);
+    console.log("son", son, son.name, son.show, Object.getPrototypeOf(son));
+
+    /**
+     * 和java继承一模一样：子类属性，方法覆盖父类；
+     * 不同点：可以不定义类，不extends，而是提供了setPrototypeOf
+     **/
+    Object.setPrototypeOf(son, parent)
+    console.log("son.show", son.show());
+
+
+</script>

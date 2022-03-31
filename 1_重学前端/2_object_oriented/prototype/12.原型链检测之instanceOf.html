@@ -1,0 +1,84 @@
+<script>
+    function A(name) { this.name = name; console.log("我是A"); }
+    function B(name) { this.name = name; console.log("我是B"); }
+    function C(name) { this.name = name; console.log("我是C"); }
+
+    // 目标: 构造 C -> B -> A
+    // c instance A, 实际上是在判断c的原型链上是否有A：c.__proto__.xxx.__proto__ == A.prototype
+    
+    function test() {
+        // 先把对象(a, b, c)一次先建完 
+        let a = new A("a");
+        console.log("a", a, a.__proto__ == A.prototype);
+        console.dir(A);
+        let b = new B("b");
+        let c = new C("c");
+
+        // 1. 先分析正常的c
+        console.log("c instanceof C", c instanceof C); 
+        console.log("c instanceof B", c instanceof B); // false
+        console.log("c的原型", c, c.prototype, c.__proto__);
+        console.log("c的原型链", c.__proto__.__proto__ == Object.prototype);
+
+        // 2. 重组原型链
+        // 这个地方不太理解，B.prototype=A不行，A是一个Function， 得赋值为一个object
+        C.prototype = b;
+        // 这样也是一样的效果, 而且更好理解吧？不要赋值给一个实例，虽然实例b.__proto__就是B.prototype
+        // C.prototype = B.prototype;
+
+        // 3. 再测试
+        console.log("c instanceof B", c instanceof B); // false
+        // c是之前被创建出来的，c.__proto__还是指向的一开始时候那块内存：C.prototype == Function.prototype
+        console.log("c的原型", c, c.prototype, c.__proto__);
+        console.log("c的原型链", c.__proto__.__proto__ == Object.prototype);
+
+        // 然而重新新建的，就不一样啦
+        let c1 = new C("c1");
+        console.log("c1 instanceof B", c1 instanceof B); // true
+        console.log("c1的原型", c1, c1.prototype, c1.__proto__);
+        console.log("c1的原型链", c1.__proto__.__proto__ == B.prototype);
+
+        console.log("c1 instanceof A", c1 instanceof A); // true
+        // B.prototype = a;
+        B.prototype = A.prototype
+        // C.prototype = new B();
+
+        let b1 = new B("b1");
+        C.prototype = b1;
+        let c2 = new C("c2");
+        console.log("c2", c2);
+        console.log("c2 instanceof B", c2 instanceof B); // true
+        console.log("c2 instanceof A", c2 instanceof A); // true
+    }
+    // test();
+
+    // 下面两种写法还是有区别的
+    function test1() {
+        B.prototype = A.prototype
+        console.dir(B);
+        C.prototype = B.prototype
+        console.dir(C);
+
+        let c = new C("cc")
+        console.log(c);
+        console.log(c instanceof B);
+        console.log(c instanceof A);
+    }
+    test1()
+    console.log("---------------------------");
+
+    function test2() {
+        let a = new A("a")
+        B.prototype = a
+        let b = new B("b");
+        console.dir(B);
+        C.prototype = b
+        console.dir(C);
+
+        let c = new C("cc")
+        console.log(c);
+        console.log(c instanceof B);
+        console.log(c instanceof A);
+    }
+    test2()
+</script>

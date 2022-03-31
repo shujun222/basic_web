@@ -1,0 +1,29 @@
+<script>
+    function Admin(){
+        console.log("admin init...");
+    }
+    console.dir(Admin.prototype.constructor)
+
+    function User(){}
+    console.dir(User.prototype.constructor == User)
+
+    // 实例是没有constructor, 所以User.prototype的构造函数被替换掉了
+    User.prototype = new Admin()
+    // User.prototype = Object.create(Admin.prototype)
+    console.dir(User); // 没有了constructor
+    // 不是说没有constructor，不能被new吗？这里为啥还可以呢, 难道func的new不调用constructor
+    console.log("new User 1", new User()); // User {}
+    // 这样也能创建，没有了constructor没啥影响呀
+    console.log("new User 2", Object.create(User.prototype));  // Admin {}
+
+    // 但是可以给它再补一个构造函数
+    User.prototype.constructor = Admin
+    console.log("new User 3", new User()); 
+    console.log("new User 4", Object.create(User.prototype)); 
+
+
+
+
+
+
+</script>

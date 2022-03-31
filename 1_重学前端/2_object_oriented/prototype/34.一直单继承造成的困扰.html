@@ -1,0 +1,92 @@
+<script>
+    function extend(sub, sup) {
+        sub.prototype = Object.create(sup.prototype)
+    }
+
+    // 1. 定义一些基类
+    function Admin() { }
+    function Member() { }
+    function Request() { }
+
+    // 2. 子类
+    function User() { }
+
+
+    // 1. js不能多继承
+    function test1() {
+        Admin.prototype.role = function () {
+            console.log("Admin.role");
+        }
+
+        Request.prototype.ajax = function () {
+            console.log("Request.ajax");
+        }
+
+        extend(User, Admin)
+        let user = new User()
+        user.role()
+        // user.ajax is not a function
+        user.ajax()
+    }
+    // test1()
+
+    
+    // 2. 那只好单线继承了，类似java的extends class A extends class B
+    function test2() {
+        Member.prototype.credit = function () {
+            console.log("Member.credit");
+        }
+
+        extend(Request, Member)
+        Request.prototype.ajax = function () {
+            console.log("Request.ajax");
+        }
+
+        extend(Admin, Request)
+        Admin.prototype.role = function () {
+            console.log("Admin.role");
+        }
+
+        extend(User, Admin)
+        let user = new User()
+        user.role()
+        user.ajax()
+        user.credit()
+        console.log(user);
+
+        // 这样倒是继承了所有类了，但是如果user2只想要role,ajax方法，并不想要credit方法呢？
+        // 方法1. 掐断Request extends Member这一步, 可行吗？
+        // 不可行，因为User已经早已经定下来了
+        extend(Request, Object)
+        Request.prototype.ajax = function () {
+            console.log("Request.ajax");
+        }
+        let user2 = new User()
+        user2.role()
+        user2.ajax()
+        user2.credit()
+        console.log("user2", user2);
+
+        // 只有完全重写...
+        console.log("new ............");
+        extend(Request, Object)
+        Request.prototype.ajax = function () {
+            console.log("Request.ajax");
+        }
+
+        extend(Admin, Request)
+        Admin.prototype.role = function () {
+            console.log("Admin.role");
+        }
+
+        extend(User, Admin)
+        let user3 = new User()
+        user3.role()
+        user3.ajax()
+        // user3.credit() // user3.credit is not a function
+        console.log(user3);
+
+    }
+    test2();
+
+</script>

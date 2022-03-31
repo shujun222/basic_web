@@ -1,0 +1,35 @@
+<script>
+    // 函数放原型中更合理
+
+    // 1. 函数和实例字段一起定义
+    function User(name) {
+        this.name = name;
+        this.show = function() {
+            console.log(this.name, " is playing the piano");
+        }
+    }
+    // 每个实例对象里面都有函数show的申明，有点浪费内存空间
+    let jay = new User("jay");
+    let leehom = new User("wang");
+    console.log(jay);
+    console.log(leehom);
+    console.log(leehom.show());
+
+
+    // 2. 函数申明在原型中更佳节省内存
+    function User2(name) {
+        this.name = name;
+    }
+    User2.prototype = {
+        constuctor: User2,
+        show() {
+            console.log(this.name, " is playing the piano");
+        }
+    }
+    let lijian = new User2("lijian");
+    let tingfeng = new User2("tingfeng");
+    console.log(lijian);
+    console.log(tingfeng);
+    console.log(tingfeng.show());
+
+</script>

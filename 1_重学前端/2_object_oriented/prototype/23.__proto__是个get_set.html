@@ -1,0 +1,60 @@
+<script>
+    // 1. 现象篇: __proto__只能赋值对象属性，不能赋值string类型属性
+    let jay = {name: "jay"}
+    jay.__proto__ = {
+        show() {
+            console.log("show name", this.name);
+        }
+    }
+
+    jay.__proto__ = 99;
+    // 奇奇怪怪的事情出现了，show方法还是能执行
+    jay.show();
+    console.log(jay.__proto__);
+
+
+    // 2. 原理篇
+    let leehom666 = {
+        props : {},
+        get props() {
+            return this.props
+        },
+
+        set props(obj) {
+            // 这么取名字，js会无线递归，也真是神奇的，哈哈
+            this.props = obj
+        }
+    }
+
+    let leehom = {
+        _props : {},
+        get props() {
+            return this._props
+        },
+                
+        set props(props) {
+            if (props instanceof Object) {
+                this._props = props
+            }
+        }
+    }
+
+    leehom.props = {name: "wanglihong", age: 42}
+    console.log(leehom.props);
+    leehom.props = 666
+    console.log(leehom.props);
+    // 所以 __proto__的get应该做了属性判断，只接收对象类型
+    console.log(leehom.__proto__); // 包含get，set方法
+
+
+    // 3. 应用篇; 假设又就想 lijian.__proto__ = 666 成功呢？
+    let lijian = {name: "lijian"}
+    lijian.__proto__ = 666
+    console.log("lijian.__proto__", lijian.__proto__);
+    
+    // 可以把lijian的原型由object置空
+    Object.setPrototypeOf(lijian, null)
+    lijian.__proto__ = 666
+    console.log("lijian.__proto__", lijian.__proto__);
+
+</script>

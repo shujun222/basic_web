@@ -1,0 +1,69 @@
+<script>
+    function User(name) {
+        this.name = name;    
+    }
+
+    // 1. 再次复习函数的原型
+    /**
+     * function会有两个原型：
+     * 1. prototype: 有prototype的表示可以new，它包含：
+     * {
+     *    constructor: 函数本身, 
+     *    __proto__: 指向Object.prototype;  但是为什么要继承它呢？ 作用何在
+     *  }
+     * 
+     * 2. __proto__指向Function.prototype
+     *    这样可以保证有一些通用的函数方法：bind, call, toString
+     *    但是Function.prototype.__proto__为何终究要指向Object.prototype呢？作用何在呢？
+     * */
+    console.dir(User);
+    console.log(User.prototype.__proto__ == Object.prototype);
+    console.log(User.prototype.constructor == User);
+    console.log(User.__proto__ == Function.prototype);
+
+
+    // 2. 如果要给函数添加方法，添加到User.prototype中
+    // User.prototype.show = function(){
+    //     console.log("show", this.name); return 666;
+    // }
+
+    // 如果要重写User.prototype，一定得带上constructor哦，否则没法new了
+    User.prototype = {
+        constructor: User,
+        show() {
+            console.log("show", this.name); return 666;
+        }
+    }
+
+    let test = new User.prototype.constructor("sbjun");
+    // let test = new User("sbjun");
+    test.show();
+
+
+    // 3. 测试其它函数是否受影响
+    function User2(name) {
+        this.name = name;
+    }
+    let test2 = new User2("test2");
+
+    // 3.1 修改User.prototype
+    // User.prototype是User自己的，不会影响其它函数
+    // test2.show(); // Uncaught TypeError: test2.show is not a function
+
+    // 3.2 修改Function.prototype, 影响的是函数的静态调用？这是个什么概念呢？实例化的函数对象还是没影响到
+    User.__proto__.show2 = function() {
+        console.log("直接修改Function.prototype");
+    }
+    // test2.show2(); // test2.show2 is not a function
+    User2.show2(); // Ok
+
+    // 3.3 修改最上层Object.prototype
+    // User.prototype.__proto__.show3 = function() {
+    User.__proto__.__proto__.show3 = function() {
+        console.log("我直接釜底抽薪，动了Object.prototype");
+    }
+    test2.show3();
+
+
+
+</script>

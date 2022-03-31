@@ -1,0 +1,31 @@
+<script>
+    // 这一节讲了个历史进化过程
+    let user = {
+        age: 42,
+        show() {
+            console.log(666);
+            return this.name
+        }
+    }
+    console.log(user);
+
+    // 1. 最早的方式，只给了一个定义方式，没有获取方式
+    let jay = Object.create(user)
+    console.log("jay", jay);
+
+    // 2. 浏览器厂商自主开发 __proto__
+    let leehom = {name: "leehom"}
+    // 可自定义，可获取
+    leehom.__proto__ = user
+    console.log("leehom", leehom, leehom.__proto__);
+    console.log(leehom.show());
+
+    // 3. js官方最后又添加了自己方式
+    let lijian = {name: "lijian"}
+    Object.setPrototypeOf(lijian, user)
+    console.log(Object.getPrototypeOf(lijian));
+
+
+
+
+</script>

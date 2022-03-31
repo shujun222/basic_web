@@ -1,0 +1,13 @@
+<script>
+    let a = {url: "baidu"}
+    let b = {name: "lanlan"}
+
+    console.log("url" in a);
+    console.log("name" in a);
+
+    Object.setPrototypeOf(a, b)
+    // in一直判断到父级，原型链
+    console.log("name" in a);
+    // hasOwnProperty只判断自己，不考虑原型链
+    console.log(a.hasOwnProperty("name"));    
+</script>

@@ -1,0 +1,26 @@
+<script>
+    let sj = {}
+    console.log("对象只有一个长辈", sj); // __proto__
+
+
+    function sjFun() {}
+    // 函数有两个对象, 比对象多了一个 prototype, 因为它可以被new
+    console.dir(sjFun);
+
+    sjFun.__proto__.view = function() {
+        console.log("__proto__ view");
+    }
+
+    sjFun.prototype.view = function() {
+        console.log("prototype view");
+    }
+
+    // 2. 函数的创建
+    // 2.1 直接调用函数？
+    sjFun.view();
+
+    // 2.2 函数也可以当对象一样 new一个
+    let sjFunObj = new sjFun() // __proto__ view
+    sjFunObj.view(); // prototype view
+
+</script>
