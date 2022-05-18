@@ -1,0 +1,65 @@
+<input type="file" id="test-file-upload" onchange="testFile()" />
+<br />
+1. 表单的enctype必须指定为multipart/form-data，method必须指定为post，浏览器才能正确编码并以multipart/form-data格式发送表单的数据
+
+
+<br />
+2. HTML5的File API提供了File和FileReader两个主要对象，可以获得文件信息并读取文件。
+
+<br />
+<h2>h5 的api</h2>
+<div>
+    <div id="test-image-preview" style="border: 1px solid red; width: 600px; height: 400px;">
+    </div>
+    <input type="file" id="test-image-file" />
+    <p id="test-file-info"></p>
+</div>
+
+
+<script>
+    function testFile() {
+        var f = document.getElementById('test-file-upload');
+        var filename = f.value; // 'C:\fakepath\test.png'
+        console.log(filename);
+        if (!filename || !(filename.endsWith('.jpg') || filename.endsWith('.png') || filename.endsWith('.gif'))) {
+            alert('Can only upload image file.');
+            return false;
+        }
+    }
+
+    // .... 这方法也太复杂了吧。。。
+    // html5可以让文件在线预览
+    var
+        fileInput = document.getElementById('test-image-file'),
+        info = document.getElementById('test-file-info'),
+        preview = document.getElementById('test-image-preview');
+    // 监听change事件:
+    fileInput.addEventListener('change', function () {
+        // 清除背景图片:
+        preview.style.backgroundImage = '';
+        // 检查文件是否选择:
+        if (!fileInput.value) {
+            info.innerHTML = '没有选择文件';
+            return;
+        }
+        // 获取File引用:
+        var file = fileInput.files[0];
+        // 获取File信息:
+        info.innerHTML = '文件: ' + file.name + '<br>' +
+            '大小: ' + file.size + '<br>' +
+            '修改: ' + file.lastModified;
+        if (file.type !== 'image/jpeg' && file.type !== 'image/png' && file.type !== 'image/gif') {
+            alert('不是有效的图片文件!');
+            return;
+        }
+        // 读取文件:
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var
+                data = e.target.result; // 'data:image/jpeg;base64,/9j/4AAQSk...(base64编码)...'            
+            preview.style.backgroundImage = 'url(' + data + ')';
+        };
+        // 以DataURL的形式读取文件, 异步操作，读取完成了再去回调onlaod指向的那函数
+        reader.readAsDataURL(file);
+    });
+</script>

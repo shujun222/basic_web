@@ -1,0 +1,53 @@
+<script>
+    // 1. 定义类
+    // 1.1 原始定义
+    function Student1(name) {
+        this.name = name;
+    }
+    Student1.prototype.hello = function () {
+        alert('Hello, ' + this.name + '!');
+    }
+
+    // 1.2 2015之后es6的class定义方式
+    class Student {
+        constructor(name) {
+            this.name = name;
+        }
+
+        hello() {
+            console.log('Hello, ' + this.name + '!');
+        }
+    }
+
+    // 2. 继承新写法
+    class PrimaryStudent extends Student {
+        constructor(name, grade) {
+            super(name); // 记得用super调用父类的构造方法!
+            this.grade = grade;
+        }
+
+        myGrade() {
+            console.log('I am at grade ' + this.grade);
+        }
+    }
+
+    let sb = new PrimaryStudent("sb", 1)
+    sb.hello();
+    sb.myGrade();
+
+    let sj = new PrimaryStudent("sj", 5)
+    console.log(sb.hello === sj.hello);
+    console.log(sb.myGrade === sj.myGrade);
+    console.log(sb, sj);
+
+
+    // 继承 ƒ Student1也是没问题的
+    class PrimaryStudent1 extends Student1 {
+        
+    }
+    let bobo = new PrimaryStudent1("bobo")
+    console.log(bobo.hello);
+    console.log(bobo);
+
+
+</script>

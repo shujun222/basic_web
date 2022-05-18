@@ -1,0 +1,183 @@
+https://www.bilibili.com/video/BV17J411y7XZ?p=25 <br />
+Author: shujun
+Date: 2022-3-3 
+
+
+<div>
+<p></p>
+个人感觉继承，明显是 A.prototype.__proto__ = B.prototype更好嘛，但是为啥不推荐呢？<br/>
+不推荐Object.prototype.__proto__的原因： 已废弃<br/>
+该特性已经从 Web 标准中删除，虽然一些浏览器目前仍然支持它，但也许会在未来的某个时间停止支持，请尽量不要使用该特性。<br/>
+其存在和确切行为仅在ECMAScript 2015规范中被标准化为传统功能，以确保Web浏览器的兼容性。<br/>
+应该是影响性能，推荐使用 Object.create()。
+</div>
+
+
+<script>
+    // 0. 改变构造函数的原型不是继承，还会出错, 操作的是同一块内存地址
+    function changePrototype() {
+        function User() { }
+        User.prototype.show = function () {
+            console.log("show user name");
+        }
+
+        // 1.2 管理员类
+        function Admin() { }
+        Admin.prototype = User.prototype
+        let admin = new Admin();
+        admin.show();
+
+        //1.3 会员类
+        function Member() { }
+        Member.prototype.discount = function () {
+            console.log("mermber 打折...");
+        }
+        Member.prototype = User.prototype
+        let member = new Member()
+        member.show();
+        // member.discount(); //没有了
+
+        // 改变子类原型，可以获取父类User的show方法，暂时没啥问题
+
+        // 然而，给Admin增加了一个角色管理方法
+        Admin.prototype.role = function () {
+            console.log("admin role");
+        }
+
+        // 然后admin, memeber都可以拿到方法了
+        admin.role()
+        member.role();
+        console.log(admin, member);
+
+    }
+
+    changePrototype();
+
+
+    // ------------------    正确做法：Admin Member User的prototype内存地址必须独立   -------------------
+    // 方法1. 各自维护原型，不同的内存地址，不要共用；原型之间的继承才是继承
+    function extendPrototype() {
+        // 1. 改变构造函数的原型不是继承，还会出错
+        function User() { }
+        User.prototype.show = function () {
+            console.log("show user name");
+        }
+
+        // 1.2 管理员类
+        function Admin() { }
+        Admin.prototype.__proto__ = User.prototype
+        let admin = new Admin();
+        admin.show();
+
+        //1.3 会员类
+        function Member() { }
+        Member.prototype.discount = function () {
+            console.log("mermber 打折...");
+        }
+        Member.prototype.__proto__ = User.prototype
+        let member = new Member()
+        member.show();
+        member.discount(); //原来的内存地址得到保留
+
+        // 给Admin增加了一个角色管理方法
+        Admin.prototype.role = function () {
+            console.log("admin role");
+        }
+
+        admin.role()
+        // member.role();  // member拿不到了，会报错
+        console.log(admin, member);
+    }
+
+    // extendPrototype();
+
+
+    // 方法2：通过Object.create新开辟一块内存; 这样contructor会被替换掉，详情见25；但是貌似也没啥影响
+    function objectCreate() {
+        // 1. 改变构造函数的原型不是继承，还会出错
+        function User() { }
+        User.prototype.show = function () {
+            console.log("show user name");
+        }
+
+        // 1.2 管理员类
+        function Admin() { }
+        // Admin.prototype.__proto__ = User.prototype
+        Admin.prototype = Object.create(User.prototype)
+        let admin = new Admin();
+        admin.show();
+
+        //1.3 会员类
+        function Member() { }
+        Member.prototype.discount = function () {
+            console.log("mermber 打折...");
+        }
+        // Member.prototype.__proto__ = User.prototype
+        Member.prototype = Object.create(User.prototype)
+        let member = new Member()
+        member.show();
+        // member.discount()  // 这个函数没有了； Member.prototype原来的内存地址没有了，现在是一块新地址
+
+        // 给Admin增加了一个角色管理方法
+        Admin.prototype.role = function () {
+            console.log("admin role");
+        }
+
+        admin.role()
+        // member.role();  // member拿不到了，会报错
+        console.log(admin, member);
+    }
+
+    // objectCreate();
+
+    // 方法3：中间创建了个空函数，感觉和Object.create差不多的意思嘛，而且更麻烦
+    // 参考廖雪峰：https://www.liaoxuefeng.com/wiki/1022910821149312/1023021997355072
+    function emptyFunc() {
+        // 1. 改变构造函数的原型不是继承，还会出错
+        function User(name) { this.name = name }
+        User.prototype.show = function () {
+            console.log("show user name");
+        }
+
+        function inherits(Child, Parent) {
+            // 利用个空函数过渡，new F()会是一个新的内存地址
+            var F = function () { };
+            F.prototype = Parent.prototype;
+            Child.prototype = new F();
+            Child.prototype.constructor = Child;
+        }
+
+        // 1.2 管理员类
+        function Admin(props) {
+            User.apply(this, props)
+            this.age = (props && props.age) || 1
+        }
+        // Admin.prototype.__proto__ = User.prototype
+        // Admin.prototype = Object.create(User.prototype)
+        inherits(Admin, User)
+        let admin = new Admin();
+        admin.show();
+
+        //1.3 会员类
+        function Member() { }
+        Member.prototype.discount = function () {
+            console.log("mermber 打折...");
+        }
+        // Member.prototype.__proto__ = User.prototype
+        // Member.prototype = Object.create(User.prototype)
+        inherits(Member, User)
+        let member = new Member()
+        member.show();
+        // member.discount()  // 这个函数没有了； Member.prototype原来的内存地址没有了，现在是一块新地址
+
+        // 给Admin增加了一个角色管理方法
+        Admin.prototype.role = function () {
+            console.log("admin role");
+        }
+
+        admin.role()
+        // member.role();  // member拿不到了，会报错
+        console.log(admin, member);
+    }
+    emptyFunc()
+</script>

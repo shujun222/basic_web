@@ -1,0 +1,76 @@
+<h3>怎么插入新的dom元素呢？</h3>
+<p>
+    1. 如果是空节点，可以用上回合的innerHtml
+</p>
+<div id="names"></div>
+<div id="players">
+    <li>cr7</li>
+</div>
+
+<p>2. appendChild: 这个算移动节点了，如果操作的不少新建的，而是原来存在的</p>
+<li id="haaland">哈兰德转会</li>
+曼城球员<br />
+<div id="manchester">
+    <li>德布劳内</li>
+    <li>B席</li>
+    <li>福登</li>
+</div>
+
+
+<p>
+    练习题：按字母顺序重写排序: ['Haskell', 'JavaScript', 'Python', 'Ruby', 'Scheme'] <br />
+<ol id="test-list">
+    <li class="lang">Scheme</li>
+    <li class="lang">JavaScript</li>
+    <li class="lang">Python</li>
+    <li class="lang">Ruby</li>
+    <li class="lang">Haskell</li>
+</ol>
+</p>
+<script>
+    // 1. 使用innerHTML新增节点也可以，就是有点麻烦，得拼接
+    // let names = document.getElementById("names");
+    // names.innerHTML = "<li>Haaland</li> <li>messi</li>"
+
+    let players = document.getElementById("players");
+    players.innerHTML = players.innerHTML + "<li>Haaland</li> <li>messi</li>"
+
+    // 2. appendChild 
+    let manchester = document.getElementById("manchester");
+    let haaland = document.getElementById("haaland");
+    // 移动操作
+    manchester.appendChild(haaland)
+    // 当然也可以创造节点
+    var d = document.createElement('li');
+    d.innerHTML = '凯恩';
+    manchester.appendChild(d);
+
+    // 当然还有 insertBefore 等  还有没看懂的 insertAdjacentHTML... 不少api
+
+
+    function execise() {
+        // let courseList = document.getElementById("test-list");
+        // let courses = document.getElementsByClassName("lang");
+        // courses.sort((a, b) => a.innerText > b.innerText ? -1 : 1 )
+        // courseList.innerHTML = courses;
+
+        // 1. 对children排序再导入
+        list = document.getElementById('test-list');
+        sort = Array.from(list.children).sort((a, b) => a.innerText > b.innerText ? 1 : -1);
+        for (let e of sort) list.appendChild(e);
+        // sort.forEach(a => list.appendChild(a))
+        // list.appendChild(sort) //  Failed to execute 'appendChild' on 'Node': parameter 1 is not of type 'Node'.
+
+
+        // 2. 先提取文本，对文本排序; 逐一写入
+        // 转为list后，还是指向原来的内存地址
+        // list = Array.from(document.getElementById('test-list').children);
+        // sort = list.map(element => element.innerText).sort();
+        // // 逐一写入文本
+        // list.map((element, index) => element.innerText = sort[index])
+
+        
+    }
+    execise();
+
+</script>

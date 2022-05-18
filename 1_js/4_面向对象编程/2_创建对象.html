@@ -1,0 +1,51 @@
+<!-- 
+js对象怎么创建
+https://www.liaoxuefeng.com/wiki/1022910821149312/1023022043494624
+Author: shujun
+Date: 2022-5-2 
+-->
+
+<script>
+    // 'use strict'
+    // 1. 构造函数
+    // 除了用{ ... }创建一个对象外，JavaScript还可以用一种构造函数的方法来创建对象
+    function Student(name) {
+        this.name = name;
+        this.hello = function () {
+            alert('Hello, ' + this.name + '!');
+        }
+    }
+    // 不写new，就是一个奇怪的普通函数, 调用了一次函数
+    // console.log(Student("sb"), name); 
+
+    // 使用new，相当于{ ... }, 创建了一个新对象
+    sj = new Student("sj")
+    // s -> Student.prototype -> Object.prototype -> null
+    console.log(sj);
+
+    bobo = new Student("bobo")
+    console.log(bobo);
+
+    // xiaoming -> sj, 里面是没有构造函数Student的
+    // xiaoming = {name: "xiaohong"}
+    // xiaoming.__proto__ = sj
+    // console.log(xiaoming);
+
+    // 2. 构造函数里面的东西都是新复制的一份
+    console.log(sj.hello === bobo.hello);
+
+    function Student2(name){
+        this.name = name;
+    }
+    Student2.prototype.hello = function () {
+        alert('Hello, ' + this.name + '!');
+    }
+    sj2 = new Student2("sj2")
+    bobo2 = new Student2("bobo2")
+    console.log(sj2.hello === bobo2.hello);
+    console.log(sj2, bobo2);
+    console.dir(Student2)
+
+    // 3. 忘记new怎么办？
+    // strict模式报错，非strict更糟糕，绑定了windows
+</script>

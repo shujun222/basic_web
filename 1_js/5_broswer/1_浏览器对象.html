@@ -1,0 +1,47 @@
+JavaScript可以获取浏览器提供的很多对象，并进行操作。
+
+<script>
+    //  window 全局对象，是不是所有浏览器对象都是收敛在window里？
+    console.log('window inner size: ' + window.innerWidth + ' x ' + window.innerHeight);
+    console.log('window inner size: ' + window.outerWidth + ' x ' + window.outerWidth);
+    console.log('window属性和方法都可以直接调用: ' + outerWidth + ' fetch ' + fetch, location);
+
+    // 1. window.navigator对象表示浏览器的信息，最常用的属性包括
+    console.log('appName = ' + navigator.appName);
+    console.log('appVersion = ' + navigator.appVersion);
+    console.log('language = ' + navigator.language);
+    console.log('platform = ' + navigator.platform);
+    console.log('userAgent = ' + navigator.userAgent);
+
+    // 2. location  http://www.example.com:8080/path/index.html?a=1&b=2#TOP
+    console.log(location.protocol); // 'http'
+    console.log(location.host); // 'www.example.com'
+    console.log(location.port); // '8080'
+    console.log(location.pathname); // '/path/index.html'
+    console.log(location.search); // '?a=1&b=2'
+    console.log(location.hash); // 'TOP'
+
+    // 非常厉害的 页面加载, 只需己住 location.reload()  location=url
+    // location.reload() // 在这里会死循环
+
+    // 可以利用此方法跳转到其他页面,
+    // location.assign("http://www.baidu.com");
+    // 等价于
+    // location = location.href
+    // location.href = location.href
+
+    // replace()：使用新的页面来替换当前页面，不会生成历史记录（替换后无法回退页面）。
+    // location.replace("http://www.baidu.com");//使用百度首页来替换当前页面，
+
+
+    // 3. 非常常见的document：表示当前页面。整个DOM树
+    document.getElementById("name")
+    
+    // 这个非常值得研究，不同域名下是不是拿不到？
+    document.cookie
+
+
+    // 4. history  廖大神不推荐使用
+    // https://www.liaoxuefeng.com/wiki/1022910821149312/1023022272084160
+
+</script>

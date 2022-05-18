@@ -36,7 +36,7 @@ typeof n; // 'number'
 var s = String(123.45); // '123.45'
 typeof s; // 'string'
 
-123.toString(); // SyntaxError
+// 123.toString(); // SyntaxError
 123..toString(); // '123', 注意是两个点！
 (123).toString(); // '123'
 

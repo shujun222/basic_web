@@ -1,0 +1,27 @@
+1. innerHTML属性，这个方式非常强大，不但可以修改一个DOM节点的文本内容，还可以直接通过HTML片段修改DOM节点内部的子树 <br />
+
+2. innerText或textContent属性，保证无法设置任何HTML标签，只能文本 <br />
+
+
+<p id="p-id">...</p>
+
+<script>
+    var p = document.getElementById('p-id');
+
+
+    // 设置文本, 也可以Html
+    // p.innerHTML = 'ABC'; // <p id="p-id">ABC</p>
+    // p.innerHTML = 'ABC <span style="color:red">RED</span> XYZ';
+
+    // 这种攻击脚本不也设置不了嘛？
+    // p.innerHTML = '<script>alert("666")</ script>'
+
+
+    // innerText只能设置文本，这样保证保证不会设置进去html结构
+    // p.innerText = '222';
+    // innerText不返回隐藏元素的文本，而textContent返回所有文本
+    p.textContent = '666'
+
+
+
+</script>

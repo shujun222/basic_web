@@ -1,0 +1,54 @@
+1. 表单和dom结构是一样的, 感受下怎么获取和设置值 <br />
+<span id="email0">qq.com</span>:
+<input type="text" id="email" value="wahaha@qq.com" />
+
+<br />
+<label><input type="radio" name="weekday" id="monday" value="1"> Monday</label>
+<label><input type="radio" name="weekday" id="tuesday" value="2"> Tuesday</label>
+
+<br />
+2. html5新增了很多炫酷input
+<input type="date" />
+<input type="color" />
+
+<br />
+3. 表单提交 ，未完待续。。。
+https://www.liaoxuefeng.com/wiki/1022910821149312/1023022460826944 <br/>
+<form id="test-form">
+    <input type="text" name="test">
+    <button type="button" onclick="doSubmitForm()">Submit</button>
+</form>
+
+
+<script>
+    // 1. form控件值获取与赋值
+    let emial0 = document.getElementById('email0');
+    // qq.com undefined; 看来value只适合form表单控件
+    console.log(emial0.innerText, emial0.value);
+
+    var input = document.getElementById('email');
+    console.log(input.value); // '用户输入的值'
+
+    // 对于单选框和复选框，除了本身的value，我们还需要获得用户是否“勾上了”选项，so need checked
+    var mon = document.getElementById('monday');
+    var tue = document.getElementById('tuesday');
+    console.log(mon.value, tue.value); // 1 2
+    console.log(mon.checked, tue.checked); // true或者false
+
+    // 设置值
+    input.value = 'shujun620@lu.com'
+    mon.value = '2'
+    mon.checked = true
+
+
+    // 3. 表单提交方式
+    function doSubmitForm() {
+        var form = document.getElementById('test-form');
+        // 可以在此修改form的input...
+        // 提交form:
+        form.submit();
+    }
+
+
+
+</script>

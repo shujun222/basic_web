@@ -1,3 +1,4 @@
+难道是有prototype就能被创建，即便prototype里面没有了contructor？
 <script>
     function Admin(){
         console.log("admin init...");
@@ -20,10 +21,5 @@
     User.prototype.constructor = Admin
     console.log("new User 3", new User()); 
     console.log("new User 4", Object.create(User.prototype)); 
-
-
-
-
-
 
 </script>
