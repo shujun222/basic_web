@@ -1,0 +1,68 @@
+<!-- 动画效果
+    https://www.liaoxuefeng.com/wiki/1022910821149312/1023023579162208
+
+shujun 2022-05-25 -->
+
+<div style="height: 250px">
+    <div id="test-show-hide" style="background: #656565; width: 200px; height: 200px;">
+
+    </div>
+</div>
+
+
+
+<div>
+    <button id="hide_slow">hide('slow')</button>
+    <button id="hide_3000">hide('3000')</button>
+    <button id="show_slow">show('slow')</button>
+    <button id="toggle_slow">toggle('slow')</button>
+</div>
+
+<div>
+    <button id="slideUp_slow">slideUp('slow')</button>
+    <button id="slideDown_slow">slideDown('slow')</button>
+    <button id="slideToggle_slow">slideToggle('slow')</button>
+</div>
+
+<div>
+    <button id="animate_css_time">animate('css',time)</button>
+    <button id="animate_css_time_func">animate('css',time,func)</button>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+<script>
+    let div = $("#test-show-hide")
+
+    // 1. show/hide
+    // 无参直接执行，传递时间/slow/fast，则动画
+    $("#hide_slow").click(() => div.hide("slow"))
+    $("#hide_3000").click(() => div.hide(3000))
+    $("#show_slow").click(() => div.show("slow"))
+    $("#toggle_slow").click(() => div.toggle("slow"))
+
+    // 2. slideUp/slideDown
+    $("#slideUp_slow").click(() => div.slideUp("slow"))
+    $("#slideDown_slow").click(() => div.slideDown("slow"))
+    $("#slideToggle_slow").click(() => div.slideToggle("slow"))
+
+    // 3. 其它：fadeIn / fadeOut
+
+    // 4. 自定义动画  祭出最后大招：animate()
+    $("#animate_css_time").click( () => div.animate({
+        opacity: 0.25,
+        width: '256px',
+        height: '256px'
+    }, 3000) )
+
+    $("#animate_css_time_func").click( () => div.animate({
+        opacity: 0.25,
+        width: '256px',
+        height: '256px'
+    }, 3000, function() {
+        console.log('动画已结束');
+        // 恢复至初始状态:
+        $(this).css('opacity', '1.0').css('width', '128px').css('height', '128px');
+    }) )
+
+</script>

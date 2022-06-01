@@ -1,0 +1,54 @@
+<form id="test-form" action="#0" onsubmit="return false;">
+    <p><label>Name: <input name="name"></label></p>
+    <p><label>Email: <input name="email"></label></p>
+    <p><label>Password: <input name="password" type="password"></label></p>
+    <p>Gender: <label><input name="gender" type="radio" value="m" checked> Male</label> <label><input name="gender"
+                type="radio" value="f"> Female</label></p>
+    <p><label>City: <select name="city">
+                <option value="BJ" selected>Beijing</option>
+                <option value="SH">Shanghai</option>
+                <option value="CD">Chengdu</option>
+                <option value="XM">Xiamen</option>
+            </select></label></p>
+    <p><button type="submit" onclick="submitForm()">Submit</button></p>
+</form>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+    function submitForm() {
+        // var json = {
+        //     "name": $('input[name="name"]').val(),
+        //     "email": $('input[name="email"]').val(),
+        //     "password": $('input[name="password"]').val(),
+        //     "gender": $('input[name="gender"]').val(),
+        //     "city": $('select[name="city"]').val()
+        // };
+        // console.log(json);
+        // json = JSON.stringify(json)
+
+
+        // 2. 表单的通用写法: 绝了
+        // let json = {}
+        // const inputs = $('#test-form').find('input,select')
+        // inputs.each(function () {
+        //     this.type === "radio" && !this.checked ? undefined : json[this.name] = this.value;
+        // })
+        // console.log(json);
+        // json = JSON.stringify(json)
+
+        
+        let json = {}
+        const inputs = $('#test-form').find('input,select')
+        // 疑问：难道jquery获取的form表单内不能遍历
+        for (let ele of inputs) {
+            console.log(ele.attr("name"));
+            console.log(ele.val());
+        }
+        // inputs.each(function () {
+        //     json[this.name] = this.val();
+        // })
+        console.log(json);
+    }
+
+</script>

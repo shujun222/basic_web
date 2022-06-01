@@ -1,0 +1,45 @@
+<div id="old">
+    <p>什么是<span>jQuery</span></p>
+    <p><span>jQuery</span>是之前流行的<span>JavaScript</span>库。</p>
+</div>
+
+<div id="now">
+    <span>React</span>是现在流行的了
+    <span>Vue</span>是现在流行的了
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+    // 1. 要高亮课程, 代码重复
+    // $('#old p span').css('backgroundColor', '#fffceb').css('color', '#d85030');
+    // $('#now span').css('backgroundColor', '#fffceb').css('color', '#d85030');
+
+    // 2. 封装成函数更好
+    // function highlight (dom) {
+    //     dom.css('backgroundColor', '#fffceb').css('color', '#d85030');
+    //     return dom;
+    // }
+    // highlight($('#old span'))
+    // highlight($('#now span')).css('font-size', '40px')
+
+    // 3. 封装成jQuery的扩展函数
+    // $.fn.highlight = function() {
+    //     this.css('backgroundColor', '#fffceb').css('color', '#d85030');
+    //     return this
+    // }
+
+    // $('#old span').highlight();
+    // $('#now span').highlight().css('font-size', '40px')
+
+    // 4. 进一步拓展：可以自定义高亮
+    $.fn.highlight = function(options) {
+        let backgroundColor = options && options.backgroundColor || '#fffceb'
+        let color = options && options.color || '#d85030'
+        this.css('backgroundColor', backgroundColor).css('color', color);
+        return this
+    }
+
+    $('#old span').highlight();
+    $('#now span').highlight().css('font-size', '40px')
+    $('#old span').highlight({backgroundColor: "gray", color: "green"});
+</script>

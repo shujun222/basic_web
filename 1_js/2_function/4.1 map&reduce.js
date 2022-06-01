@@ -25,6 +25,8 @@ function testMap() {
 
     let newData3 = data.map(function (data, index, array) { return data ** 2 })
     console.log("newData3", newData3);
+
+    // newData = data.map(n => n *n)
 }
 // testMap();
 /**

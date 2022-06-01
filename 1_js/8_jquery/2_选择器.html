@@ -1,0 +1,36 @@
+jQuery的选择器就是帮助我们快速定位到一个或多个DOM节点。
+<br />
+
+<div id="players">
+    <li>messi</li>
+    <li class="nice">haaland</li>
+    <li class="nice hard">cr7</li>
+    <li id="china">wulei</li>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+    // 1. 单项选择
+    console.log($('#players'));
+    console.log($('p'));
+    console.log(jQuery('.nice.hard'));
+
+    // 按属性查找：
+    var email = $('[name=email]'); // 找出<??? name="email">
+    var passwordInput = $('[type=password]'); // 找出<??? type="password">
+    // 按属性查找还可以使用前缀查找或者后缀查找：
+    var icons = $('[name^=icon]'); // 找出所有name属性值以icon开头的DOM
+    // 例如: name="icon-1", name="icon-2"
+    var names = $('[name$=with]'); // 找出所有name属性值以with结尾的DOM
+    // 例如: name="startswith", name="endswith"
+
+    // 2. 组合查找 '标签名[属性1=value1]'
+    var emailInput = $('input[name=email]'); // 不会找出<div name="email">, 只会<input name="email" ../>
+    // '标签名.class' '标签名#id'
+    var tr = $('tr.red'); // 找出<tr class="red ...">...</tr>
+
+    // 3. 多项选择器: 把多个选择器用,组合起来一块选：
+    $('p,div'); // 把<p>和<div>都选出来
+    $('p.red,p.green'); // 把<p class="red">和<p class="green">都选出来
+
+</script>

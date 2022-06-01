@@ -1,0 +1,46 @@
+<ul class="lang">
+    <li class="js dy">JavaScript</li>
+    <li class="dy">Python</li>
+    <li id="swift">Swift</li>
+    <li class="dy">Scheme</li>
+    <li name="haskell">Haskell</li>
+</ul>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+<script>
+    // 1. 用find()查找
+    var ul = $('ul.lang'); // 获得<ul>
+    var dy = ul.find('.dy'); // 获得JavaScript, Python, Scheme
+    var swf = ul.find('#swift'); // 获得Swift
+    var hsk = ul.find('[name=haskell]'); // 获得Haskell
+
+    // 使用parent方法获取上一层，next(), prev()同层
+    var swf = $('#swift'); // 获得Swift
+    var parent = swf.parent(); // 获得Swift的上层节点<ul>
+
+    swf.next(); // Scheme
+    swf.prev(); // Python
+    swf.prev('.dy'); // Python，因为Python同时符合过滤器条件.dy
+
+    // 2. 过滤 和函数式编程的map、filter类似
+    var langs = $('ul.lang li'); // 拿到JavaScript, Python, Swift, Scheme和Haskell
+    console.log(langs.filter('.dy').text()); // 拿到JavaScript, Python, Scheme
+
+    b = langs.filter(function () {
+        return this.innerHTML.indexOf('S') === 0; // 返回S开头的节点
+    }); // 拿到Swift, Scheme
+    console.log(b.text());
+
+    // 什么鬼，第一个参数是index？
+    c = langs.filter(dom => {
+        // console.log("dom", dom, langs[dom]);
+        return langs[dom].innerHTML.indexOf('S') === 0
+    }); 
+    console.log(c.text());
+
+    // 还有map, first, last, slice等函数
+    
+
+
+</script>

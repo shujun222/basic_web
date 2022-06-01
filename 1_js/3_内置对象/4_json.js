@@ -32,10 +32,6 @@ function test1() {
     // 2. 还可以传入一个函数，这样对象的每个键值对都会被函数先处理：
     a = JSON.stringify(xiaoming, (key, value) => typeof value === 'string' ? value.toUpperCase() : value, " ")
     console.log(a);
-
-
-
-
 }
 // test1()
 

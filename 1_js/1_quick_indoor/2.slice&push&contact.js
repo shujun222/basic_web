@@ -32,6 +32,6 @@ array2 = array.concat([6, 7]);    //参数为数组
 console.log(array);    //[1, 2, 3, 4, 5]
 console.log(array2);   //[1, 2, 3, 4, 5, 6, 7]
 
-    // 1. push 改变了原来对象，contact有点类似上面的slice，复制一个新的对象，在新对象上修改；
-    // 2. push多个参数，不会展开的，contact会自动展开
+// 1. push 改变了原来对象，contact有点类似上面的slice，复制一个新的对象，在新对象上修改；
+// 2. push多个参数，不会展开的，contact会自动展开
 

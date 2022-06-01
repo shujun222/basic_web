@@ -20,7 +20,7 @@ console.log(a);
  * 
  * 
 表达式                          返回值
-1. 七种原始类型
+1. 七种原始类型: number, boolean, string, 其它
 typeof undefined           'undefined'
 typeof null                   'object'         需要注意的
 typeof true                   'boolean'
@@ -101,3 +101,4 @@ console.log(typeof a.toString());
 // 4. 装箱转换 & 拆箱转换
 // 每一种基本类型 Number、String、Boolean、Symbol 在对象中都有对应的类，所谓装箱转换，正是把基本类型转换为对应的对象，它是类型转换中一种相当重要的种类。
 console.log("4---------");
+

@@ -1,0 +1,75 @@
+<ul id="test-ul">
+    <li class="js">JavaScript</li>
+    <li name="book">Java &amp; JavaScript</li>
+</ul>
+
+<ul id="test-css">
+    <li class="lang dy"><span>JavaScript</span></li>
+    <li class="lang"><span>Java</span></li>
+    <li class="lang dy"><span>Python</span></li>
+    <li class="lang"><span>Swift</span></li>
+    <li class="lang dy"><span>Scheme</span></li>
+</ul>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+<script>
+    function modifyText() {
+        // 1. html原生
+        // 1.1 getElement
+        // let course = document.getElementsByClassName("js");
+        // console.log(course[0].innerText);
+        // let book = document.getElementsByTagName("li")
+        // console.log(book[1].innerText);
+        // let book2 = document.getElementsByName("book")    
+        // console.log(book2[0].innerText);
+        // 不知道干吗的
+        // document.getElementsByTagNameNS
+
+        // 1.2 querySelector
+        let course = document.querySelector("li")
+        console.log(course.innerText);
+        let book = document.querySelector("li[name=book]")
+        console.log(book.innerText);
+
+        course.innerText = "Football"
+        book.innerHTML = "haaland entry macherst city"
+
+
+        // 2. Jquery
+        // let course = $(".js")
+        // console.log(course.text());
+        // let book = $("li[name=book]")
+        // console.log(book.html());
+
+        // course.text("Football")
+        // book.html("haaland entry macherst city")
+    }
+    // modifyText();
+
+
+    // 要高亮显示动态语言，
+    function modifyCss() {
+        let courses = document.querySelectorAll("li.dy span");
+        console.log(courses.length, courses.innerText);
+        for (let course of courses) {
+            course.style.background = "#ffd351"
+            course.style.color = "red"
+        }
+
+        // jquery选择的对象，不管是改innnerHtml, 还是css； 都是统一改了，不用去遍历了
+        $('li.dy span').css('background-color', '#ffd351').css('color', 'red');
+        // ele.addClass("");
+    }
+    modifyCss();
+
+    function others() {
+        // 1. 隐藏显示
+        a.hide(); // 隐藏
+        a.show(); // 显示
+
+        div.attr('name'); // 获取属性
+        div.attr('name', 'Hello'); // 修改属性：div的name的value值赋值为'Hello'
+        div.removeAttr('name'); // 删除name属性
+    }
+</script>
