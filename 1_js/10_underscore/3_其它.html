@@ -1,0 +1,31 @@
+<script src="https://underscorejs.org/underscore-min.js"></script>
+
+<pre>
+    underscore新增了很多的自定义函数
+    shujun 2022-6-12
+</pre>
+
+<script>
+    function factorial(n) {
+        if (n == 1) return 1
+        return n * factorial(n - 1)
+    }
+
+    // const factorial = _.memoize(n => {
+    //     if (n == 1) return 1
+    //     return n * factorial(n - 1)
+    // })
+
+    console.time();
+    let s1 = factorial(20); // 3628800
+    factorial(20);
+    factorial(20);
+    factorial(20);
+    factorial(20);
+    console.timeEnd();
+
+
+
+
+
+</script>

@@ -1,0 +1,52 @@
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+<form>
+    <input id="x"> + <input id="y">
+    <button id="calc" type="button">计算</button>
+</form>
+
+<script>
+    function test1() {
+        try {
+            $("#calc").click(function () {
+                var
+                    x = parseFloat($('#x').val()),
+                    y = parseFloat($('#y').val()),
+                    r;
+                if (isNaN(x) || isNaN(y)) {
+                    throw new Error('输入有误');
+                }
+                r = x + y;
+                alert('计算结果：' + r);
+            });
+        } catch (e) {
+            alert('输入有误！');
+        }
+    }
+    // 捕获失败
+    // test1()
+
+
+    function test2() {
+
+        $("#calc").click(function () {
+            try {
+                var
+                    x = parseFloat($('#x').val()),
+                    y = parseFloat($('#y').val()),
+                    r;
+                if (isNaN(x) || isNaN(y)) {
+                    throw new Error('输入有误');
+                }
+                r = x + y;
+                alert('计算结果：' + r);
+            } catch (e) {
+                console.log("catch ", e);
+                alert('catch 输入有误哦！' + e);
+            }
+        });
+
+    }
+    // try-catch 移动到异步函数内
+    test2()
+</script>

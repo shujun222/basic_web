@@ -1,0 +1,29 @@
+<script src="https://underscorejs.org/underscore-min.js"></script>
+
+<pre>
+    js是函数式编程，可以map，filter等非常方便的操作
+    然而只能对Array.map, 并不能对Object，所以被第三方库underscore钻了空子，
+    然而目前感觉underscore毫无优势可语
+    shujun 2022-6-10
+</pre>
+
+<script>
+    var obj = {
+        name: 'bob',
+        school: 'No.1 middle school',
+        address: 'xueyuan road'
+    };
+
+    var values = _.map(obj, (value, key) => value);
+    console.log(values);
+
+    values = Object.keys(obj).map(key => obj[key])
+    console.log(values);
+
+    var key_value = _.map(obj, (value, key) => key + "_" + value);
+    console.log(key_value);
+
+    key_value = Object.keys(obj).map(key => key + "_" + obj[key])
+    console.log(key_value);
+
+</script>

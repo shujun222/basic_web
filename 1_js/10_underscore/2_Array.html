@@ -1,0 +1,51 @@
+<script src="https://underscorejs.org/underscore-min.js"></script>
+
+<pre>
+    靠其它高级函数扳回一局了
+    shujun 2022-6-10
+</pre>
+
+<script>
+    var scores = [20, 81, 75, 40, 91, 59, 77, 66, 72, 88, 99];
+    var groupObject = _.groupBy(scores, function (x) {
+        if (x < 60) {
+            return 'C';
+        } else if (x < 80) {
+            return 'B';
+        } else {
+            return 'A';
+        }
+    });
+    console.log(groupObject);
+    // A: (4) [81, 91, 88, 99]
+    // B: (4) [75, 77, 66, 72]
+    // C: (3) [20, 40, 59]
+
+    // js据说未来会有
+    // groupObject = scores.groupBy((item, index, array) => {
+    //     if (item < 60) {
+    //         return 'C';
+    //     } else if (item < 80) {
+    //         return 'B';
+    //     } else {
+    //         return 'A';
+    //     }
+    // })
+    // console.log(groupObject);
+
+
+    let result = _.flatten([1, [2], [3, [[4], [5]]]]); 
+    console.log(result); // [1, 2, 3, 4, 5]
+
+    var names = ['Adam', 'Lisa', 'Bart'];
+    var scores = [85, 92, 59];
+    console.log(_.zip(names, scores)); // [['Adam', 85], ['Lisa', 92], ['Bart', 59]]
+    console.log(_.object(names, scores)); // {Adam: 85, Lisa: 92, Bart: 59}
+
+    var namesAndScores = [['Adam', 85], ['Lisa', 92], ['Bart', 59]];
+    console.log(_.unzip(namesAndScores)); // [['Adam', 'Lisa', 'Bart'], [85, 92, 59]]
+    
+
+
+
+</script>

@@ -7,6 +7,10 @@ shujun 2022-05-25 -->
     <div id="test-show-hide" style="background: #656565; width: 200px; height: 200px;">
 
     </div>
+
+    <div id="test-message" style="width: 200px; height: 100px; display: none">
+        恭喜您, 操作成功
+    </div>
 </div>
 
 
@@ -28,6 +32,8 @@ shujun 2022-05-25 -->
     <button id="animate_css_time">animate('css',time)</button>
     <button id="animate_css_time_func">animate('css',time,func)</button>
 </div>
+
+<button id="message_show">message show</button>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
@@ -65,4 +71,12 @@ shujun 2022-05-25 -->
         $(this).css('opacity', '1.0').css('width', '128px').css('height', '128px');
     }) )
 
+
+    // $("#test-message").hide();
+    $("#message_show").click(() => {
+        $("#test-message").show();
+        // $("#test-message").fadeOut(2000)
+        $("#test-message").slideUp(2000)
+        // $("#test-message").hide(2000)
+    });
 </script>
