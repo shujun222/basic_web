@@ -1,0 +1,26 @@
+<ul>
+    <li>controls属性会自动带上播放按钮</li>
+</ul>
+<video id="video1" width="420" controls>
+    <source src="https://www.runoob.com/try/demo_source/mov_bbb.mp4" type="video/mp4">
+    <!-- 可以链接不同的source视频文件。未来兼容性；浏览器将使用第一个可识别的格式 -->
+    <source src="https://www.runoob.com/try/demo_source/mov_bbb.ogg" type="video/ogg">
+    您的浏览器不支持 HTML5 video 标签。
+</video>
+
+<br /> <br />
+<button onclick="myVideo.play()">播放/暂停</button>
+<button onclick="myVideo.width = 560">放大</button>
+<button onclick="myVideo.width = 320;">缩小</button>
+<button onclick="myVideo.width = 420;">普通</button>
+
+<script>
+    var myVideo = document.getElementById("video1");
+
+    function playPause() {
+        if (myVideo.paused)
+            myVideo.play();
+        else
+            myVideo.pause();
+    }
+</script>

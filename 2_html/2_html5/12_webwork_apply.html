@@ -1,0 +1,38 @@
+<pre>
+shujun 2022-07-03
+惊呆了，还有这样的东西
+
+web worker 是运行在后台的 JavaScript，不会影响页面的性能。
+
+</pre>
+
+
+
+<p>计数： <output id="result"></output></p>
+<button onclick="startWorker()">开始工作</button>
+<button onclick="stopWorker()">停止工作</button>
+
+
+<script>
+    var w;
+
+    function startWorker() {
+        // 这一句很有必要，保证只有一个Work在跑，否则会乱掉
+        // 或者点击开始后，禁用按钮也行
+        if (typeof (w) == "undefined") {
+            w = new Worker("12_demo_workers.js");
+        }
+        // 监听消息
+        w.onmessage = function (event) {
+            document.getElementById("result").innerHTML = event.data;
+        };
+       
+    }
+
+    function stopWorker() {
+        // 终止消息
+        w.terminate();
+        // 这里得置空，否则start时就不会'new Work', 也就监听不到消息
+        w = undefined;
+    }
+</script>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>HTML5本地存储之Web Storage篇</title>
+</head>
+
+<body>
+    <div style="border: 2px dashed #ccc;width:320px;text-align:center;">
+        别名(key):
+        <input type="text" id="keyname" name="keyname" class="text" />
+        <br />
+        网站名：
+        <input type="text" id="sitename" name="sitename" class="text" />
+        <br />
+        网 址：
+        <input type="text" id="siteurl" name="siteurl" />
+        <br />
+        <input type="button" onclick="save()" value="新增记录" />
+
+        <hr />
+        输入别名(key)：
+        <input type="text" id="search_site" name="search_site" />
+        <input type="button" onclick="find()" value="查找网站" />
+        <p id="find_result"><br /></p>
+    </div>
+
+    <br />
+    <!-- 展示已有的localStorage -->
+    <div id="list"></div>
+
+
+    <script>
+        //保存数据  
+        function save() {
+            var site = {
+                keyname : document.getElementById("keyname").value,
+                sitename: document.getElementById("sitename").value,
+                siteurl : document.getElementById("siteurl").value,
+            };
+            
+            localStorage.setItem("sj_" + site.keyname, JSON.stringify(site));
+            alert("保存成功");
+            loadAll()
+        }
+
+        //查找数据  
+        function find() {
+            var search_site = document.getElementById("search_site").value;
+            var site = localStorage.getItem("sj_" + search_site);
+            let result = "查无此人哦..."
+            if (site) {
+                site = JSON.parse(site)
+                result = search_site + "的网站名是：" + site.sitename + "，网址是：" + site.siteurl
+            }
+            
+            var find_result = document.getElementById("find_result");
+            find_result.innerHTML = result;
+        }
+
+        //将所有存储在localStorage中的对象提取出来，并展现到界面上
+        function loadAll() {
+            var list = document.getElementById("list");
+            
+            var content = ""
+            for (var i = 0; i < localStorage.length; i++) {
+                var keyname = localStorage.key(i);
+                if (keyname.startsWith("sj_")) {
+                    var site = JSON.parse(localStorage.getItem(keyname)) ;
+                    content += "<tr><td>" + site.keyname + "</td><td>" + site.sitename + "</td><td>" + site.siteurl + "</td></tr>";
+                }
+            }
+
+            var result = "数据为空..."
+            if (content) {
+                result = `<table border='1'>
+                    <tr><td>别名</td><td>网站名</td><td>网址</td></tr>
+                    ${content}
+                    </table>`;
+            }
+            list.innerHTML = result;
+        }  
+
+        loadAll()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<form action="http://localhost:3006/api/service/getUser" method="get">
+    First name: <input type="text" name="firstname"><br>
+    Last name: <input type="text" name="lastname"> <br/>
+
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <input type="reset" value="重置">
+    <input type="submit" value="submit">
+</form>
+
+<pre>
+    GET请求：
+    1. 怎么设置了action之后，只是不是重置按钮，都可以提交了
+    2. get请求都不需要设置参数，直接会自动拼接的吗？神奇
+
+    POST请求：
+    1. 设置了action，也是非reset之外的任何按钮都可以提交
+    2. 然鹅post好像不会自动发参数，这么说来得绑定ajax到按钮的click事件上了？
+</pre>
+
+<!-- action="http://localhost:3006/test"  -->
+<form action="http://localhost:3006/test"
+onsubmit="return submit()"
+method="post">
+    First name: <input type="text" name="firstname"><br>
+    Last name: <input type="text" name="lastname"> <br/>
+
+    <button onclick="register()">register</button>
+    <button>按钮2</button>
+    <input type="reset" value="重置">
+    <input type="submit" value="submit">
+</form>
+
+
+<script>
+    function test() {console.log();}
+    function register() {console.log("register...");}
+    function submit(){
+        return false;   //超链接a 的阻止冒泡是同样的原理
+    }
+</script>
+
+<p>shujun 2022-06-20</p>

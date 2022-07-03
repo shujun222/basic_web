@@ -1,5 +1,7 @@
 // 'use strict'
 
+// https://www.runoob.com/js/js-this.html
+
 // 1. 糟糕的this变量，this始终指向当前对象
 var xiaoming = {
     name: '小明',

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<p>
+    通过脚本来绘制图形
+</p>
+<canvas id="myCanvas">你的浏览器不支持 HTML5 canvas 标签。</canvas>
+<canvas id="myCanvas2"></canvas>
+<canvas id="myCanvas3"></canvas>
+
+<p>Canvas还能绘制标题，这样好像就可以不用图片也行呀</p>
+<canvas id="myCanvas4"></canvas>
+
+<script>
+    var c = document.getElementById('myCanvas');
+    var ctx = c.getContext('2d');
+    ctx.fillStyle = '#FF0000';
+    ctx.fillRect(0, 0, 80, 100);
+
+    var c = document.getElementById("myCanvas2");
+    var ctx = c.getContext("2d");
+    ctx.moveTo(0, 0);
+    ctx.lineTo(200, 100);
+    ctx.stroke();
+
+    var c = document.getElementById("myCanvas3");
+    var ctx = c.getContext("2d");
+    ctx.beginPath();
+    ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+    ctx.stroke();
+
+    var c = document.getElementById("myCanvas4");
+    var ctx = c.getContext("2d");
+    ctx.font = "30px Arial";
+    ctx.strokeText("Hello World", 10, 50);
+
+    // 拉上炫酷的渐变色
+    // Create gradient
+    var grd = ctx.createLinearGradient(0, 0, 200, 0);
+    grd.addColorStop(0, "red");
+    grd.addColorStop(0.5, "white");
+
+    // Fill with gradient
+    ctx.fillStyle = grd;
+    // ctx.strokeText("Hello World", 10, 50);
+    ctx.fillRect(10, 10, 150, 80);
+</script>

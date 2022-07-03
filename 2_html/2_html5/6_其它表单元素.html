@@ -1,0 +1,28 @@
+1. datalist还是不够好用，下拉菜单点击不了：
+<input list="browsers" name="browser">
+<datalist id="browsers">
+    <option value="Internet Explorer">
+    <option value="Firefox">
+    <option value="Chrome">
+    <option value="Opera">
+    <option value="Safari">
+</datalist>
+
+<p>2. keygen有点玄乎，没太能理解；用于表单的密钥对生成器字段。
+    当提交表单时，会生成两个键，一个是私钥，一个公钥。
+    私钥（private key）存储于客户端，公钥（public key）则被发送到服务器。公钥可用于之后验证用户的客户端证书（client certificate）。
+</p>
+<form action="demo_keygen.asp" method="get">
+    用户名: <input type="text" name="usr_name">
+    加密: <keygen name="security">
+    <input type="submit">
+</form>
+
+
+
+<p>3. 实时变幻，有点双向绑定的感觉哦</p>
+<form oninput="x.value=parseInt(a.value)+parseInt(b.value)">0
+    <input type="range" id="a" value="50">100 +
+    <input type="number" id="b" value="50">=
+    <output name="x" for="a b"></output>
+</form>

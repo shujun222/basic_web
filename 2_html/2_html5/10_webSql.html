@@ -1,0 +1,54 @@
+<script type="text/javascript">
+
+    var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
+    // var msg;
+
+    // db.transaction(function (tx) {
+    //     tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique, log)');
+    //     tx.executeSql('INSERT INTO LOGS (id, log) VALUES (1, "菜鸟教程")');
+    //     tx.executeSql('INSERT INTO LOGS (id, log) VALUES (2, "www.runoob.com")');
+    //     msg = '<p>数据表已创建，且插入了两条数据。</p>';
+    //     document.querySelector('#status').innerHTML = msg;
+    // });
+
+    db.transaction(function (tx) {
+        tx.executeSql('SELECT * FROM LOGS', [], function (tx, results) {
+            var len = results.rows.length, i;
+            msg = "<p>查询记录条数: " + len + "</p>";
+            document.querySelector('#status').innerHTML += msg;
+
+            for (i = 0; i < len; i++) {
+                msg = "<p><b>" + results.rows.item(i).log + "</b></p>";
+                document.querySelector('#status').innerHTML += msg;
+            }
+        }, null);
+    });
+
+
+    function query() {
+        let keyword = document.getElementById("keyword").value;
+        db.transaction(function (tx) {
+            tx.executeSql('SELECT * FROM LOGS where log=?', [keyword], function (tx, results) {
+                let msg = ""
+                for (let i = 0; i < results.rows.length; i++) {
+                    msg = "<p><b> id: " + results.rows.item(i).id + "</b></p>";
+                    document.querySelector('#result').innerHTML += msg;
+                }
+            }, null);
+        })
+
+    }
+</script>
+
+
+
+<body>
+    <div id="status" name="status" style="border: 1px dashed gray; width: 300px;">状态信息</div>
+
+    <div>
+        <input id="keyword">
+        <button onclick="query()">query</button>
+
+        <div id="result"></div>
+    </div>
+</body>
