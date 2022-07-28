@@ -1,0 +1,266 @@
+<style>
+    /* 1. margin: auto */
+    .center {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        width: 60%;
+        height: 100px;
+        border: 3px solid #73AD21;
+        padding: 10px;
+    }
+
+    /* 2. vertical-align: middle; */
+    .div0 {
+        width: 200px;
+        height: 150px;
+        border: 1px solid #000;
+        text-align: center;
+        display: inline-block;
+        top: 0;
+        /* float: left; */
+    }
+
+    /* 和div0完全一致 */
+    .div1 {
+        width: 200px;
+        height: 150px;
+        border: 1px solid #000;
+        text-align: center;
+        display: inline-block;
+    }
+
+    .div1::before {
+        content: '';
+        width: 0;
+        height: 100%;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .redbox {
+        width: 30px;
+        height: 30px;
+        background: #c00;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .greenbox {
+        width: 30px;
+        height: 60px;
+        background: #0c0;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .bluebox {
+        width: 30px;
+        height: 40px;
+        background: #00f;
+        display: inline-block;
+        vertical-align: middle;
+    }
+</style>
+
+<a href="https://blog.csdn.net/lgno2/article/details/109446708">
+    CSS垂直居中的七个方法——前端开发博客-csdn
+</a>
+<pre>
+    1. absolute绝对定位
+    垂直对齐也可以使用：margin: auto;
+    优点：水平垂直都对齐了
+    缺点：1. 如果还有其它元素，会叠加的; 2. 设置的有点多：position, 四个方位，宽高
+    适合场景：只有一个框，例如首页登录框居中
+</pre>
+
+<div style="border: solid red; height: 300px; position: relative;">
+    <div class="center">
+        <p>
+            只不过得设置absolue, 四个方位全部为0
+            <a href="https://www.jianshu.com/p/302ac93dac26">margin垂直居中</a>
+        </p>
+    </div>
+
+    <div style="background: goldenrod; height: 150;"></div>
+</div>
+
+
+<pre>
+    2. 文本居中对齐
+    与 text-align类似，还有个vertical-align:middle;
+    不过它只适合与td，
+    在div里面是相对各元素来说，水平对齐
+    适合场景：还行呀，通过伪类方式
+</pre>
+
+<div style="border: solid blue">
+    <div class="div0">
+        <div class="redbox"></div>
+        <div class="greenbox"></div>
+        <div class="bluebox"></div>
+    </div>
+
+    除非其中有一个框框，高度是 100%
+    <div class="div0">
+        <div class="redbox"></div>
+        <div class="greenbox" style="height: 100%;"></div>
+        <div class="bluebox"></div>
+    </div>
+
+    通过伪类就可以
+    <div class="div1">
+        <div class="redbox"></div>
+        <div class="greenbox"></div>
+        <div class="bluebox"></div>
+    </div>
+</div>
+
+
+<style>
+    .div3 {
+        width: 200px;
+        height: 150px;
+        border: 1px solid #000;
+        position: relative;
+    }
+
+    .redbox3 {
+        width: 30px;
+        height: 30px;
+        background: #c00;
+        float: left;
+        top: calc(50% - 15px);
+        margin-left: calc(50% - 45px);
+        position: absolute;
+    }
+
+    .greenbox3 {
+        width: 30px;
+        height: 80px;
+        background: #0c0;
+        float: left;
+        top: calc(50% - 40px);
+        position: absolute;
+    }
+
+    .bluebox3 {
+        width: 30px;
+        height: 40px;
+        background: #00f;
+        float: left;
+        top: calc(50% - 20px);
+        position: absolute;
+    }
+</style>
+<pre>
+    3. 动态计算像数
+        a. 自己手动能算清楚也可以
+        b. calc函数
+
+        疑问：
+        1. 不过为啥一定得父级relative, 自己absolute呢？
+           当position: absolute时，貌似margin-top, top都能生效哦
+        2. margin-top: 50% 是有bug吗？咋用的是水平的50%
+
+        适合场景：不能用吧，到现在还没调好，
+</pre>
+<div class="div3">
+    <div class="redbox3"></div>
+    <div class="greenbox3"></div>
+    <div class="bluebox3"></div>
+</div>
+
+
+<pre>
+    4. 假装是表格
+    优点：非常简洁呀
+</pre>
+<div class="div0" style="display: table-cell; vertical-align: middle;">
+    <div class="redbox"></div>
+    <div class="greenbox"></div>
+    <div class="bluebox"></div>
+</div>
+
+
+<pre>
+    5. css3新特性: transform 
+    top:50% 与 transform: translateY(-50%); 结合，但是比calc好用呀，不用具体到像数点
+</pre>
+
+<style>
+    .use-transform {
+        width: 200px;
+        height: 200px;
+        border: 1px solid #000;
+    }
+
+    .use-transform div {
+        position: relative;
+        width: 100px;
+        height: 50px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #095;
+    }
+</style>
+
+<div class="use-transform">
+    <div></div>
+</div>
+
+<pre>
+    6. Flexbox
+    这个也太好用了吧，强大，厉害了
+    适合场景：就选它了，太简洁了
+</pre>
+<style>
+    .use-flexbox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 200px;
+        height: 150px;
+        border: 1px solid #000;
+    }
+
+    .use-flexbox div {
+        width: 100px;
+        height: 50px;
+        background: #099;
+    }
+</style>
+
+<div class="use-flexbox">
+    <div></div>
+</div>
+
+
+
+<pre>
+    7. line-height
+</pre>
+<div style="padding: 30px 0; border: 3px solid green;">
+    使用padding 但是这样div高度就自适应了
+</div>
+<div style="line-height: 60px; border: 3px solid green; margin: 10px">
+    适用line-height
+</div>
+
+<div style="line-height: 60px; border: 3px solid green; margin: 10px">
+    多行用line-height就不合适啦 <br />
+    行1 <br />
+    行2 <br />
+    行3 <br />
+</div>
+
+
+<pre>
+    总结：
+    1. 如果只是一行，适用 7. line-height 或者 padding就可以文本或者元素居中
+    2. 如果是登录框，偏左或者偏右一点的，可以用 5. position: relative; top:50%; transform: translateY(-50%)微调
+    3. 一个框框，己住 6. display: flex; align-items: center; justify-content: center;
+</pre>

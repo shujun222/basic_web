@@ -1,0 +1,41 @@
+<pre>
+position 属性指定了元素的定位类型。
+position 属性的五个值：
+static
+    HTML 元素的默认值，即没有定位，遵循正常的文档流对象。
+    静态定位的元素不会受到 top, bottom, left, right影响。 
+relative
+fixed
+absolute
+sticky
+    粘性定位的元素是依赖于用户的滚动，在 position:relative 与 position:fixed 定位之间切换。
+</pre>
+
+
+<style>
+    div.sticky {
+        position: sticky;
+        top: 0;
+        padding: 5px;
+        background-color: #cae8ca;
+        border: 2px solid #4CAF50;
+    }
+</style>
+
+<body>
+
+    <p>尝试滚动页面。</p>
+    <p>注意: IE/Edge 15 及更早 IE 版本不支持 sticky 属性。</p>
+
+    <div class="sticky">我是粘性定位!</div>
+
+    <div style="padding-bottom:2000px">
+        <p>滚动我</p>
+        <p>来回滚动我</p>
+        <p>滚动我</p>
+        <p>来回滚动我</p>
+        <p>滚动我</p>
+        <p>来回滚动我</p>
+    </div>
+
+</body>

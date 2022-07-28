@@ -1,0 +1,24 @@
+<style>
+    /* 1. 默认情况下，背景图像进行平铺重复显示，不管是水平还是垂直，以覆盖整个元素实体. */
+    body1 {
+        background-image: url('paper.gif');
+        /* 会被image覆盖 */
+        background-color: #cccccc;
+    }
+
+    body2 {
+        background-image: url('gradient2.png');
+        background-repeat: repeat-x;
+    }
+
+    body {
+        background-image: url('img_tree.png');
+        background-repeat: no-repeat;
+        background-position: right top;
+    }
+</style>
+</head>
+
+<body>
+    <h1>Hello World!</h1>
+</body>

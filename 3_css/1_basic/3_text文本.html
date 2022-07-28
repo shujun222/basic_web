@@ -1,0 +1,110 @@
+<style>
+    /* 1. 文本对其：text-align */
+    h1 {
+        text-align: center;
+    }
+
+    p.date {
+        text-align: right;
+    }
+
+    p.main {
+        /* 两端对齐也是先考虑左，再右的 */
+        text-align: justify;
+    }
+
+    /* 2. 文本转换
+    文本转换属性是用来指定在一个文本中的大写和小写字母。
+    可用于所有字句变成大写或小写字母，或每个单词的首字母大写。 */
+    p.uppercase {
+        text-transform: uppercase;
+    }
+
+    p.lowercase {
+        text-transform: lowercase;
+    }
+
+    p.capitalize {
+        text-transform: capitalize;
+    }
+
+    /* line-height */
+    p.small {
+        line-height: 70%;
+    }
+
+    p.big {
+        /* line-height: 200%; */
+        line-height: 80px;
+    }
+</style>
+
+1. 文本对其
+<h1>CSS text-align 实例</h1>
+<p class="date">2015 年 3 月 14 号</p>
+<p class="main">
+    “当我年轻的时候，我梦想改变这个世界；当我成熟以后，我发现我不能够改变这个世界，我将目光缩短了些，决定只改变我的国家；当我进入暮年以后，我发现我不能够改变我们的国家，我的最后愿望仅仅是改变一下我的家庭，但是，这也不可能。当我现在躺在床上，行将就木时，我突然意识到：如果一开始我仅仅去改变我自己，然后，我可能改变我的家庭；在家人的帮助和鼓励下，我可能为国家做一些事情；然后，谁知道呢?我甚至可能改变这个世界。”
+</p>
+<p><b>注意：</b> 重置浏览器窗口大小查看 &quot;justify&quot; 是如何工作的。</p>
+
+
+
+2. 文本转换
+<p class="uppercase">This is some text.</p>
+<p class="lowercase">This is some text.</p>
+<p class="capitalize">This is some text.</p>
+
+3. 著名的line-height
+<p>
+    这是一个标准行高的段落。<br>
+    这是一个标准行高的段落。<br>
+    大多数浏览器的默认行高约为110%至120%。<br>
+</p>
+
+<p class="small">
+    这是一个更小行高的段落。<br>
+    这是一个更小行高的段落。<br>
+    这是一个更小行高的段落。<br>
+    这是一个更小行高的段落。<br>
+</p>
+
+<p class="big">
+    这是一个更大行高的段落。<br>
+    这是一个更大行高的段落。<br>
+    这是一个更大行高的段落。<br>
+    这是一个更大行高的段落。<br>
+</p>
+
+<div style="border: 1px solid red;; line-height: 80px">
+    <!-- 相当于这行字体顶部具体上面的45px?  -->
+    <span style="font-size: 20px; border: 1px dashed green;">这是一个自定义行高的段落。</span><br>
+    这是一个自定义行高的段落。<br>
+    这是一个自定义行高的段落。<br>
+</div>
+
+<pre>
+    这个div的高度非常难理解呀：
+    1. 不写，倒是很好理解，自己根据line-height适应
+    2. 自定义高度b>自动渲染的高度a，那最后应该是 b + 行数*line-height 
+    3. b < a呢？ 我不会算
+</pre>
+
+
+<div style="border: 1px solid red; line-height: 80px; margin-top: 20px; height: 70px;">
+    <span style="font-size: 20px; border: 1px dashed green;">这是一个自定义行高的段落。</span><br>
+    这是一个自定义行高的段落。<br>
+    这是一个自定义行高的段落。<br>
+</div>
+
+<script>
+    // 算法练习: 讲一句话的首字母转大写, 其余小写
+    let letter = "this is soMe teXt."
+
+    let strs = letter.toLowerCase().split(" ")
+    for (let i in strs) {
+        strs[i] = strs[i][0].toUpperCase() + strs[i].substring(1, strs[i].length)
+    }
+    console.log(strs.join(" "));
+
+
+</script>

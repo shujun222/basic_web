@@ -1,0 +1,103 @@
+<pre>
+CSS 计数器根据规则来递增变量。
+
+CSS 计数器使用到以下几个属性：
+counter-reset - 创建或者重置计数器
+counter-increment - 递增变量
+content - 插入生成的内容
+counter() 或 counters() 函数 - 将计数器的值添加到元素
+</pre>
+
+1. 简单版本
+<style>
+    .title1 {
+        counter-reset: section;
+    }
+
+    .title1 h2::before {
+        counter-increment: section;
+        content: "Section " counter(section) ": ";
+    }
+</style>
+
+<div class="title1">
+    <h1>简单添加前缀:</h1>
+    <h2>HTML 教程</h2>
+    <h2>CSS 教程</h2>
+    <h2>JavaScript 教程</h2>
+</div>
+
+
+2. 嵌套添加前缀，优点word排版感觉了
+<style>
+    .title2 {
+        counter-reset: section;
+    }
+
+    .title2 h1 {
+        counter-reset: subsection;
+    }
+
+    .title2 h1::before {
+        counter-increment: section;
+        content: "Section " counter(section) ". ";
+    }
+
+    .title2 h2::before {
+        counter-increment: subsection;
+        content: counter(section) "." counter(subsection) " ";
+    }
+</style>
+
+<div class="title2">
+    <h1>HTML 教程:</h1>
+    <h2>HTML 教程</h2>
+    <h2>CSS 教程</h2>
+
+    <h1>Scripting 教程:</h1>
+    <h2>JavaScript</h2>
+    <h2>VBScript</h2>
+
+    <h1>XML 教程:</h1>
+    <h2>XML</h2>
+    <h2>XSL</h2>
+</div>
+
+
+3. 计数器用于列表，弄出树的感觉
+<style>
+    ol {
+        counter-reset: section;
+        list-style-type: none;
+    }
+
+    li::before {
+        counter-increment: section;
+        content: counters(section, ".") " ";
+    }
+</style>
+
+<ol>
+    <li>item</li>
+    <li>item
+        <ol>
+            <li>item</li>
+            <li>item</li>
+            <li>item
+                <ol>
+                    <li>item</li>
+                    <li>item</li>
+                    <li>item</li>
+                </ol>
+            </li>
+            <li>item</li>
+        </ol>
+    </li>
+    <li>item</li>
+    <li>item</li>
+</ol>
+
+<ol>
+    <li>item</li>
+    <li>item</li>
+</ol>
