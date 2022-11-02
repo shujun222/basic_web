@@ -1,0 +1,84 @@
+<h2>1. 垂直居中</h2>
+
+<div id="parent">
+    <div id="child">
+    </div>
+</div>
+
+<style>
+    #parent {
+        display: flex;
+        width: 300px;
+        height: 300px;
+        outline: solid 1px;
+
+        justify-content: center;
+        align-items: center;
+    }
+
+    #child {
+        width: 100px;
+        height: 100px;
+        outline: solid 1px;
+
+        /* margin: auto; */
+    }
+</style>
+
+
+<h2>2. 两列等高</h2>
+<p>
+    每理解到这个例子想说什么？
+</p>
+
+<div class="parent">
+    <div class="child" style="height:50px;">1.1</div>
+    <div class="child">1.2</div>
+</div>
+<br />
+<div class="parent">
+    <div class="child">2.1</div>
+    <div class="child" style="height:100px;">2.2</div>
+</div>
+
+<style>
+    .parent {
+        display: flex;
+        width: 300px;
+        justify-content: center;
+    }
+
+    .child {
+        width: 100px;
+        outline: solid 1px;
+    }
+</style>
+
+<h2>自适应宽：</h2>
+
+<div class="parent1">
+    <div class="child1">
+    </div>
+    <div class="child2">
+    </div>
+</div>
+
+<style>
+    .parent1 {
+        display: flex;
+        width: 300px;
+        height: 200px;
+        background-color: pink;
+    }
+
+    .child1 {
+        width: 100px;
+        background-color: lightblue;
+    }
+
+    .child2 {
+        width: 100px;
+        flex: 1;
+        outline: solid 1px;
+    }
+</style>

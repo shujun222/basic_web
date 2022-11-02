@@ -3,7 +3,8 @@
 
 // 1. undefined 是一个变量而非关键字。在旧的浏览器中，全局变量 undefined 可以被重写。
 var value;
-console.log(value === undefined); //true
+console.log("value === undefined: ", value === undefined); //true
+console.log("value === null: ", value === null); //false
 // 重写 undefined
 undefined = 'hi'; // ie8中可以被修改; 这个问题在 ECMAScript 5 中被修复了，undefined不可修改
 console.log(value === undefined); //false, 

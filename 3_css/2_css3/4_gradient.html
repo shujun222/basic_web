@@ -1,0 +1,60 @@
+<style>
+#grad1 {
+    height: 200px;
+    background-color: red; /* 不支持线性的时候显示 */
+    background-image: linear-gradient(to bottom right, red , yellow);
+}
+
+#grad2 {
+    height: 200px;
+	background-color: red; /* 浏览器不支持时显示 */
+    background-image: linear-gradient(#e66465, #9198e5);
+}
+
+#grad3 {
+  height: 100px;
+  background-color: red; /* 浏览器不支持的时候显示 */
+  background-image: linear-gradient(0deg, red, yellow); 
+}
+
+#grad4 {
+  height: 100px;
+  background-color: red; /* 浏览器不支持的时候显示 */
+  background-image: linear-gradient(90deg, red, yellow); 
+}
+
+#grad5 {
+    height: 150px;
+    width: 200px;
+    background-color: red; /* 浏览器不支持的时候显示 */
+    background-image: radial-gradient(red, green, blue); /* 标准的语法（必须放在最后） */
+}
+</style>
+
+
+<a href="https://www.runoob.com/css3/css3-gradients.html">CSS3 渐变（gradients）</a>
+<pre>
+可以让你在两个或多个指定的颜色之间显示平稳的过渡。
+    线性渐变（Linear Gradients）- 向下/向上/向左/向右/对角方向
+    径向渐变（Radial Gradients）- 由它们的中心定义
+</pre>
+
+<h1>线性渐变</h1>
+<h3>线性渐变 - 对角</h3>
+<p>从左上角开始（到右下角）的线性渐变。起点是红色，慢慢过渡到黄色：</p>
+<div id="grad1"></div>
+
+<h3>线性渐变 - 从上到下</h3>
+<p>从顶部开始的线性渐变。起点是红色，慢慢过渡到蓝色：</p>
+<div id="grad2"></div>
+
+<h3>线性渐变 - 使用不同的角度</h3>
+<img src="./4_deg.jpg" />
+<div id="grad3" style="text-align:center;">0deg</div><br>
+<div id="grad4" style="text-align:center;">90deg</div><br>
+
+
+
+<h1>CSS3 径向渐变</h1>
+<h3>径向渐变 - 颜色结点均匀分布</h3>
+<div id="grad5"></div>

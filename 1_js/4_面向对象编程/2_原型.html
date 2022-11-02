@@ -1,0 +1,110 @@
+<pre>
+    原型系统的“复制操作”有两种实现思路：
+    1. 并不真的去复制一个原型对象，而是使得新对象持有一个原型的引用；
+    2. 切实地复制对象，从此两个对象再无关联。
+ </pre>
+
+<script>
+    // 1. 初体验: 原型的创建
+    function test1() {
+        var cat = {
+            say() {
+                console.log("meow~");
+            },
+            jump() {
+                console.log("jump");
+            }
+        }
+
+        var tiger = Object.create(cat, {
+            say: {
+                writable: true,
+                configurable: true,
+                enumerable: true,
+                value: function () {
+                    console.log("roar!");
+                }
+            }
+        })
+
+        var anotherCat = Object.create(cat);
+        anotherCat.say();
+        console.log("anotherCat", anotherCat);
+
+        var anotherTiger = Object.create(tiger);
+        anotherTiger.say();
+        console.log("anotherTiger", anotherTiger);
+
+        cat.sleet = function () { console.log("sleeping..."); }
+        console.log("cat", cat);
+        console.log("anotherCat", anotherCat); // 也包含了sleep函数了
+    }
+
+    // test1();
+
+
+    // 2. 早期版本中的类与原型
+    function testNew() {
+        // new 运算接受一个构造器和一组调用参数，实际上做了几件事：
+        // 1. 以构造器的 prototype 属性（注意与私有字段[[prototype]]的区分）为原型，创建新对象；
+        // 2. 将 this 和调用参数传给构造器，执行；
+        // 3. 如果构造器返回的是对象，则返回，否则返回第一步创建的对象。
+
+
+        // 直接在构造器中修改 this，给 this 添加属性。
+        function c1() {
+            this.p1 = 1;
+            this.p2 = function () {
+                console.log(this.p1);
+            }
+        }
+        var o1 = new c1;
+        o1.p2();
+        console.log("o1", o1);
+
+
+        // 修改构造器的 prototype 属性指向的对象，它是从这个构造器构造出来的所有对象的原型。
+        function c2() {
+        }
+        c2.prototype.p1 = 1;
+        c2.prototype.p2 = function () {
+            console.log(this.p1);
+        }
+
+        var o2 = new c2;
+        o2.p2();
+        console.log("o2", o2);
+    }
+
+    // testNew();
+
+
+    // 3. ES6 中的类: class和extends实质上是作为语法糖，统一了JS程序员对基于类的面向对象的模拟
+    function testClass() {
+        class Animal {
+            constructor(name) {
+                this.name = name;
+            }
+
+            speak() {
+                console.log(this.name + ' makes a noise.');
+            }
+        }
+
+        class Dog extends Animal {
+            constructor(name) {
+                super(name); // call the super class constructor and pass in the name parameter
+            }
+
+            speak() {
+                console.log(this.name + ' barks.');
+            }
+        }
+
+        let d = new Dog('Mitzie');
+        d.speak(); // Mitzie barks.
+    }
+
+    testClass()
+
+</script>

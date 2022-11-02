@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style> 
+div
+{
+	width:100px;
+	height:100px;
+	background:red;
+	animation:myfirst 5s;
+	-webkit-animation:myfirst 5s; /* Safari and Chrome */
+}
+
+@keyframes myfirst
+{
+	from {background:red;}
+	to {background:yellow;}
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+	from {background:red;}
+	to {background:yellow;}
+}
+
+@keyframes mySecond
+{
+	0%   {background:red;}
+	25%  {background:yellow;}
+	50%  {background:blue;}
+	100% {background:green;}
+}
+.multiColor
+{
+	width:100px;
+	height:100px;
+	background:red;
+	animation:mySecond 5s;
+}
+</style>
+
+
+<div></div>
+<pre>
+当在 @keyframes 创建动画，把它绑定到一个选择器，否则动画不会有任何效果。
+指定至少这两个CSS3的动画属性绑定向一个选择器：
+    规定动画的名称
+    规定动画的时长
+
+上一节的transition已经能实现很多动画效果了，但是貌似只能0->100这样的两仪剑法
+本节的keyframes扩展出更多的效果
+</pre>
+
+<div class="multiColor">
+    多个颜色均匀过渡
+</div>
