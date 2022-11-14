@@ -1,57 +1,5 @@
 
-// 'use strict'
-
-// 1. 作用域
-// 1.1. 局部作用域
-function onlyInFunction() {
-    var x = 1;
-    function bar() {
-        var y = x + 1; // bar可以访问foo的变量x! 这个号理解呀
-    }
-    // var z = y + 1; // ReferenceError! foo不可以访问bar的变量y! 这个也好理解的
-
-    if (true) {
-        // 不申明类型，难道默认是var，var不是局部的，而是函数类型作用域的
-        c = 3 // 如果'use strict' 这一句也不行了
-        var c1 = 3;
-        let c2 = 3;
-    }
-    console.log(c);
-    console.log(c1);
-    // console.log(c2); // c2 is not defined
-}
-
-// onlyInFunction()
-
-// 奇葩点，申明自动提升；
-function foo() {
-    // 得自己养成好习惯，先申明再使用
-    var x = 'Hello, ' + y;
-    console.log(x);
-    // 如果在底下申明了，就不报错，会自动提升到最上面，这么说，那也不说绝对一句一句执行的
-    // 可能是一个函数执行一次？
-    var y = "what"
-}
-
-// foo();
-
-
-// 1.2 全局作用域
-// var course = 'Learn JavaScript';
-// console.log(course); // 'Learn JavaScript'
-// console.log(window.course); // 'Learn JavaScript'
-
-// // 多个文件都上升到window，必然冲突，所以需要命名空间
-// // 唯一的全局变量MYAPP:
-// var MYAPP = {};
-// // 其他变量:
-// MYAPP.name = 'myapp';
-// MYAPP.version = 1.0;
-
-
-
-// 2. 解构赋值
-// 2.1 基本用法
+// 1 基本用法
 function resolveAssign() {
     // 1. 最简单的
     var [x, y, z] = ['hello', 'JavaScript', 'ES6'];
@@ -60,7 +8,7 @@ function resolveAssign() {
     // 嵌套的
     let [x1, [y1, z1]] = ['hello', ['JavaScript', 'ES6']];
 
-    // 两个好用的语法：：& =
+    // 两个好用的语法： ： =
     var person = {
         name: '小明',
         pasid: 'dsafsdf',
@@ -79,7 +27,7 @@ function resolveAssign() {
 }
 // resolveAssign()
 
-// 2.2 进阶用法
+// 2 进阶用法
 function secondUse() {
     var a, b;
     [a, b] = ["jay", "leehome"]

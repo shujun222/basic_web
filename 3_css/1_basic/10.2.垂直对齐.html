@@ -66,27 +66,34 @@
     }
 </style>
 
-<a href="https://blog.csdn.net/lgno2/article/details/109446708">
-    CSS垂直居中的七个方法——前端开发博客-csdn
-</a>
-<pre>
-    1. absolute绝对定位
-    垂直对齐也可以使用：margin: auto;
-    优点：水平垂直都对齐了
-    缺点：1. 如果还有其它元素，会叠加的; 2. 设置的有点多：position, 四个方位，宽高
-    适合场景：只有一个框，例如首页登录框居中
-</pre>
+<body> 
+    <a href="https://blog.csdn.net/lgno2/article/details/109446708">
+        CSS垂直居中的七个方法——前端开发博客-csdn
+    </a> <br/>
+    <a href="https://www.zhihu.com/question/35113393/answer/61912129">为什么absolute能垂直居中</a>
 
-<div style="border: solid red; height: 300px; position: relative;">
-    <div class="center">
-        <p>
-            只不过得设置absolue, 四个方位全部为0
-            <a href="https://www.jianshu.com/p/302ac93dac26">margin垂直居中</a>
-        </p>
+    <pre>
+        1. absolute绝对定位
+        垂直对齐也可以使用：margin: auto;
+        优点：水平垂直都对齐了
+        缺点：1. 如果还有其它元素，会叠加的; 
+              2. 设置的有点多：position, 四个方位，宽高
+        适合场景：只有一个框，例如首页登录框居中
+    </pre>
+
+    <div style="border: solid red; height: 300px; position: relative;">
+        如果不设置top,left之类的，下面的absolute默认从我下面开始
+        <div class="center">
+            <p>
+                脱离文档流，只不过得设置absolue, 四个方位全部为0
+                <a href="https://www.jianshu.com/p/302ac93dac26">margin垂直居中</a>
+            </p>
+        </div>
+
+        <div style="background: goldenrod; height: 150;"></div>
     </div>
+</body>
 
-    <div style="background: goldenrod; height: 150;"></div>
-</div>
 
 
 <pre>
@@ -210,6 +217,13 @@
 
 <div class="use-transform">
     <div></div>
+</div>
+
+<div class="use-transform">
+    上<br/>
+    上好像不会脱离文档流<br/>
+    <div></div>
+    下面不会跟在div下面？
 </div>
 
 <pre>
