@@ -43,3 +43,4 @@ function test3() {
     console.log(c);
 }
 test3();
+

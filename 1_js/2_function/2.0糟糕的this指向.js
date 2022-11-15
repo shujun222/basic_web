@@ -17,16 +17,15 @@ var xiaoming = {
     name: '小明',
     birth: 1990,
     age: function () {
-        var y = new Date().getFullYear();
         // this是一个特殊变量，它始终指向当前对象，也就是xiaoming这个变量。
         console.log("this", this);
-        return y - this.birth;
+        return this.birth;
     },
     school: function () {
         console.log("school this", this);
         function goToShcool() {
             // console.log("goToShcool this", this);
-            return 6 + this.birth
+            return this.birth
         }
         return goToShcool();
     },
@@ -43,7 +42,7 @@ var xiaoming = {
 // 1.1 this.birth指向xiaoming这个对象本身
 // console.log(xiaoming.age());
 
-// var fn = xiaoming.age; // 先拿到xiaoming的age函数
+var fn = xiaoming.age; // 先拿到xiaoming的age函数
 // 1.2 this指向全局对象，也就是window
 // fn(); // NaN
 
@@ -85,9 +84,11 @@ var fn = xiaoming.age; // 先拿到xiaoming的age函数
 // console.log(fn.call(xiaoming, 1, 2, 4, 5)); 
 
 
-// class 或者 函数中的this? 不懂。。。。
+// class 或者 函数中的this? 不懂。。。。 
+// 申明东西都需要this吗
 function Person() {
-    birth =  1990;
+    birth:  1990;
+    this.age = 33
     getAge = ()=> this.birth;
     function getAge2() {
         return this.birth
@@ -95,6 +96,7 @@ function Person() {
 }
 
 // let p = new Person()
-// console.log(p.birth, Person.birth);
+// console.log(p.birth, p.age);
+// console.log(Person.birth, Person.age);
 // console.log(p.getAge);
 // console.log(p.getAge2);
