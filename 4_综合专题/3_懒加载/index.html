@@ -1,0 +1,53 @@
+<style>
+    img {
+        width: 100%;
+        margin-top: 10px;
+    }
+</style>
+
+<body>
+    <a href="">手写懒加载_欧阳老师_金渡教育_bilibili</a>
+
+    <div id="content">
+        <!-- <img src="imgs/loading.gif" data-src="imgs/1.jpeg" />  -->
+    </div>
+
+</body>
+
+<script>
+    // 1. 初始化数据
+    let template = '<img src="imgs/loading.gif" data-src="imgs/#index#.jpeg" />'
+    let imgsHtml = ""
+    for (let i = 1; i < 15; i++) {
+        imgsHtml += template.replace("#index#", i)
+    }
+    let content = document.getElementById("content");
+    content.innerHTML = imgsHtml;
+
+
+    let imgsDom = document.getElementsByTagName("img")
+    let loadedIndex = 0
+    // 2. 懒加载
+    function layzyImport() {
+        // 可见区域
+        let clientHeight = document.body.clientHeight
+        // 滚动区域
+        let scrollTop = document.body.scrollTop
+
+        for (let i = loadedIndex; i < imgsDom.length; i++) {
+            
+            if (imgsDom[i].offsetTop < clientHeight + scrollTop &&
+                imgsDom[i].getAttribute("src") == "imgs/loading.gif") {
+                imgsDom[i].src = imgsDom[i].getAttribute("data-src")
+                loadedIndex = i + 1
+                console.log("i", i, imgsDom[i].offsetTop, clientHeight, scrollTop);
+            }
+        }
+    }
+
+    setTimeout(layzyImport, 500)
+    // 我这个loading图片太大了，应该用一个小一点的
+    // layzyImport()
+    window.onscroll = layzyImport
+
+</script>

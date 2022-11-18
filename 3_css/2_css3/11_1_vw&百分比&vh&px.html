@@ -1,0 +1,121 @@
+<body>
+    <section>
+        <h2>1. px</h2>
+        小点点，不随浏览器页面缩放而改变
+    </section>
+
+    <section>
+        <h2>2. rpx</h2>
+        很巧妙的设计方式:
+        <li>微信小程序独有的、解决屏幕自适应的尺寸单位</li>
+        <li>可以根据屏幕宽度进行自适应，不论大小屏幕，规定屏幕宽为 750rpx
+        </li>
+    </section>
+
+    <section>
+        <h2>3. em & rem</h2>
+        随着移动端的来临，需要响应式布局, em & rem得出场了：
+        <div class="flex">
+            <div>
+                <h3>em相对于父元素的font-size</h3>
+                <div class="a">
+                    A
+                    <div class="b">
+                        B
+                        <div class="c">C</div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3>rem相对于根元素的font-size</h3>
+                <div class="a2">
+                    A
+                    <div class="b2">
+                        B
+                        <div class="c2">C</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <pre>
+使用原则:
+1. 封装组件，分享给其它人用的，使用em 
+2. else情况，全部使用rem
+        </pre>
+
+        <style>
+            .flex {
+                display: flex;
+            }
+
+            .flex div {
+                margin-right: 30px;
+            }
+
+            /*不写，默认也是16px*/
+            .a {
+                font-size: 16px;
+            }
+
+            /* 相当于32px */
+            .b {
+                font-size: 2em;
+            }
+
+            /* 相当于32px */
+            .c {
+                font-size: 1em;
+            }
+
+
+
+            /* html, body都可以定义根元素font-size */
+            html {
+                font-size: 16px;
+            }
+
+            /* body{ font-size:26px;}  */
+
+            /* 相当于48px, 它并不会影响后续的b2, c2 */
+            .a2 {
+                font-size: 3rem;
+            }
+
+            /* 相当于32px */
+            .b2 {
+                font-size: 2rem;
+            }
+
+            /* 相当于16px, 不受b2影响 */
+            .c2 {
+                font-size: 1rem;
+            }
+        </style>
+    </section>
+
+    <section>
+        <h2>4. vw/vh & 百分比</h2>
+        <div class="parent">
+            <div class="box" style="width: 50vw">vw</div>
+            <div class="box" style="width: 50%">百分比</div>
+        </div>
+        <style>
+            .parent {
+                width: 50%;
+                border: solid red;
+                padding: 10px 0px;
+            }
+
+            .box {
+                border: solid green;
+                margin-top: 10px;
+            }
+        </style>
+        <pre>
+vw/vh相对于视图，即当前浏览器
+百分比相对于父元素
+        </pre>
+    </section>
+
+</body>

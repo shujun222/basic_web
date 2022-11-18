@@ -8,6 +8,7 @@
         padding: 20px;
     }
 
+    /* <= 880px */
     @media screen and (max-width: 880px) {
         body {
             background-color: lightgreen;
@@ -20,18 +21,27 @@
 </style>
 
 
-<h1>重置浏览器窗口查看效果！</h1>
-<p>如果媒体类型屏幕的可视窗口宽度小于 880px ，背景颜色将改变。</p>
-<pre>
-CSS3 根据设置自适应显示。
-媒体查询可用于检测很多事情，例如：
-    viewport(视窗) 的宽度与高度
-    设备的宽度与高度
-    朝向 (智能手机横屏，竖屏) 。
-    分辨率
+<body>
+    <h1>重置浏览器窗口查看效果！</h1>
+    <p>如果媒体类型屏幕的可视窗口宽度小于 880px ，背景颜色将改变 & 隐藏元素。</p>
+    <pre>
+    CSS3 根据设置自适应显示。
+    媒体查询可用于检测很多事情，例如：
+        viewport(视窗) 的宽度与高度
+        设备的宽度与高度
+        朝向 (智能手机横屏，竖屏) 。
+        分辨率
+    
+    @media not|only mediatype and (expressions) {
+        CSS 代码...;
+    }
+    </pre>
+    <div class="example">我是会隐藏的元素。</div>
 
-@media not|only mediatype and (expressions) {
-    CSS 代码...;
-}
-</pre>
-<div class="example">我是会隐藏的元素。</div>
+    <pre>
+1. 响应式：多套布局css代码，根据设备,分辨率等加载不同的
+2. 自适应：(不知道)
+   a. 一套代码自动适配不同的设备
+   b. 不同的设备写不同的代码，然后检测是那个设备，加载具体的代码？
+    </pre>
+</body>
