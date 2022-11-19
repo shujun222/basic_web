@@ -1,6 +1,7 @@
 /**
  * 闭包（Closure): 相关参数和变量都保存在返回的函数中
- * 高阶函数参数可以为函数，同样函数的返回值也能为函数, 这种属于高阶函数吗？
+ * 高阶函数: 函数入参为函数, map, sort等
+ * 高阶组件：组件作为参数，返回值还是组件
  * 
  * 闭包就是能够读取其他函数内部变量的函数, 返回的那个子函数
    由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成"定义在一个函数内部的函数"。
@@ -28,12 +29,14 @@
 function counter() {
     function add() {
         var counter = 0;
+        console.log("counter", counter);
         function plus() { return counter += 1; }
         return plus;
     }
 
     /**
-     * 闭包是一种保护私有变量的机制，在函数执行时形成私有的作用域，保护里面的私有变量不受外界干扰。
+     * 目的：形成一种保护私有变量的机制，在函数执行时形成私有的作用域，保护里面的私有变量不受外界干扰。
+     * 形式：返回函数的函数
        直观的说就是形成一个不销毁的栈环境
      */
     plus = add();
@@ -61,20 +64,29 @@ function question1() {
         return arr;
     }
 
-    // 如果非要使用局部变量呢？ “创建一个匿名函数并立刻执行”
+    // 如果非要使用局部变量呢？ 
     function count1() {
         var arr = [];
         for (var i = 1; i <= 3; i++) {
+            // 1. 创建一个匿名函数并立刻执
             arr.push((function (n) {
+                console.log("n摆脱了对i的依赖", n);
+                //  里面这个是后面才会执行的, 
                 return function () {
                     return n * n;
                 }
             })(i));
+
+            // 2. 直接把结果先算出来
+            // let answer = i * i
+            // arr.push(
+            //     function () {return answer}
+            // )
         }
         return arr;
     }
 
-    var results = count();
+    var results = count1();
     var f1 = results[0];
     var f2 = results[1];
     var f3 = results[2];
@@ -144,4 +156,4 @@ function minusParam() {
     console.log(pow3(7)); // 343
 }
 
-minusParam()
+// minusParam()

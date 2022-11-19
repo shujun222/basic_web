@@ -11,12 +11,13 @@ function test1() {
         while (Date.now() - begin < 5000);
         console.log("c1")
         new Promise(function (resolve, reject) {
+            // setTimeout(resolve, 2000)
             resolve()
         }).then(() => console.log("c2"))
     });
 }
 
-test1() // c1 c2 d
+// test1() // c1 c2 d
 
 /**
  * 1. 我们分析有多少个宏任务；
@@ -38,9 +39,9 @@ function test2() {
     console.log("d");
 
     // 可以用await来改进Promise
-    async function foo(){ 
-        console.log("a2") 
-        await sleep(2000) 
+    async function foo() {
+        console.log("a2")
+        await sleep(2000)
         console.log("b2")
     }
     foo()
@@ -50,3 +51,31 @@ function test2() {
 
 // 这个老外讲的比winter好
 // https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/?utm_source=html5weekly&utm_medium=email
+
+function test3() {
+    console.log('script start');
+
+    setTimeout(function () {
+        console.log('setTimeout 1s');
+    }, 1000);
+
+    setTimeout(function () {
+        console.log('setTimeout 0s');
+    }, 0);
+
+    Promise.resolve()
+    // new Promise(resolve => {
+    //     console.log(666);
+    //     setTimeout(resolve, 500)
+    // })
+        .then(function () {
+            console.log('promise1');
+        })
+        .then(function () {
+            console.log('promise2');
+        });
+
+    console.log('script end');
+}
+
+test3()

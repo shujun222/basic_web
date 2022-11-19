@@ -11,8 +11,6 @@
     date: 2020-08-15 / 2022-04-17
  */
 
-
-
 let array = [1, 2, 3, 4];
 console.log("我们来研究下怎么把数组内的元素值翻倍并生成一个新数组");
 console.log("原始数组：" + array);
@@ -88,5 +86,9 @@ console.log("6. filer作用，类似map返回元素集合，但是是符合条�
 const arr_filter = array.filter(element => element > 2);
 console.log("arr_filter: ", arr_filter); // [ 3, 4 ]
 
+console.log();
+console.log("7. find返回找到的第一个");
+const arr_find = array.find(element => element > 2)
+console.log("arr_find: ", arr_find);
 
 

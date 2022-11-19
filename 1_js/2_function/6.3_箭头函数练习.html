@@ -1,0 +1,18 @@
+<script>
+    this.tag = 1
+    const a = function () {
+        this.tag = 2
+    }
+
+    const b = () => this.tag = 3
+    
+    // a() // 2
+    // b() // 3
+    a.bind(this)()
+
+    console.log(this.tag);
+</script>
+
+<body>
+    箭头函数this指向
+</body>

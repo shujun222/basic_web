@@ -19,13 +19,13 @@
     var xiaoming = { name: '小明' }
     xiaoming.__proto__ = robot
     // 1. xiaoming也能调用robot的属性、方法
-    console.log(xiaoming);
+    console.log("1. xiaoming", xiaoming);
     console.log(xiaoming.run(), xiaoming.height);
 
     // 2. 并不影响robot的属性
     xiaoming.height = 1.8
-    console.log(xiaoming);
-    // console.log(xiaoming.run(), xiaoming.height);
+    console.log("2. xiaoming", xiaoming);
+    console.log(xiaoming.run(), xiaoming.height);
 
 
     // 3. 查看默认的原型链
@@ -35,7 +35,7 @@
     }
     // 查看原型链
     // arr -> Array.prototype -> Object.prototype -> null
-    console.log(arr);
+    console.log("3. arr", arr);
     // foo -> Function.prototype -> Object.prototype -> null
     console.dir(foo);
 

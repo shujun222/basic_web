@@ -19,7 +19,6 @@ var o = {
     // o.fn2(): o对象本身; fn2(): 严格模式undefined, 非严格模式windows
     console.log("this2", this);
   }
-
 };
 
 // console.log(o, o.fn());
@@ -29,7 +28,7 @@ var o = {
 
 
 // 这个例子太全了。。。。  先不研究Person中的this, 而是obj的
-let name = "window222";
+this.name = "window222";
 var obj = {
   name: "obj222",
   func0: () => {
