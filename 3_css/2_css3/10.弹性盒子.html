@@ -1,254 +1,264 @@
-<style>
-    .flex-container {
-        width: 400px;
-        height: 70px;
-        background-color: lightgrey;
-        display: flex;
-    }
-
-    .flex-container div {
-        width: 40px;
-        height: 40px;
-    }
-
-    /* 1. 排列顺序 */
-    .direction {
-        flex-direction: row-reverse;
-    }
-
-    #directionContent {
-        display: none;
-    }
-
-    #directionTitle:hover+#directionContent {
-        display: block;
-    }
-
-    /* 2. 横行排列方向 */
-    .justify-flex-end {
-        justify-content: flex-end;
-    }
-
-    .justify-center {
-        justify-content: center;
-    }
-
-    .justify-space-between {
-        justify-content: space-between;
-    }
-
-    .justify-space-around {
-        justify-content: space-around;
-    }
-
-    #justifyContent {
-        display: none;
-    }
-
-    #justifyTitle:hover+#justifyContent {
-        display: block;
-    }
-
-    /* 3. 纵向排列方向 */
-    .align-flex-end {
-        align-items: flex-end;
-    }
-
-    .align-center {
-        align-items: center;
-    }
-
-    .align-baseline {
-        align-items: baseline;
-    }
-
-    .align-stretch {
-        align-items: stretch;
-    }
-
-    #alignContent {
-        display: none;
-    }
-
-    #alignTitle:hover+#alignContent {
-        display: block;
-    }
-
-    /* 4. 利用flex完美居中 */
-    .center1 {
-        align-items: center;
-        justify-content: center;
-    }
-
-    #centerContent {
-        display: none;
-    }
-
-    #centerTitle:hover+#centerContent {
-        display: block;
-    }
-</style>
-
-<div>
-    <a href="https://www.runoob.com/css3/css3-flexbox.html">CSS3弹性盒子 - 菜鸟教程</a>
-    <pre>
-        弹性盒子由弹性容器(Flex container)和弹性子元素(Flex item)组成。
-        弹性容器通过设置 display 属性的值为 flex 或 inline-flex将其定义为弹性容器。
-        弹性容器内包含了一个或多个弹性子元素
+<body>
+    <style>
+        .flex-container {
+            width: 400px;
+            height: 70px;
+            background-color: lightgrey;
+            display: flex;
+        }
+    
+        .flex-container div {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+    <div>
+        <a href="https://www.runoob.com/css3/css3-flexbox.html">CSS3弹性盒子 - 菜鸟教程</a>
+        <pre>
+弹性盒子由弹性容器(Flex container)和弹性子元素(Flex item)组成。
+弹性容器通过设置 display 属性的值为 flex 或 inline-flex将其定义为弹性容器。
+弹性容器内包含了一个或多个弹性子元素
         </pre>
 
-    <div class="flex-container">
-        <div style="background-color:coral;">A</div>
-        <div style="background-color:lightblue;">B</div>
-        <div style="background-color:khaki;">C</div>
-        <div style="background-color:pink;">D</div>
-        <div style="background-color:lightgrey;">E</div>
-        <div style="background-color:lightgreen;">F</div>
-    </div>
-</div>
-
-
-<div>
-    <h3 id="directionTitle">1. 排列方向: flex-direction: row-reverse</h3>
-    <pre id="directionContent">
-    值	描述	
-    row	默认值。灵活的项目将水平显示，正如一个行一样。	
-    row-reverse	与 row 相同，但是以相反的顺序。	
-    column	灵活的项目将垂直显示，正如一个列一样。
-    column-reverse	与 column 相同，但是以相反的顺序。
-    </pre>
-    <div class="flex-container direction">
-        <div style="background-color:coral;">A</div>
-        <div style="background-color:lightblue;">B</div>
-        <div style="background-color:khaki;">C</div>
-        <div style="background-color:pink;">D</div>
-        <div style="background-color:lightgrey;">E</div>
-        <div style="background-color:lightgreen;">F</div>
-    </div>
-</div>
-
-<div>
-    <h3 id="justifyTitle">2. 横行排列位置: justify-content</h3>
-    <pre id="justifyContent">
-    flex-start：弹性项目向行头紧挨着填充。这个是默认值。
-    第一个弹性项的main-start外边距边线被放置在该行的main-start边线，而后续弹性项依次平齐摆放。
-    
-    flex-end：弹性项目向行尾紧挨着填充。
-    第一个弹性项的main-end外边距边线被放置在该行的main-end边线，而后续弹性项依次平齐摆放。
-    
-    center：弹性项目居中紧挨着填充。
-    （如果剩余的自由空间是负的，则弹性项目将在两个方向上同时溢出）。
-    
-    space-between：弹性项目平均分布在该行上。
-    如果剩余空间为负或者只有一个弹性项，则该值等同于flex-start。否则，第1个弹性项的外边距和行的main-start边线对齐，而最后1个弹性项的外边距和行的main-end边线对齐，然后剩余的弹性项分布在该行上，相邻项目的间隔相等。
-    
-    space-around：弹性项目平均分布在该行上，两边留有一半的间隔空间。
-    如果剩余空间为负或者只有一个弹性项，则该值等同于center。否则，弹性项目沿该行分布，且彼此间隔相等（比如是20px），同时首尾两边和弹性容器之间留有一半的间隔（1/2*20px=10px）。
-    </pre>
-    justify: flex-end
-    <div class="flex-container justify-flex-end">
-        <div style="background-color:coral;">A</div>
-        <div style="background-color:lightblue;">B</div>
-        <div style="background-color:khaki;">C</div>
-        <div style="background-color:pink;">D</div>
-        <div style="background-color:lightgrey;">E</div>
-        <div style="background-color:lightgreen;">F</div>
+        <div class="flex-container">
+            <div style="background-color:coral;">A</div>
+            <div style="background-color:lightblue;">B</div>
+            <div style="background-color:khaki;">C</div>
+            <div style="background-color:pink;">D</div>
+            <div style="background-color:lightgrey;">E</div>
+            <div style="background-color:lightgreen;">F</div>
+        </div>
     </div>
 
-    justify: center
-    <div class="flex-container justify-center">
-        <div style="background-color:coral;">A</div>
-        <div style="background-color:lightblue;">B</div>
-        <div style="background-color:khaki;">C</div>
-        <div style="background-color:pink;">D</div>
-        <div style="background-color:lightgrey;">E</div>
-        <div style="background-color:lightgreen;">F</div>
+
+    <style>
+        /* 1. 排列顺序 */
+        .direction {
+            flex-direction: row-reverse;
+        }
+
+        #directionContent {
+            display: none;
+        }
+
+        #directionTitle:hover+#directionContent {
+            display: block;
+        }
+    </style>
+    <div>
+        <h3 id="directionTitle">1. 排列方向: flex-direction: row-reverse</h3>
+        <pre id="directionContent">
+值	描述	
+row	默认值。灵活的项目将水平显示，正如一个行一样。	
+row-reverse	与 row 相同，但是以相反的顺序。	
+column	灵活的项目将垂直显示，正如一个列一样。
+column-reverse	与 column 相同，但是以相反的顺序。
+        </pre>
+        <div class="flex-container direction">
+            <div style="background-color:coral;">A</div>
+            <div style="background-color:lightblue;">B</div>
+            <div style="background-color:khaki;">C</div>
+            <div style="background-color:pink;">D</div>
+            <div style="background-color:lightgrey;">E</div>
+            <div style="background-color:lightgreen;">F</div>
+        </div>
     </div>
 
-    justify: space-between
-    <div class="flex-container justify-space-between">
-        <div style="background-color:coral;">A</div>
-        <div style="background-color:lightblue;">B</div>
-        <div style="background-color:khaki;">C</div>
-        <div style="background-color:pink;">D</div>
-        <div style="background-color:lightgrey;">E</div>
-        <div style="background-color:lightgreen;">F</div>
+
+    <style>
+        /* 2. 横行排列方向 */
+        .justify-flex-end {
+            justify-content: flex-end;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .justify-space-between {
+            justify-content: space-between;
+        }
+
+        .justify-space-around {
+            justify-content: space-around;
+        }
+
+        #justifyContent {
+            display: none;
+            transition: all 2s ease;
+            /** 没效果？ */
+        }
+
+        #justifyTitle:hover+#justifyContent {
+            display: block;
+        }
+    </style>
+    <div>
+        <h3 id="justifyTitle">2. 横行排列位置: justify-content</h3>
+        <pre id="justifyContent">
+        flex-start：弹性项目向行头紧挨着填充。这个是默认值。
+        第一个弹性项的main-start外边距边线被放置在该行的main-start边线，而后续弹性项依次平齐摆放。
+        
+        flex-end：弹性项目向行尾紧挨着填充。
+        第一个弹性项的main-end外边距边线被放置在该行的main-end边线，而后续弹性项依次平齐摆放。
+        
+        center：弹性项目居中紧挨着填充。
+        （如果剩余的自由空间是负的，则弹性项目将在两个方向上同时溢出）。
+        
+        space-between：弹性项目平均分布在该行上。
+        如果剩余空间为负或者只有一个弹性项，则该值等同于flex-start。否则，第1个弹性项的外边距和行的main-start边线对齐，而最后1个弹性项的外边距和行的main-end边线对齐，然后剩余的弹性项分布在该行上，相邻项目的间隔相等。
+        
+        space-around：弹性项目平均分布在该行上，两边留有一半的间隔空间。
+        如果剩余空间为负或者只有一个弹性项，则该值等同于center。否则，弹性项目沿该行分布，且彼此间隔相等（比如是20px），同时首尾两边和弹性容器之间留有一半的间隔（1/2*20px=10px）。
+        </pre>
+        justify: flex-end
+        <div class="flex-container justify-flex-end">
+            <div style="background-color:coral;">A</div>
+            <div style="background-color:lightblue;">B</div>
+            <div style="background-color:khaki;">C</div>
+            <div style="background-color:pink;">D</div>
+            <div style="background-color:lightgrey;">E</div>
+            <div style="background-color:lightgreen;">F</div>
+        </div>
+
+        justify: center
+        <div class="flex-container justify-center">
+            <div style="background-color:coral;">A</div>
+            <div style="background-color:lightblue;">B</div>
+            <div style="background-color:khaki;">C</div>
+            <div style="background-color:pink;">D</div>
+            <div style="background-color:lightgrey;">E</div>
+            <div style="background-color:lightgreen;">F</div>
+        </div>
+
+        justify: space-between
+        <div class="flex-container justify-space-between">
+            <div style="background-color:coral;">A</div>
+            <div style="background-color:lightblue;">B</div>
+            <div style="background-color:khaki;">C</div>
+            <div style="background-color:pink;">D</div>
+            <div style="background-color:lightgrey;">E</div>
+            <div style="background-color:lightgreen;">F</div>
+        </div>
+
+        justify: space-around
+        <div class="flex-container justify-space-around">
+            <div style="background-color:coral;">A</div>
+            <div style="background-color:lightblue;">B</div>
+            <div style="background-color:khaki;">C</div>
+            <div style="background-color:pink;">D</div>
+            <div style="background-color:lightgrey;">E</div>
+            <div style="background-color:lightgreen;">F</div>
+        </div>
     </div>
 
-    justify: space-around
-    <div class="flex-container justify-space-around">
-        <div style="background-color:coral;">A</div>
-        <div style="background-color:lightblue;">B</div>
-        <div style="background-color:khaki;">C</div>
-        <div style="background-color:pink;">D</div>
-        <div style="background-color:lightgrey;">E</div>
-        <div style="background-color:lightgreen;">F</div>
-    </div>
-</div>
 
-<div>
-    <h3 id="alignTitle">3. 纵向排列位置: align-items</h3>
-    <pre id="alignContent">
-        flex-start：弹性盒子元素的侧轴（纵轴）起始位置的边界紧靠住该行的侧轴起始边界。
-        flex-end：弹性盒子元素的侧轴（纵轴）起始位置的边界紧靠住该行的侧轴结束边界。
-        center：弹性盒子元素在该行的侧轴（纵轴）上居中放置。（如果该行的尺寸小于弹性盒子元素的尺寸，则会向两个方向溢出相同的长度）。
-        baseline：如弹性盒子元素的行内轴与侧轴为同一条，则该值与'flex-start'等效。其它情况下，该值将参与基线对齐。
-        stretch：如果指定侧轴大小的属性值为'auto'，则其值会使项目的边距盒的尺寸尽可能接近所在行的尺寸，但同时会遵照'min/max-width/height'属性的限制。
-    </pre>
-    align-items: flex-end
-    <div class="flex-container align-flex-end">
-        <div style="background-color:coral;">A</div>
-        <div style="background-color:lightblue;">B</div>
-        <div style="background-color:khaki;">C</div>
-        <div style="background-color:pink;">D</div>
-        <div style="background-color:lightgrey;">E</div>
-        <div style="background-color:lightgreen;">F</div>
+    <style>
+        /* 3. 纵向排列方向 */
+        .align-flex-end {
+            align-items: flex-end;
+        }
+
+        .align-center {
+            align-items: center;
+        }
+
+        .align-baseline {
+            align-items: baseline;
+        }
+
+        .align-stretch {
+            align-items: stretch;
+        }
+
+        #alignContent {
+            display: none;
+        }
+
+        #alignTitle:hover+#alignContent {
+            display: block;
+        }
+    </style>
+    <div>
+        <h3 id="alignTitle">3. 纵向排列位置: align-items</h3>
+        <pre id="alignContent">
+            flex-start：弹性盒子元素的侧轴（纵轴）起始位置的边界紧靠住该行的侧轴起始边界。
+            flex-end：弹性盒子元素的侧轴（纵轴）起始位置的边界紧靠住该行的侧轴结束边界。
+            center：弹性盒子元素在该行的侧轴（纵轴）上居中放置。（如果该行的尺寸小于弹性盒子元素的尺寸，则会向两个方向溢出相同的长度）。
+            baseline：如弹性盒子元素的行内轴与侧轴为同一条，则该值与'flex-start'等效。其它情况下，该值将参与基线对齐。
+            stretch：默认。如果指定侧轴大小的属性值为'auto'，则其值会使项目的边距盒的尺寸尽可能接近所在行的尺寸，但同时会遵照'min/max-width/height'属性的限制。
+        </pre>
+        align-items: flex-end
+        <div class="flex-container align-flex-end">
+            <div style="background-color:coral;">A</div>
+            <div style="background-color:lightblue;">B</div>
+            <div style="background-color:khaki;">C</div>
+            <div style="background-color:pink;">D</div>
+            <div style="background-color:lightgrey;">E</div>
+            <div style="background-color:lightgreen;">F</div>
+        </div>
+
+        align-items: center
+        <div class="flex-container align-center">
+            <div style="background-color:coral;">A</div>
+            <div style="background-color:lightblue;">B</div>
+            <div style="background-color:khaki;">C</div>
+            <div style="background-color:pink;">D</div>
+            <div style="background-color:lightgrey;">E</div>
+            <div style="background-color:lightgreen;">F</div>
+        </div>
+
+        align-items: baseline
+        <div class="flex-container align-baseline">
+            <div style="background-color:coral;">A</div>
+            <div style="background-color:lightblue;">B</div>
+            <div style="background-color:khaki;">C</div>
+            <div style="background-color:pink;">D</div>
+            <div style="background-color:lightgrey;">E</div>
+            <div style="background-color:lightgreen;">F</div>
+        </div>
+
+        align-items: stretch(默认值)
+        <div class="flex-container align-stretch">
+            <div style="height: auto; background-color:coral;">A</div>
+            <div style="height: auto; background-color:lightblue;">B</div>
+            <div style="height: auto; background-color:khaki;">C</div>
+            <div style="height: auto; background-color:pink;">D</div>
+            <div style="height: auto; background-color:lightgrey;">E</div>
+            <div style="height: auto; background-color:lightgreen;">F</div>
+        </div>
     </div>
 
-    align-items: center
-    <div class="flex-container align-center">
-        <div style="background-color:coral;">A</div>
-        <div style="background-color:lightblue;">B</div>
-        <div style="background-color:khaki;">C</div>
-        <div style="background-color:pink;">D</div>
-        <div style="background-color:lightgrey;">E</div>
-        <div style="background-color:lightgreen;">F</div>
-    </div>
 
-    align-items: baseline
-    <div class="flex-container align-baseline">
-        <div style="background-color:coral;">A</div>
-        <div style="background-color:lightblue;">B</div>
-        <div style="background-color:khaki;">C</div>
-        <div style="background-color:pink;">D</div>
-        <div style="background-color:lightgrey;">E</div>
-        <div style="background-color:lightgreen;">F</div>
-    </div>
+    <style>
+        /* 4. 利用flex完美居中 */
+        .center1 {
+            align-items: center;
+            justify-content: center;
+        }
 
-    align-items: stretch(默认值)
-    <div class="flex-container align-stretch">
-        <div style="height: auto; background-color:coral;">A</div>
-        <div style="height: auto; background-color:lightblue;">B</div>
-        <div style="height: auto; background-color:khaki;">C</div>
-        <div style="height: auto; background-color:pink;">D</div>
-        <div style="height: auto; background-color:lightgrey;">E</div>
-        <div style="height: auto; background-color:lightgreen;">F</div>
-    </div>
-</div>
+        #centerContent {
+            display: none;
+        }
 
-<div>
-    <h3 id="centerTitle">4. 展示如何完美居中</h3>
-    <pre id="centerContent">
-        首页登录框经常需要居中对齐，水平还好，垂直其实不好操作，但是有了flex，一切都是如此简单
-    </pre>
-    
-    1. justify-content: center; align-items: center; display: flex
-    <div class="flex-container center1">
-        <div style="background-color:coral;">A</div>
-    </div>
+        #centerTitle:hover+#centerContent {
+            display: block;
+        }
+    </style>
+    <div>
+        <h3 id="centerTitle">4. 展示如何完美居中</h3>
+        <pre id="centerContent">
+            首页登录框经常需要居中对齐，水平还好，垂直其实不好操作，但是有了flex，一切都是如此简单
+        </pre>
 
-    2. display: flex; 子元素margin: auto;
-    <div class="flex-container">
-        <div style="background-color:coral; margin: auto;">A</div>
+        1. justify-content: center; align-items: center; display: flex
+        <div class="flex-container center1">
+            <div style="background-color:coral;">A</div>
+        </div>
+
+        2. display: flex; 子元素margin: auto;
+        <div class="flex-container">
+            <div style="background-color:coral; margin: auto;">A</div>
+        </div>
     </div>
-</div>
+</body>
