@@ -5,27 +5,35 @@
    
 </style>
 <body>
-   <h2>1. padding & margin:</h2>
-   <pre> 
-   1. padding: 内边距，margin：外边距
-   2. padding作用于内部，压缩里面的内容，
-      margin作用于元素外部，不影响里面的内容。
-   </pre>
-
    <style>
       .box {
          width: 200px;
-         border: solid red
+         border: solid red;
+         margin-bottom: 10px;
       }
    </style>
-   <h2>2. 盒子模型</h2>
-   <h3></h3>
-   <div class="box" style="padding: 30px;">
-      默认值：box-sizing: content-box; width=content
+   <h2><a href="https://blog.csdn.net/weixin_44992737/article/details/125217906">1. 盒子模型_谦虚且进步_csdn</a></h2>
+   1. 盒子大小 = content + padding + border + margin
+   <img src="./box-model.png"/> <br/>
+   
+   2. padding & margin
+   <pre> 
+   1. padding: 内边距，margin：外边距
+   2. padding作用于border内部
+      margin作用于border外部，不影响里面的内容。
+   </pre>
+   
+   3. box-sizing: content-box / border-box
+   <div class="box" style="padding: 60px; background-color: gray;">
+      <li>默认值：box-sizing: content-box;</li> 
+      <li>width=content</li>
    </div>
-   <div class="box" style="padding: 30px; box-sizing: border-box;">
-      默认值：box-sizing: border-box; width=content+padding+border
+   <div class="box" style="padding: 10px; box-sizing: border-box;">
+      默认值：box-sizing: border-box; 
+      width = content + padding + border <br/>
+      有个难听的昵称：怪异盒子模型 / IE模型
    </div>
+   
 
    <h2>3. 行内元素&块元素</h2>
    <pre>

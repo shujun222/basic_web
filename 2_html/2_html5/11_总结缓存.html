@@ -1,0 +1,63 @@
+<body>
+
+    <a href="https://blog.csdn.net/Angel_Tears_/article/details/126129674">浅谈常见浏览器缓存方法(前端缓存)_周万宁.FoBJ_csdn</a>
+    <h2>1. 缓存的好处</h2>
+    <p>
+        <li>1.减少冗余的数据传输,节省了网费</li>
+        <li>2.缓解了服务器的压力,大大提高了网站的性能</li>
+        <li>3. 加快了客户端加载网页的速度</li>
+    </p>
+
+    <h2>2. 缓存的分类</h2>
+    <pre>
+1. http缓存
+   http1.0  expired
+   http1.1  cache-control
+   <a href="https://blog.csdn.net/qq_43340606/article/details/124166770">强缓存与协商缓存区别</a>
+   <a style="color: red">疑问：这两个字段是服务器设置还是前端设置？</a>   
+
+   a. 先命中强缓存就不访问服务器
+   b. 强缓存过期了就去协商缓存
+
+   http缓存一般存储在
+   a. from memory cache  ----   js、图片
+   b. from disk cache    ----   css文件
+
+2. cookie
+   4k 
+
+3. <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Storage_API">web storage</a>
+   sessionStorage
+   localStorage 
+   5M
+
+4. websql
+
+5. indexDB
+
+7. 离线缓存技术 <a href="https://www.jianshu.com/p/aaf287f7c3ad">application cache</a>
+application cache是离线缓存技术，将大部分的图片、js、css等资源放在mainfest文件配置中，
+页面打开时通过mainfest文件读取本地文件或请求服务器资源。通常用于静态页面的缓存。
+
+好像webpack也能配置pwa，然后进行离线缓存技术
+
+
+<font color="red">不确定技术</font>
+8. cacheStorage
+
+
+
+
+
+
+
+
+性能优化
+
+
+
+
+
+
+    </pre>
+</body>

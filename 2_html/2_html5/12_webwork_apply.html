@@ -1,16 +1,16 @@
-<pre>
-shujun 2022-07-03
-惊呆了，还有这样的东西
+<body>
+    <pre>
+        shujun 2022-07-03
+        惊呆了，还有这样的东西
+        
+        web worker 是运行在后台的 JavaScript，不会影响页面的性能。
+    </pre>
 
-web worker 是运行在后台的 JavaScript，不会影响页面的性能。
+    <p>计数： <output id="result"></output></p>
+    <button onclick="startWorker()">开始工作</button>
+    <button onclick="stopWorker()">停止工作</button>
 
-</pre>
-
-
-
-<p>计数： <output id="result"></output></p>
-<button onclick="startWorker()">开始工作</button>
-<button onclick="stopWorker()">停止工作</button>
+</body>
 
 
 <script>
@@ -26,7 +26,7 @@ web worker 是运行在后台的 JavaScript，不会影响页面的性能。
         w.onmessage = function (event) {
             document.getElementById("result").innerHTML = event.data;
         };
-       
+
     }
 
     function stopWorker() {

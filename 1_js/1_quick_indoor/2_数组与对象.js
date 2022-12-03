@@ -40,7 +40,7 @@ function testObj() {
     console.log("sing" in jay);
     console.log("toString" in jay);
 
-    // in能打出所有固有属性，不打出父级的
+    // in能打出所有固有属性，包括父级的
     for (let key in jay) {
         console.log(key);
     }

@@ -1,15 +1,19 @@
-<ul id="test-ul">
-    <li class="js">JavaScript</li>
-    <li name="book">Java &amp; JavaScript</li>
-</ul>
+<body>
+    <ul id="test-ul">
+        <li class="js">JavaScript</li>
+        <li id="js2">JavaScript</li>
+        <li name="book">Java &amp; JavaScript</li>
+    </ul>
+    
+    <ul id="test-css">
+        <li class="lang dy"><span>JavaScript</span></li>
+        <li class="lang"><span>Java</span></li>
+        <li class="lang dy"><span>Python</span></li>
+        <li class="lang"><span>Swift</span></li>
+        <li class="lang dy"><span>Scheme</span></li>
+    </ul>
+</body>
 
-<ul id="test-css">
-    <li class="lang dy"><span>JavaScript</span></li>
-    <li class="lang"><span>Java</span></li>
-    <li class="lang dy"><span>Python</span></li>
-    <li class="lang"><span>Swift</span></li>
-    <li class="lang dy"><span>Scheme</span></li>
-</ul>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
@@ -27,25 +31,25 @@
         // document.getElementsByTagNameNS
 
         // 1.2 querySelector
-        let course = document.querySelector("li")
-        console.log(course.innerText);
-        let book = document.querySelector("li[name=book]")
-        console.log(book.innerText);
+        // let course = document.querySelector("li")
+        // console.log(course.innerText);
+        // let book = document.querySelector("li[name=book]")
+        // console.log(book.innerText);
 
-        course.innerText = "Football"
-        book.innerHTML = "haaland entry macherst city"
+        // course.innerText = "Football"
+        // book.innerHTML = "haaland entry macherst city"
 
 
         // 2. Jquery
-        // let course = $(".js")
-        // console.log(course.text());
-        // let book = $("li[name=book]")
-        // console.log(book.html());
+        let course = $(".js")
+        console.log(course.text());
+        let book = $("li[name=book]")
+        console.log(book.html());
 
-        // course.text("Football")
-        // book.html("haaland entry macherst city")
+        course.text("Football")
+        book.html("haaland entry macherst city")
     }
-    // modifyText();
+    modifyText();
 
 
     // 要高亮显示动态语言，
@@ -61,7 +65,7 @@
         $('li.dy span').css('background-color', '#ffd351').css('color', 'red');
         // ele.addClass("");
     }
-    modifyCss();
+    // modifyCss();
 
     function others() {
         // 1. 隐藏显示

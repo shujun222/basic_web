@@ -50,5 +50,64 @@ function testObj() {
 
     // 3.3 利用插件
 }
-testObj()
+// testObj()
+
+
+// 3. 手写递归 深度copy
+// 3.1 只能copy数组
+function deepCopy(source) {
+    let target = []
+    for (let k in source) {
+        if (typeof source[k] === 'object') {
+            target.push(deepCopy(source[k]))
+        } else {
+            target.push(source[k])
+        }
+    }
+    return target
+}
+
+function testdeepCopy() {
+    let a = [4, [1, 2, [3, 4]]]
+    let b = deepCopy(a)
+    console.log("b", b);
+    b[1][2][0] = 333
+    console.log("b", b);
+    console.log("a", a);
+}
+// testdeepCopy()
+
+
+function deepCopy2(source) {
+    // 判断是否为数组
+    // let target = source instanceof Array ? [] : {}
+    let target = Array.isArray(source) ? [] : {}
+    for (let key in source) {
+        // if (!source.hasOwnProperty(key)) {
+        //     return
+        // }
+        if (typeof source[key] === 'object') {
+            target[key] = deepCopy2(source[key])
+        } else {
+            target[key] = source[key]
+        }
+    }
+    return target
+}
+
+function testDeepCopy2() {
+    // let a = [4, [1, 2, [3, 4]]]
+    let a = { key1: [4, [1, 2]], key2: [2, 3] }
+    let b = deepCopy2(a)
+    console.log("b", b);
+    // b[1][2][0] = 333
+    b.key1[1][0] = 333
+    console.log("b", b);
+    console.log("a", a);
+}
+testDeepCopy2()
+
+
+
+
 

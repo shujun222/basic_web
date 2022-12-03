@@ -1,0 +1,51 @@
+<style>
+    img {
+        width: 100%;
+        margin-top: 10px;
+    }
+</style>
+
+<body>
+    <h2>Intersection Observer</h2>
+    <a href="https://www.haorooms.com/post/intersectionobserver">写的啥，例子用不了呀</a> <br />
+    <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver">还是官网相对靠谱一点</a>
+
+    <div id="content">
+        <!-- <img src="imgs/loading.gif" data-src="imgs/1.jpeg" />  -->
+    </div>
+
+</body>
+
+<script>
+    // 1. 初始化数据
+    let template = '<img src="imgs/loading.gif" data-src="imgs/#index#.jpeg" />'
+    let imgsHtml = ""
+    for (let i = 1; i < 15; i++) {
+        imgsHtml += template.replace("#index#", i)
+    }
+    let content = document.getElementById("content");
+    content.innerHTML = imgsHtml;
+
+
+    var observer = new IntersectionObserver(
+        function (entries) {
+            // If intersectionRatio is 0, the target is out of view
+            // and we do not need to do anything.
+            if (entries[0].intersectionRatio <= 0) return;
+
+            console.log('Loaded new items');
+            console.log(entries[0]);
+
+            let {target} = entries[0]
+            target.src = target.getAttribute("data-src")
+        }
+    );
+
+
+    document.querySelectorAll("img").forEach(function (item) {
+        observer.observe(item);
+    });
+
+
+
+</script>
