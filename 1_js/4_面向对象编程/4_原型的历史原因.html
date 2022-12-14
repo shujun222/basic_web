@@ -1,0 +1,102 @@
+<body>
+    <a href="http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html">Javascript继承机制的设计思想
+        Javascript继承机制的设计思想_阮一峰_阮一峰的网络日志
+    </a>
+    <br />
+    <a href="http://blog.vjeux.com/2011/javascript/how-prototypal-inheritance-really-works.html">Javascript – How
+        Prototypal Inheritance really works _ vjeux</a>
+    <br />
+
+    <a href="https://www.bilibili.com/video/BV1PG411774p/">【js知识点】原型链是什么？20分钟带你走进js的世界。-- 阿-岳同学 —— bilibili
+    </a>
+
+    <br /> <br />
+
+    <pre>
+
+
+    </pre>
+</body>
+
+<script>
+    /**
+     * 创始人 Brandan Eich 想偷懒，
+       目的：需要实例化对象，而且类之间得关联，但是他又不要把js搞太复杂，所以他不打算引入类的概念
+
+       1. 语言的编译运行，都需要往内存申请空间
+       java完全面向对象，一个函数要执行，先实例化对象，对象调用函数, 函数本身/类class是存放在jvm的代码区内的
+       js不想搞这么麻烦，函数需要直接运行，那么函数就应该有自己的内存地址空间和指向，所以作者把函数也设计成了对象
+       function a() {}
+       申请堆空间 0xA2，函数调用栈里的a指向0xA2       
+
+     * */
+
+    // 1. 直接 new 构造器函数Person 就可以创建对象
+    function Person(name) {
+        this.name = name;
+        this.career;
+    }
+
+    var p1 = new Person("Neymar")
+    console.dir(Person);
+    console.log("p1", p1);
+
+    var p2 = new Person("CR7")
+    p1.career = "football"
+    console.log("p2.career", p2.career);
+    // 这个简单模型new有缺点：无法共享需要共享属性和方法
+
+
+    // 2. 为构造器函数引入prototype属性, 指向一个对象
+    // 所有实例对象需要共享的属性和方法，都放在这个对象里面，需要实例所都有的，依旧在构造函数里面
+    function Person2(name) {
+        this.name = name;
+    }
+    Person2.prototype.career = "football"
+    Person2.prototype.skill = function () { return "射门进球" }
+
+    var p1 = new Person2("Neymar")
+    var p2 = new Person2("CR7")
+    p1.career = "football"
+    console.log("p2.career", p2.career);
+    console.log(p2.skill());
+    console.log(p1.__proto__ == Person2.prototype);
+
+    /**
+     * 所以prototype原型可能是为构造函数服务的，实例化时方便公用属性和方法：提高效率，节省内存  
+        prototype = {
+            constructor(),
+            公用属性，方法...
+            __proto__:
+        }
+         
+        基于一个构造函数或者class new对象时：
+        1. 创建一个内存空间  
+        2. 内存空间的__proto__执行当前原型prototype
+        3. 把地址传给构造函数this, 参数也给构造函数，执行, 再返回this
+     **/
+
+    // 3. 对象之间，子类继承父类用啥呢？ __proto__, 它才是类似于java的extends
+    
+    console.dir(Person2);
+    console.log("p1", p1);
+
+
+
+    // 4. 总结
+    /**
+     1. 万物皆是对象
+     2. 区分对象：
+          带prototype的对象是可以new的，也可以叫做构造函数
+          不带prototype的对象是不可以new的, 暂且叫做实例对象
+          两种对象都有__proto__   
+     3. 面试题：谈一谈原型和原型链
+        原型：prototype, function对象的一个属性。
+              作用是把函数公用的属性和方法抽出来，这些属性实例化时不会复制，构造函数本身的属性会随着实例对象复制一份。
+              原型中还有个指针constructor指向本身；__proto__指向当前原型的父类
+        原型链：__proto__, 类似java的extends, A继承B, B继承C，访问A中一个属性，先查找A本身，没有，顺着__proto__去B找，如果还没有，继续往上，这个继承和查找过程就是原型链: 实例->原型->原型
+
+
+     * */
+    
+</script>

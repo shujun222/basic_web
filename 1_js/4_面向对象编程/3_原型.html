@@ -1,8 +1,10 @@
-<pre>
-    原型系统的“复制操作”有两种实现思路：
-    1. 并不真的去复制一个原型对象，而是使得新对象持有一个原型的引用；
-    2. 切实地复制对象，从此两个对象再无关联。
- </pre>
+<body>
+    <pre>
+原型系统的“复制操作”有两种实现思路：
+1. 并不真的去复制一个原型对象，而是使得新对象持有一个原型的引用；
+2. 切实地复制对象，从此两个对象再无关联。
+    </pre>
+</body>
 
 <script>
     // 1. 初体验: 原型的创建
@@ -16,6 +18,8 @@
             }
         }
 
+        // 底层可能还真是这么麻烦实现的 
+        // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create
         var tiger = Object.create(cat, {
             say: {
                 writable: true,
@@ -26,13 +30,14 @@
                 }
             }
         })
+        console.log("tiger", tiger);
 
         var anotherCat = Object.create(cat);
         anotherCat.say();
         console.log("anotherCat", anotherCat);
 
         var anotherTiger = Object.create(tiger);
-        anotherTiger.say();
+        // anotherTiger.say();
         console.log("anotherTiger", anotherTiger);
 
         cat.sleet = function () { console.log("sleeping..."); }
@@ -48,7 +53,7 @@
         // new 运算接受一个构造器和一组调用参数，实际上做了几件事：
         // 1. 以构造器的 prototype 属性（注意与私有字段[[prototype]]的区分）为原型，创建新对象；
         // 2. 将 this 和调用参数传给构造器，执行；
-        // 3. 如果构造器返回的是对象，则返回，否则返回第一步创建的对象。
+        // 3.返回第一步创建的内存地址引用。
 
 
         // 直接在构造器中修改 this，给 this 添加属性。
@@ -103,6 +108,7 @@
 
         let d = new Dog('Mitzie');
         d.speak(); // Mitzie barks.
+        console.log("dog d", d);
     }
 
     testClass()

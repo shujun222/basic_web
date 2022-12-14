@@ -1,10 +1,13 @@
-<!-- 
-js对象怎么创建
-https://www.liaoxuefeng.com/wiki/1022910821149312/1023022043494624
+
+<body>
+    <pre>
+<a href="https://www.liaoxuefeng.com/wiki/1022910821149312/1023022043494624
+">js对象怎么创建</a>
 Author: shujun
 Date: 2022-5-2 
--->
-
+    </pre>
+</body>
+ 
 <script>
     // 'use strict'
     // 1. 构造函数
@@ -14,24 +17,22 @@ Date: 2022-5-2
         this.hello = function () {
             alert('Hello, ' + this.name + '!');
         }
+        // return this
     }
     // 不写new，就是一个奇怪的普通函数, 调用了一次函数
-    // console.log(Student("sb"), name); 
+    // let aa = Student("sb") 
+    // console.log("return this", aa, name); 
 
     // 使用new，相当于{ ... }, 创建了一个新对象
     sj = new Student("sj")
     // s -> Student.prototype -> Object.prototype -> null
-    console.log(sj);
+    console.log("sj", sj);
 
     bobo = new Student("bobo")
-    console.log(bobo);
+    console.log("bobo", bobo);
 
-    // xiaoming -> sj, 里面是没有构造函数Student的
-    // xiaoming = {name: "xiaohong"}
-    // xiaoming.__proto__ = sj
-    // console.log(xiaoming);
 
-    // 2. 构造函数里面的东西都是新复制的一份
+    // 2. 构造函数里的字段是给实例化时候用的，大家都是复制的一份，互不影响
     console.log(sj.hello === bobo.hello);
 
     function Student2(name){
@@ -48,4 +49,14 @@ Date: 2022-5-2
 
     // 3. 忘记new怎么办？
     // strict模式报错，非strict更糟糕，绑定了windows
+
+    // 4. 非new，新建方法: 应该都是 new Object()的语法糖而已
+    let obj = {k1: 1, k2: 2}
+    console.log("obj", obj);
+
+    let obj1 = {};
+    Object.assign(obj1, obj)
+    console.log("obj1", obj1);
+    let obj2 = {...obj}
+    console.log("obj2", obj2);
 </script>

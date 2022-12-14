@@ -1,0 +1,40 @@
+<body>
+    通过class类来构建整个原型链生态图
+</body>
+
+<script>
+    window.v1 = 666
+    class Monster {
+        
+        // 字段在实例上
+        v1 = 15
+
+        // 方法默认绑定在Monster.prototype上，方便复用，节省空间
+        f1() {
+            console.log("f1");
+            console.log("v1", v1);
+        }
+
+        static v2 = 15.6
+
+        static f2() {
+            console.log("f2");
+            console.log("v1", this.v2);
+        }
+
+        constructor(name, hp) {
+            this.name = name
+            this.hp = hp
+            // 强行绑定方法在实例上
+            this.f3 = () => {
+                console.log("f3");
+            }
+        }
+    }
+
+    let m = new Monster("cr7", "1100")
+    console.log(m);
+    console.log(m.__proto__.constructor.v2);
+    console.dir("Monster", Monster);
+    console.log(m.f1());
+</script>
