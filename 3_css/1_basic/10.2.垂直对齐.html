@@ -7,10 +7,13 @@
         bottom: 0;
         left: 0;
         margin: auto;
-        width: 60%;
-        height: 100px;
         border: 3px solid #73AD21;
         padding: 10px;
+    }
+
+    .box {
+        width: 60%;
+        height: 100px;
     }
 
     /* 2. vertical-align: middle; */
@@ -83,13 +86,14 @@
 
     <div style="border: solid red; height: 300px; position: relative;">
         如果不设置top,left之类的，下面的absolute默认从我下面开始
-        <div class="center">
+        <div class="center box">
             <p>
                 脱离文档流，只不过得设置absolue, 四个方位全部为0
                 <a href="https://www.jianshu.com/p/302ac93dac26">margin垂直居中</a>
             </p>
         </div>
 
+        <!-- <span class="center">据说这个方法不适合于不固定宽高的span?</span> -->
         <div style="background: goldenrod; height: 150;"></div>
     </div>
 </body>
@@ -203,12 +207,20 @@
         width: 200px;
         height: 200px;
         border: 1px solid #000;
+        position: relative;
     }
 
     .use-transform div {
         position: relative;
         width: 100px;
-        height: 50px;
+        /* height: 50px; */
+        top: 50%;
+        transform: translateY(-50%);
+        background: #095;
+    }
+
+    .use-transform span {
+        position: relative;
         top: 50%;
         transform: translateY(-50%);
         background: #095;
@@ -216,13 +228,14 @@
 </style>
 
 <div class="use-transform">
-    <div></div>
+    <div>222</div>
+    <span style="display: absolute;">不固定宽高也可以用？</span>
 </div>
 
 <div class="use-transform">
     上<br/>
     上好像不会脱离文档流<br/>
-    <div></div>
+    <div>div</div>
     下面不会跟在div下面？
 </div>
 
@@ -234,8 +247,9 @@
 <style>
     .use-flexbox {
         display: flex;
-        align-items: center;
-        justify-content: center;
+        /* align-items: center;
+        justify-content: center; */
+       
         width: 200px;
         height: 150px;
         border: 1px solid #000;
@@ -245,13 +259,16 @@
         width: 100px;
         height: 50px;
         background: #099;
+        /* margin: auto; */
     }
 </style>
 
 <div class="use-flexbox">
     <div></div>
 </div>
-
+<div class="use-flexbox">
+    <span style="margin: auto; background: yellow; width: 300px;;">不限制宽高也可以？</span>
+</div>
 
 
 <pre>

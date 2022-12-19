@@ -25,8 +25,6 @@ function test1() {
  * 3. 根据调用次序，确定宏任务中的微任务执行次序；
  * 4. 根据宏任务的触发规则和调用次序，确定宏任务的执行次序；
  */
-
-
 function test2() {
     function sleep(duration) {
         return new Promise(function (resolve, reject) {

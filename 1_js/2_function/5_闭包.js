@@ -5,7 +5,7 @@
  * 
  * 闭包就是能够读取其他函数内部变量的函数, 返回的那个子函数
    由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成"定义在一个函数内部的函数"。
-   在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。
+   在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁: 访问函数内部变量 / 私有化变量,不用全局定义,函数外面也能改
  * 
  * References: 
  * https://www.runoob.com/js/js-function-closures.html
@@ -29,8 +29,10 @@
 function counter() {
     function add() {
         var counter = 0;
-        console.log("counter", counter);
-        function plus() { return counter += 1; }
+        function plus() {
+            counter++
+            return counter
+        }
         return plus;
     }
 
@@ -39,7 +41,7 @@ function counter() {
      * 形式：返回函数的函数
        直观的说就是形成一个不销毁的栈环境
      */
-    plus = add();
+    let plus = add();
     // 1. 调用的时候再被执行，一开始只是返回了一个函数；2. 但是内部的counter不会被销毁，因为plus依赖于函数add
     plus()
     plus()
@@ -48,55 +50,98 @@ function counter() {
 
 // counter()
 
+
 /**
  * 2. 闭包需要注意的地方
  */
 
-// 2.1. 返回函数不要引用任何循环变量，或者后续会发生变化的变量
+// 2.1. var会变量自动提升, 不能用在for循环的闭包里
 function question1() {
+    // 1. var自动提升到整个函数
     function count() {
         var arr = [];
+
         for (var i = 1; i <= 3; i++) {
             arr.push(function () {
-                return i * i;
+                console.log("i", i);
+                return i;
             });
         }
+
+        // 完全等价于
+        // var i = 1;
+        // while (i <= 3) {
+        //     arr.push(function () {
+        //         return i;
+        //     }); 
+        //     i++
+        // }
         return arr;
     }
 
-    // 如果非要使用局部变量呢？ 
+    // 2. 修复 
+    // 2.1 利用let, 太神奇了, 块作用域
     function count1() {
         var arr = [];
-        for (var i = 1; i <= 3; i++) {
-            // 1. 创建一个匿名函数并立刻执
-            arr.push((function (n) {
-                console.log("n摆脱了对i的依赖", n);
-                //  里面这个是后面才会执行的, 
-                return function () {
-                    return n * n;
-                }
-            })(i));
 
-            // 2. 直接把结果先算出来
-            // let answer = i * i
-            // arr.push(
-            //     function () {return answer}
-            // )
+        // a. 更简单的竟然改let就好了,神奇呀, 因为let是块作用域
+        // for (let i = 1; i <= 3; i++) {
+        //     arr.push(function () {
+        //         console.log("i", i);
+        //         return i;
+        //     });
+        // }
+
+        // b. 换种方式搞let作用域
+        for (var i = 1; i <= 3; i++) {
+            let temp = i
+            arr.push(
+                function () { return temp }
+            )
+        }
+
+        return arr;
+    }
+
+
+    // 2.2 利用闭包, 构造函数内部作用域
+    function count2() {
+        var arr = [];
+        for (var i = 1; i <= 3; i++) {
+            // 创建一个匿名函数并立刻执
+            // arr.push((function (n) {
+            //     console.log("n摆脱了对i的依赖", n);
+            //     //  里面这个是后面才会执行的, 
+            //     return function () {
+            //         return n;
+            //     }
+            // })(i));
+
+            arr.push(
+                (() => {
+                    var n = i;
+                    return function () {
+                        return n;
+                    }
+                })()
+            );
         }
         return arr;
     }
 
-    var results = count1();
+
+    var results = count2();
     var f1 = results[0];
     var f2 = results[1];
     var f3 = results[2];
     // 并不是期待的1 4 9; 因为f1只是返回了函数，只有f1()才会被执行, 此时i已经加到4了
+    console.log("f(): ");
     console.log(f1()); // 16
     console.log(f2()); // 16
     console.log(f3()); // 16
 }
 
-// question1()
+question1()
 
 
 /**
@@ -108,19 +153,19 @@ function question1() {
 // 待续。。。
 function question2() {
     //这段代码会导致内存泄露
-    window.onload = function(){
+    window.onload = function () {
         var el = document.getElementById("id");
-        el.onclick = function(){
+        el.onclick = function () {
             alert(el.id);
         }
     }
 
-//解决方法为
-    window.onload = function(){
+    //解决方法为
+    window.onload = function () {
         var el = document.getElementById("id");
         var id = el.id; //解除循环引用
-        el.onclick = function(){
-            alert(id); 
+        el.onclick = function () {
+            alert(id);
         }
         el = null; // 将闭包引用的外部函数中活动对象清除
     }

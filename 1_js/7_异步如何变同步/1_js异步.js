@@ -13,7 +13,7 @@ function simple() {
     console.log('before setTimeout()');
     // 2秒钟后调用callback函数, 类似一个远程接口卡了2s
     setTimeout(() => {
-        console.log('Done');
+        console.log('Done after 2s');
     }, 2000);
     console.log('after setTimeout()');
 }
@@ -39,12 +39,14 @@ function callHell() {
     .catch(failureCallBack)
 }
 
+
 // 3. 异步例子
 function testAsynchronous() {
     const success = msg => console.log("success");
     const fail = msg => console.log("fail");
     function wait(time, success, fail) {
         setTimeout(() => {
+            console.log("2. after", time);
             if (false) {
                 success()
             } else {

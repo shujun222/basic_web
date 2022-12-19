@@ -1,0 +1,55 @@
+<!-- 
+作者：Wetoria
+链接：https://www.zhihu.com/question/316514618/answer/2446634118
+Date: 2022-12-19
+-->
+
+<html>
+
+<head>
+    <style>
+        div {
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+            widtH: 100px;
+            height: 100px;
+            background: blue;
+        }
+
+        #microTaskDom {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="taskDom"></div>
+    <div id="microTaskDom"></div>
+    <pre>
+历史原因:
+1. 网页加载，执行JS脚本->浏览器渲染->等待用户交互->执行JS脚本->浏览器渲染
+   这样会阻塞用户, 定时器, fetch, 用户需要等待, 浏览器也浪费性能了, 那几秒不能做事情
+2. 引入宏任务: 宏任务->浏览器渲染->宏任务->渲染
+   会有上面例子中的问题
+3. 所以需要再引入微任务来在渲染器插队: 宏任务->微任务->浏览器渲染->宏任务->微任务->渲染
+
+    </pre>
+    <script>
+        window.onload = () => {
+            setTimeout(() => {
+                taskDom.style.background = 'red'
+                setTimeout(() => {
+                    taskDom.style.background = 'black'
+                }, 0);
+
+                microTaskDom.style.background = 'red'
+                Promise.resolve().then(() => {
+                    microTaskDom.style.background = 'black'
+                })
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>
