@@ -6,13 +6,15 @@
     // console.log(lan.max());
     Object.setPrototypeOf(lan, {
         max2() {return Math.max(...this.scores)},
-        // 留个疑问
+        // 箭头函数获取this失败
         // max: () => Math.max(...this.scores)
+        max: () => Math.max(...lan.scores),
     })
     // 1. 如果往原型链中塞入方法了，对象就有max2方法了
-    console.log(lan.max2()); 
+    console.log("lan.max2", lan.max2()); 
+    console.log("lan.max2", lan.max()); 
 
-
+    
     // 2. apply, call接用其它对象的方法
     let sj = {
         scores: [90, 30, 60, 99, 95, 80]
@@ -32,3 +34,7 @@
 
 
 </script>
+
+<body>
+
+</body>

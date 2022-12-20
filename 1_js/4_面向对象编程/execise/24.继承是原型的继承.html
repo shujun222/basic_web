@@ -1,16 +1,19 @@
-https://www.bilibili.com/video/BV17J411y7XZ?p=25 <br />
-Author: shujun
-Date: 2022-3-3 
+<body>
+    https://www.bilibili.com/video/BV17J411y7XZ?p=25 <br />
+    Author: shujun
+    Date: 2022-3-3
 
+    <div>
+        <p></p>
+        个人感觉继承，明显是 A.prototype.__proto__ = B.prototype更好嘛，但是为啥不推荐呢？<br />
+        不推荐Object.prototype.__proto__的原因： 已废弃<br />
+        该特性已经从 Web 标准中删除，虽然一些浏览器目前仍然支持它，但也许会在未来的某个时间停止支持，请尽量不要使用该特性。<br />
+        其存在和确切行为仅在ECMAScript 2015规范中被标准化为传统功能，以确保Web浏览器的兼容性。<br />
+        应该是影响性能，推荐使用 Object.create()。
+    </div>
 
-<div>
-<p></p>
-个人感觉继承，明显是 A.prototype.__proto__ = B.prototype更好嘛，但是为啥不推荐呢？<br/>
-不推荐Object.prototype.__proto__的原因： 已废弃<br/>
-该特性已经从 Web 标准中删除，虽然一些浏览器目前仍然支持它，但也许会在未来的某个时间停止支持，请尽量不要使用该特性。<br/>
-其存在和确切行为仅在ECMAScript 2015规范中被标准化为传统功能，以确保Web浏览器的兼容性。<br/>
-应该是影响性能，推荐使用 Object.create()。
-</div>
+</body>
+
 
 
 <script>

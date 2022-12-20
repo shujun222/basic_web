@@ -47,7 +47,7 @@
     // 这个简单模型new有缺点：无法共享需要共享属性和方法
 
 
-    // 2. 为构造器函数引入prototype属性, 指向一个对象
+    // 2. 为构造器函数引入prototype属性, 指向一个对象，叫做原型对象
     // 所有实例对象需要共享的属性和方法，都放在这个对象里面，需要实例所都有的，依旧在构造函数里面
     function Person2(name) {
         this.name = name;
@@ -67,7 +67,8 @@
         prototype = {
             constructor(),
             公用属性，方法...
-            __proto__:
+            __proto__:,
+            // 自己没有了prototype
         }
          
         基于一个构造函数或者class new对象时：

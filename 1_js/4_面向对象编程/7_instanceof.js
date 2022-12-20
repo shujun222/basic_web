@@ -16,7 +16,6 @@
  * b. 原型链
  *    每个对象都有一个 _proto_, 它指向它的prototype原型对象；它的prototype原型对象又有一个_proto_指向它的prototype原型对象，就这样层层向上直到找到最顶层的Object的prototype, 这个查询路径就是原型链
  * 
- * 
  */
 
 
@@ -30,3 +29,6 @@ console.log(testObj instanceof Object);
 
 console.log(testArr instanceof Function);
 console.log(testArr instanceof Object);
+
+console.log(Array instanceof Function);
+console.log(testFn instanceof Function);

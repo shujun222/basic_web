@@ -8,6 +8,7 @@
             console.log(this.name, " is playing the piano");
         }
     }
+
     // 每个实例对象里面都有函数show的申明，有点浪费内存空间
     let jay = new User("jay");
     let leehom = new User("wang");
@@ -20,12 +21,14 @@
     function User2(name) {
         this.name = name;
     }
+
     User2.prototype = {
         constuctor: User2,
         show() {
             console.log(this.name, " is playing the piano");
         }
     }
+    
     let lijian = new User2("lijian");
     let tingfeng = new User2("tingfeng");
     console.log(lijian);

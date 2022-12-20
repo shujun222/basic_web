@@ -1,0 +1,52 @@
+<script>
+    // 1. 父类
+    function User() {
+        function show1() { console.log("show1"); }
+    }
+    User.play = function() {console.log("play");}
+
+    User.prototype.show = function () {
+        console.log("User.show");
+    }
+    console.dir(User);
+
+    // 2. 子类开始继承父类
+    // function Admin(){}
+    // Admin.prototype = Object.create(User.prototype)
+    // Admin.prototype.show = function(){
+    //     console.log("Admin.show");
+    // }
+        // Admin.prototype.constructor = Admin
+        // Admin.prototype.__proto__ = Object.prototype
+    
+    // 1. 基于父类原型对象，复制了一份当作自己的原型
+    // 2. 自己的__proto__, 指向父类，因为可能需要借助它的static方法之类的
+    class Admin extends User {
+        show() {
+            console.log("Admin.show");
+        }
+    }
+    console.log("Admin.prototype === User.prototype", Admin.prototype === User.prototype);
+    console.log("Admin.__proto__ === User", Admin.__proto__ === User);
+
+    function Member() { }
+    Member.prototype = Object.create(User.prototype)
+    Member.prototype.show = function () {
+        console.log("Member.show");
+    }
+
+    function Player() { }
+    Player.prototype = Object.create(User.prototype)
+    Player.prototype.show = function () {
+        console.log("Player.show");
+    }
+
+    // 3. 测试多态
+    for (const obj of [new Admin(), new Member(), new Player()]) {
+        obj.show()
+    }
+</script>
+
+<body>
+    class extends
+</body>
