@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/require.js/2.3.6/require.js"></script>
+    <script type="text/javascript">
+        // 
+        require.config({
+            paths: {
+                // 第一个网络加载失败，还可以加载本地的
+                "jquery": ["http://libs.baidu.com/jquery/2.0.3/jquery", "js/jquery"],
+                "a": "./a"
+            }
+        })
+        
+        require(["jquery", "a"], function ($) {
+            console.log("jquery", $("#name").html());
+            $(function () {
+                console.log("load finished", $("#name").html());
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <span>body</span>
+    <div id="name">Neymar</div>
+</body>
+
+</html>

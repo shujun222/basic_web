@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/require.js/2.3.6/require.js"></script>
+    <script type="text/javascript">
+        // 这个貌似是在页面加载完后才会执行？
+        require(["./a", "http://libs.baidu.com/jquery/2.0.3/jquery"])
+
+        console.log("a.js", document.getElementById("name"));
+    </script>
+</head>
+
+<body>
+    <span>body</span>
+    <div id="name">Neymar</div>
+</body>
+
+</html>
