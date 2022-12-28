@@ -1,0 +1,116 @@
+<style>
+    .backBox {
+        width: 400px;
+        /* height: auto; */
+        min-height: 200px;
+        /* height: 200px; */
+        background-color: pink;
+    }
+
+    span {
+        width: 100px;
+        height: 100px;
+        margin: 1px;
+        background-color: purple;
+        color: white;
+        font-size: 30px;
+    }
+
+    h2 {
+        clear: both
+    }
+</style>
+
+<body>
+    <style>
+        /* 1. 靠着顶部 */
+        /* .common span {
+            display: inline-block; 
+        } */
+
+        /* 2. 靠着底部 */
+        /* .common span {
+            display: inline-block;    
+        }
+        .common {
+            position: relative;
+        }
+        .allSpan {
+            position: absolute;
+            bottom: 0;
+        }  */
+
+        
+        /* 3. 副轴居中对齐 */
+        /* .common span {
+            display: inline-block;
+        }
+        .common {
+            position: relative;
+        }
+        .allSpan {
+            position: absolute;
+            height: 100px;
+            top: 0;
+            bottom: 0;
+            margin: auto 0px;
+        }  */
+
+        /* 4. 自由拉伸 */
+        .common span {
+            display: inline-block;
+            height: 200px;
+        }
+        
+
+    </style>
+
+    justify-content解决了主轴方法下间隔空隙排列问题，那么副轴呢？<br/>
+    垂直排列是个非常头疼的问题，垂直居中等
+    <h2>普通做法</h2>
+    <div class="common backBox">
+        <div class="allSpan">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+        </div>
+        
+    </div>
+
+
+    <style>
+        /* 1. 靠着顶部, 其实默认属性不是start，只不过是有高度存在，stretch拉不开，和start效果一致看起来 */
+        /* .flex {
+            display: flex;
+        } */
+
+        /* 2. 靠着底部 */
+        /* .flex {
+            display: flex; 
+            align-items: end;
+        } */
+
+        /* 3. 副轴居中对齐 */
+        /* .flex {
+            display: flex;
+            align-items: center;
+        } */
+
+        /* 4. 自由拉伸, 默认属性 */
+        /* .flex span {
+            height: auto;
+        } */
+        .flex {
+            display: flex;
+            align-items: stretch;
+        }
+        
+    </style>
+    <h2>flex布局</h2>
+    <div class="flex backBox">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+
+</body>

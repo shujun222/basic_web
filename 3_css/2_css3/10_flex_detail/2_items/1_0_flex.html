@@ -1,0 +1,84 @@
+<style>
+    .backBox {
+        width: 400px;
+        height: 100px;
+        background-color: pink;
+        margin: 10px auto;
+    }
+
+    span {
+        width: 50px;
+        height: 50px;
+        margin: 1px;
+        background-color: purple;
+        color: white;
+        font-size: 30px;
+    }
+
+    input {
+        height: 30px;
+    }
+
+    h2 {
+        clear: both
+    }
+</style>
+
+<body>
+    <style>
+        /* 怎么搞呢？ */
+        .common span {
+            display: inline-block; 
+        }
+
+        input {
+            width: calc(100% - 114px)
+        }
+    </style>
+
+    item上应用flex属性：吃多少份剩余空间 <br/>
+    a，b，c, d 四个元素，b：flex 1; d: flex:2; 那么剩余空间就是指b+d; 标记了flex来算百分比；
+    手机界面常见需求：左右固定，中间自适应
+    <h2>普通做法</h2>
+    <div class="common backBox">
+        <span>1</span>
+        <input placeholder="search"/>
+        <span>2</span>
+    </div>
+
+
+    <style>
+        .flex {
+            display: flex; 
+        }
+        input {
+            flex: 1
+        }
+    </style>
+    <h2>flex布局</h2>
+    <div class="flex backBox">
+        <span>1</span>
+        <input placeholder="search"/>
+        <span>2</span>
+    </div>
+
+    <style>
+        .divide {
+            display: flex;
+        }
+        .divide span {
+            width: auto;
+            flex: 1
+        }
+        .divide span:nth-child(2) {
+            flex: 2
+        }
+    </style>
+    <div class="divide backBox">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+    </div>
+
+</body>

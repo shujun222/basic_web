@@ -1,0 +1,75 @@
+<style>
+    .backBox {
+        width: 400px;
+        /* height: auto; */
+        min-height: 200px;
+        /* height: 200px; */
+        background-color: pink;
+    }
+
+    span {
+        width: 100px;
+        height: 100px;
+        margin: 1px;
+        background-color: purple;
+        color: white;
+        font-size: 30px;
+    }
+
+    h2 {
+        clear: both
+    }
+</style>
+
+<body>
+    <style>
+        /* 1. 默认不换行，并自动压缩宽度, 不会弄哦... */
+        /* .common span {
+            float: left; */
+            /* white-space: nowrap */
+        /* } */
+
+        /* 2. 排不下别为难自己，换行就好 */
+        .common span {
+            display: inline-block;    
+        }
+
+    </style>
+
+    主轴方向一行排不下了，是否要换行呢?
+    <h2>普通做法</h2>
+    <div class="common backBox">
+        <div class="allSpan">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </div>
+        
+    </div>
+
+
+    <style>
+        /* 1. 如果主轴是x，默认会压缩宽度；主轴是y，默认会压缩高度 */
+        /* .flex {
+            display: flex;
+        } */
+
+        /* 2. 排不下别为难自己，换行就好 */
+        .flex {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+    </style>
+    <h2>flex布局</h2>
+    <div class="flex backBox">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+    </div>
+
+</body>

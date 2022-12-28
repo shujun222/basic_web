@@ -1,0 +1,58 @@
+<body>
+    flex: GSB(个傻逼)的缩写 flex-grow, flex-shrink, flex-basic; <br/>
+    
+    <a href="https://blog.csdn.net/qq_52855464/article/details/126242117">flex 的 三个参数：flex-grow、flex-shrink、flex-basis - 潮汐未见潮落
+ - csdn    </a> <br/>
+    下列布局在页面上的宽度比是多少？ 
+    <div class="flex">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+
+<pre>
+1. flex-basis: 基准，该属性用来设置元素的宽度，通常情况下大家使用 width 设置宽度。但是如果元素上同时设置了 width 和 flex-basis ，那么 width 的值就会被
+   flex-basis 覆盖掉。
+2. flex-grow: 当总空间超过items的宽度时，以多少的比例进行增长；
+   1）计算将多少剩余空间拿来分配。
+      公式：剩余空间 * ( 所有项目的flex-grow之和 >= 1 ? 1 : 所有项目的flex-grow之和 ) 。
+   2）计算每个项目分配到多少剩余空间。
+      公式：要分配的剩余空间 * ( 单个项目flex-grow / 所有项目的flex-grow之和 )
+3. 几个面试可能问的无聊例子
+   flex: none  =  0 0 auto，（不放大也不缩小)
+   flex: auto  =  1 1 auto（放大且缩小）  等分剩余空间
+   默认不写     =  0 1 auto （不放大会缩小）
+   flex: 1     =  1 1 0%   (放大且缩小）  等分所有空间
+   
+   flex-basic 只要是（number类型 + 单位）, 实现的效果都是所有空间等分
+   
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</body>
+
+<style>
+    .flex {
+        display: flex;
+        width: 200px;
+        height: 100px;
+    }
+
+    .left {
+        flex: 3 2 50px;
+        background-color: red;
+    }
+
+    .right {
+        flex: 2 1 200px;
+        background: blue;
+    }
+</style>

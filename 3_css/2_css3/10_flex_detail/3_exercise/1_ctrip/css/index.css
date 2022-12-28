@@ -1,0 +1,205 @@
+body {
+    color: #000;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-text-size-adjust: none;
+    -moz-user-select: none;
+    max-width: 540px;
+    margin: 0 auto;
+    background: #f4f4f4;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    font-size: 12px;
+    text-decoration: none;
+}
+
+/* 搜索模块 */
+.search-index {
+    position: fixed;
+    top: 0;
+
+    /* 加不加都可以 */
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* fixed，width限制不住右边了？还得max-width一起 */
+    width: 100%;
+    max-width: 540px;
+
+    height: 44px;
+
+    display: flex;
+    background-color: #f6f6f6;
+}
+
+.search-index .user {
+    width: 44px;
+    font-size: 12px;
+    text-align: center;
+    color: #2eaae0;
+}
+.user::before {
+    content: "head";
+    display: block;
+    height: 23px;
+    width: 23px;
+    margin: 3px auto 0;
+}
+
+.search-index .search {
+    flex: 1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 7px 10px;
+    height: 26px;
+    font-size: 12px;
+    line-height: 24px;
+    padding-left: 25px;
+    color: #666;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.search::before {
+    content: "⭕";
+    position: absolute;
+    left: 5px;
+}
+
+.focus {
+    padding-top: 44px;
+}
+
+.focus img {
+    width: 100%;
+}
+
+.local-nav {
+    display: flex;
+    height: 64px;
+    background-color: #fff;
+    margin: 3px 4px;
+    border-radius: 8px;
+}
+
+.local-nav li {
+    flex: 1;
+}
+
+.local-nav li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #222;
+    margin: 7px auto;
+    
+}
+
+/* .local-nav-icon { */
+[class^=local-nav-icon] {
+    width: 28px;
+    height: 28px;
+    background-image: url("https://pic.c-ctrip.com/pic/platform/bbz/h5/h5home/v1/nav/main/hotel.png");
+    background-size: 28px auto;
+}
+
+nav {
+    overflow: hidden;
+    border-radius: 8px;
+    margin: 0 4px 3px;
+}
+
+.nav-common {
+    height: 88px;
+    display: flex;
+}
+
+.nav-common:nth-child(n+2) {
+    margin-top: 3px;
+}
+
+.nav-items {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-items:nth-child(n+2) {
+    border-left: 1px solid #fff;
+}
+
+.nav-items a {
+    flex: 1;
+    text-align: center;
+    line-height: 44px;
+    color: #fff;
+    text-shadow: 2px 2px rgba(0,0,0,0.2);
+}
+
+.nav-items a:first-child {
+    border-bottom: 1px solid #fff;
+}
+
+.nav-items:first-child a {
+    border: 0;
+}
+
+.nav-common:nth-child(1) :first-child a {
+    background: url("https://pic.c-ctrip.com/pic/platform/bbz/h5/h5home/v1/nav/main/hotel.png") no-repeat bottom center;
+    background-size: 50% 50%;
+}
+
+.nav-common:nth-child(2) :first-child a {
+    background: url("https://pic.c-ctrip.com/pic/platform/bbz/h5/h5home/v1/nav/main/airport_transfer.png") no-repeat bottom center;
+    background-size: 50% 50%;
+}
+
+.nav-common:nth-child(1) {
+    background: -webkit-linear-gradient(left, #fa5a55, #fa994d);
+}
+
+.nav-common:nth-child(2) {
+    background: -webkit-linear-gradient(left, #34c2a9, #6cd559);
+}
+
+.subnav-entry {
+    display: flex;
+    border-radius: 8px;
+    margin: 0 4px;
+    flex-wrap: wrap;
+}
+
+.subnav-entry li {
+    flex: 20%;
+}
+
+.subnav-entry li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.subnav-entry-icon {
+    width: 28px;
+    height: 28px;
+    background-image: url("https://pic.c-ctrip.com/pic/platform/bbz/h5/h5home/v1/nav/main/hotel.png");
+    background-size: 28px auto;
+}

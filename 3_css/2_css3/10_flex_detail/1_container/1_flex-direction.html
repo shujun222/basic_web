@@ -1,0 +1,90 @@
+<style>
+    .backBox {
+        width: 400px;
+        /* height: auto; */
+        min-height: 200px;
+        /* height: 200px; */
+        background-color: pink;
+    }
+
+    span {
+        width: 100px;
+        height: 100px;
+        margin: 1px;
+        background-color: purple;
+        color: white;
+        font-size: 30px;
+    }
+
+    h2 {
+        clear: both
+    }
+</style>
+
+<body>
+    <style>
+        /* 1. 沿着x轴排列 */
+        /* .common span {
+            display: inline-block; */
+
+            /* float会让display失效吗？ 还是默认了display: inline-block? */
+            /* float: left; */
+        /* } */
+
+        /* 2. 沿着y轴排列 */
+        /* .common span {
+            display: block;    
+        } */
+        
+        /* 3. x反向排列 */
+        /* .common span {
+            float: right;
+        } */
+
+        /* 4. y反向排列, 不会...*/
+        .common span {
+            /* float: right; */
+        }
+    </style>
+
+    排列方向：到底是x轴还是y呢？
+    <h2>普通做法</h2>
+    <div class="common backBox">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+
+
+    <style>
+        /* 1. 沿着x轴排列 */
+        /* .flex {
+            display: flex;
+        } */
+
+        /* 2. 沿着y轴排列 */
+        /* .flex {
+            display: flex;
+            flex-direction: column;
+        } */
+
+        /* 3. x反向排列 */
+        /* .flex {
+            display: flex;
+            flex-direction: row-reverse;
+        } */
+
+        /* 4. y反向排列 */
+        .flex {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+    </style>
+    <h2>flex布局</h2>
+    <div class="flex backBox">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+
+</body>

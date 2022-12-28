@@ -28,9 +28,6 @@
 
 
 <h2>2. 两列等高</h2>
-<p>
-    每理解到这个例子想说什么？
-</p>
 
 <div class="parent">
     <div class="child" style="height:50px;">1.1</div>
@@ -55,7 +52,7 @@
     }
 </style>
 
-<h2>自适应宽：</h2>
+<h2>3. 自适应宽：</h2>
 
 <div class="parent1">
     <div class="child1">
@@ -67,7 +64,7 @@
 <style>
     .parent1 {
         display: flex;
-        width: 300px;
+        width: 80vw;
         height: 200px;
         background-color: pink;
     }
@@ -79,6 +76,7 @@
 
     .child2 {
         width: 100px;
+        /* 占据所有的剩余空间 */
         flex: 1;
         outline: solid 1px;
     }

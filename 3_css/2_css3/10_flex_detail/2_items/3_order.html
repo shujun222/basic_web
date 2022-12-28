@@ -1,0 +1,80 @@
+<style>
+    .backBox {
+        width: 400px;
+        height: 150px;
+        background-color: pink;
+        margin: 10px auto;
+    }
+
+    span {
+        width: 50px;
+        height: 50px;
+        margin: 1px;
+        background-color: purple;
+        color: white;
+        font-size: 30px;
+    }
+
+    input {
+        height: 30px;
+    }
+
+    h2 {
+        clear: both
+    }
+</style>
+
+<body>
+    <style>
+        /* 1. 整体在头，最后一个往下排 */
+        .common span {
+            display: inline-block;
+        }
+
+        .common {
+            position: relative;
+        }
+
+        .common span:last-child {
+            position: absolute;
+            bottom: 0;
+        }
+        .common span:nth-child(2) {
+    
+        }
+    </style>
+
+    order可以调整排列顺序，默认是0
+    <h2>普通做法</h2>
+    <div class="common backBox">
+        <div class="allSpan">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+        </div>
+
+    </div>
+
+
+    <style>
+        .flex {
+            display: flex;
+        }
+
+        /* 1. 侧轴整体在头，最后一个往下排 */
+        .flex span:last-child {
+            align-self: flex-end;
+        }
+        .flex span:nth-child(2) {
+            order: -1;
+        }
+       
+    </style>
+    <h2>flex布局</h2>
+    <div class="flex backBox">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+
+</body>

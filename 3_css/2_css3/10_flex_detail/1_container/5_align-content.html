@@ -1,0 +1,144 @@
+<style>
+    .backBox {
+        width: 400px;
+        height: 300px;
+        background-color: pink;
+    }
+
+    span {
+        width: 100px;
+        height: 100px;
+        margin: 1px;
+        background-color: purple;
+        color: white;
+        font-size: 30px;
+    }
+
+    h2 {
+        clear: both
+    }
+</style>
+
+<body>
+    <style>
+        /* 1. 靠着顶部 */
+        /* .common span {
+            display: inline-block; 
+        } */
+
+        /* 2. 靠着底部 */
+        /* .common span {
+            display: inline-block;    
+        }
+        .common {
+            position: relative;
+        }
+        .allSpan {
+            position: absolute;
+            bottom: 0;
+        }  */
+
+        
+        /* 3. 副轴居中对齐 */
+        /* .common span {
+            display: inline-block;
+        }
+        .common {
+            position: relative;
+        }
+        .allSpan {
+            position: absolute;
+            height: 200px;
+            top: 0;
+            bottom: 0;
+            margin: auto 0px;
+        }  */
+
+        /* 4. 自由拉伸, 默认属性， 平分剩下高度，但是第一个元素顶格 */
+        /* 只能微调吗？ */
+        /* .common span {
+            display: inline-block;
+            margin-bottom: 40px;
+        } */
+        
+        /* 5. 平分剩余侧轴空间，类似主轴的 justify-content */
+        /* .common span {
+            display: inline-block;
+            margin: 25px 0;
+        } */
+
+        /* 6. 子项在侧轴两头，再平分剩余空间 */
+        .common span {
+            display: inline-block;
+        }
+        .allSpan span:nth-child(4) {
+            margin-top: 97px;
+        }
+        
+    </style>
+
+    一行排不下就换行成多行了，那么行与行之间怎么排列呢？<br/>
+    搞不懂有align-content就好了，为何还要搞个align-items?  <br/>
+    <br/>
+    单行：align-content会失效 <br/>
+    多行(单行，但是设置了flex-wrap: wrap)：align-items能起效果，不过只对第一行起效果
+    <h2>普通做法</h2>
+    <div class="common backBox">
+        <div class="allSpan">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </div>
+        
+    </div>
+
+
+    <style>
+        .flex {
+            display: flex; 
+            flex-wrap: wrap;
+        }
+
+        /* 1. 靠着顶部 */
+        /* .flex {
+            align-content: start;
+        } */
+
+        /* 2. 从底部开始 */
+        /* .flex {
+            align-content: flex-end;
+        } */
+
+        /* 3. 副轴居中对齐 */
+        /* .flex {
+            align-content: center;
+        } */
+
+        /* 4. 自由拉伸, 默认属性， 平分剩下高度，但是第一个元素顶格 */
+        .flex {
+            align-content: stretch;
+        }
+        
+        /* 5. 平分剩余侧轴空间，类似主轴的 justify-content */
+        /* .flex {
+            align-content: space-around;
+        } */
+
+        /* 6. 子项在侧轴两头，再平分剩余空间 */
+        /* .flex {
+            align-content: space-between;
+        } */
+    </style>
+    <h2>flex布局</h2>
+    <div class="flex backBox">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        
+    </div>
+
+</body>
