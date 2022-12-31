@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<head>
+    <title>固定布局</title>
+    <style>
+        .container {
+            width: 968px;
+            background-color: #ccc;
+            margin: 0 auto;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            float: left;
+        }
+
+        h2 {
+            clear: both;
+        }
+
+        .menus li {
+            border: 1px solid red;
+            padding: 5px 10px;
+        }
+
+        img {
+            width: 300px;
+            margin: 5px;
+        }
+       
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 1. 菜单栏 -->
+        <ul class="menus" id="scrollMenus">
+            <li id="nav_0" class="selected"><a>推荐</a></li>
+            <li id="nav_1" class=""><a>本地</a></li>
+            <li id="nav_2" class=""><a>娱乐</a></li>
+            <li id="nav_3" class=""><a>军事</a></li>
+            <li id="nav_4" class=""><a>互联网</a></li>
+            <li id="nav_5" class=""><a>科技</a></li>
+            <li id="nav_6" class=""><a>生活</a></li>
+            <li id="nav_7" class=""><a>国际</a></li>
+            <li id="nav_8" class=""><a>国内</a></li>
+            <li id="nav_9" class=""><a>体育</a></li>
+            <li id="nav_10" class=""><a>汽车</a></li>
+            <li id="nav_11" class=""><a>财经</a></li>
+            <li id="nav_12" class=""><a>房产</a></li>
+            <li id="nav_13" class=""><a>时尚</a></li>
+            <li id="nav_14" class=""><a>教育</a></li>
+            <li id="nav_15" class=""><a>人文</a></li>
+            <li id="nav_16" class=""><a>图片</a></li>
+        </ul>
+
+
+        <div style="height: 100px;"></div>
+        <!-- 2. 图片排列 -->
+        <h2>Heros</h2>
+        <ul class="heros">
+            <li><img src="../imgs/1.jpeg" /></li>
+            <li><img src="../imgs/2.jpeg" /></li>
+            <li><img src="../imgs/3.jpeg" /></li>
+            <li><img src="../imgs/4.jpeg" /></li>
+            <li><img src="../imgs/5.jpeg" /></li>
+            <li><img src="../imgs/6.jpeg" /></li>
+        </ul>
+
+
+        <!-- 3. 样例 -->
+        <h2>For Examples</h2>
+        <a href="https://boligou.d17.cc/">中克世电子 - 本科毕业公司</a> <br />
+        <a href="https://news.baidu.com/">百度新闻</a> <br />
+        <a href="https://www.bilibili.com/">bilibili ?? </a>
+        <h2>Summary</h2>
+    <pre>
+不随屏幕分辨率改变而改变
+优点：
+1. 简单，维护成本低
+缺点：
+无法适配不同屏幕
+    </pre>
+    </div>
+
+
+
+</body>
+
+</html>

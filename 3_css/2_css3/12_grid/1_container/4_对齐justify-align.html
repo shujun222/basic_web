@@ -1,0 +1,72 @@
+<style>
+    .grid-container {
+        background-color: #2196F3;
+        padding: 10px;
+        margin-bottom: 50px;
+        height: 400px;
+    }
+
+    .grid-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        font-size: 30px;
+    }
+</style>
+
+
+<body>
+
+    <style>
+        .container1 {
+            display: grid;
+            grid-template: repeat(3, 100px) / repeat(4, 100px);
+            grid-gap: 5px;
+
+            /* justify-items: start;
+            align-items: center; */
+
+            place-items: start center;
+        }
+    </style>
+    <h2>1. justify-items / align-items</h2>
+    作用于每一项上, 但是咋不是块元素了？padding都失效了
+    <div class="grid-container container1">
+        <span class="grid-item">1</span>
+        <span class="grid-item">2</span>
+        <span class="grid-item">3</span>
+        <span class="grid-item">4</span>
+        <span class="grid-item">5</span>
+        <span class="grid-item">6</span>
+        <span class="grid-item">7</span>
+        <span class="grid-item">8</span>
+        <span class="grid-item">9</span>
+    </div>
+
+
+    <style>
+        .container2 {
+            display: grid;
+            grid-template: repeat(3, 100px) / repeat(4, 100px);
+            grid-gap: 5px;
+
+            /* justify-content: center; */
+            justify-content: space-between;
+            align-content: center;
+
+            /* place-content: center; */
+        }
+    </style>
+    <h2>2. justify-content / align-content</h2>
+    把里面的东西作为一个整体
+    <div class="grid-container container2">
+        <span class="grid-item">1</span>
+        <span class="grid-item">2</span>
+        <span class="grid-item">3</span>
+        <span class="grid-item">4</span>
+        <span class="grid-item">5</span>
+        <span class="grid-item">6</span>
+        <span class="grid-item">7</span>
+        <span class="grid-item">8</span>
+        <span class="grid-item">9</span>
+    </div>
+</body>

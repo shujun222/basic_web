@@ -1,0 +1,125 @@
+<style>
+    .grid-container {
+        background-color: #2196F3;
+        padding: 10px;
+        margin-bottom: 50px;
+    }
+
+    .grid-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        font-size: 30px;
+        text-align: center;
+    }
+</style>
+
+
+<body>
+    <style>
+        .dis {
+            display: grid;
+            /* item为行内元素 */
+            /* display: inline-grid; */
+        }
+    </style>
+
+    <h2>1. display</h2>
+    <pre>
+display会让float失效， grid会把item变成块内元素，inline-grid保持item变成行内元素
+    </pre>
+    <div class="grid-container dis">
+        <span class="grid-item">1</span>
+        <span class="grid-item" style="float: right;">2</span>
+        <span class="grid-item">3</span>
+    </div>
+
+
+    <style>
+        .container2 {
+            display: grid;
+
+            /* grid-template-columns: 100px 100px 100px 100px;
+            grid-template-rows: 100px 100px 100px; */
+
+            grid-template-columns: repeat(4, 100px);
+            grid-template-rows: repeat(3, 100px);
+
+            /* 自动填充这么简单？ */
+            /* grid-template-columns: repeat(auto-fill, 100px); */
+
+            /* 等分 */
+            /* grid-template-columns: repeat(4, 1fr); */
+        }
+    </style>
+    <h2>2. 定义行列</h2>
+    <div class="grid-container container2">
+        <span class="grid-item">1</span>
+        <span class="grid-item">2</span>
+        <span class="grid-item">3</span>
+        <span class="grid-item">4</span>
+        <span class="grid-item">5</span>
+        <span class="grid-item">6</span>
+        <span class="grid-item">7</span>
+        <span class="grid-item">8</span>
+        <span class="grid-item">9</span>
+    </div>
+
+
+    <style>
+        .container3 {
+            display: grid;
+            grid-template-areas: 'myArea myArea . . .';
+
+            grid-template-rows: repeat(3, 100px);
+            grid-template-columns: repeat(4, 100px);
+        }
+
+        .item {
+            grid-area: myArea;
+        }
+    </style>
+
+    <h2>3. area</h2>
+    <pre>
+grid-template-areas定义区域，在具体的item上标明指定是哪个名字
+    </pre>
+    <div class="grid-container container3">
+        <span class="grid-item item" >1</span>
+        <span class="grid-item item">2</span>
+        <span class="grid-item">3</span>
+        <span class="grid-item">4</span>
+        <span class="grid-item">5</span>
+        <span class="grid-item">6</span>
+        <span class="grid-item">7</span>
+        <span class="grid-item">8</span>
+        <span class="grid-item">9</span>
+    </div>
+
+    
+    <style>
+        .container4 {
+            display: grid;
+            grid-template: 100px / 50px auto;
+            /* grid-template: repeat(3, 100px) / repeat(4, 1fr) */
+        }
+    </style>
+    <h2>4. 简写</h2>
+    <pre>
+grid-template: grid-template-areas
+grid-template: grid-template-rows和grid-template-columns的缩写形式。
+比如说，grid-template: 50% 50% / 200px;将创建一个具有两行的网格，每一行占据50%，以及一个200像素宽的列。
+    </pre>
+    <div class="grid-container container4">
+        <span class="grid-item">1</span>
+        <span class="grid-item">2</span>
+        <span class="grid-item">3</span>
+        <span class="grid-item">4</span>
+        <span class="grid-item">5</span>
+        <span class="grid-item">6</span>
+        <span class="grid-item">7</span>
+        <span class="grid-item">8</span>
+        <span class="grid-item">9</span>
+    </div>
+
+</body>

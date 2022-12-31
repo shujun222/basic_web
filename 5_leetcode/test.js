@@ -7,16 +7,19 @@
 // let array2 = [3, 30, 5, 9, 43]  "9543330" 
 
 function transfer(nums) {
-    nums.sort((a, b) => {
-        if (String(a) + String(b) > String(b) + String(a) ) {
-            return -1
-        } else {
-            return 1
-        }
+    // nums.sort((a, b) => {
+    //     if (String(a) + String(b) > String(b) + String(a) ) {
+    //         return -1
+    //     } else {
+    //         return 1
+    //     }
+    // })
 
-    })
+    nums.sort((a, b) => (b + "" + a) - (a + "" + b))
     return nums.join("")
 }
+
+
 
 console.log(transfer([10, 2]));
 console.log(transfer([3, 30, 5, 9, 43]));

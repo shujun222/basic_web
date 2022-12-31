@@ -1,0 +1,43 @@
+<style>
+    .grid-container {
+        background-color: #2196F3;
+        padding: 10px;
+        margin-bottom: 50px;
+        height: 400px;
+    }
+
+    .grid-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        font-size: 30px;
+    }
+</style>
+
+
+<body>
+
+    <style>
+        .container1 {
+            display: grid;
+            grid-template: repeat(3, 100px) / repeat(2, 100px);
+            grid-gap: 5px;
+
+            /* grid-auto-columns: 50px; */
+            grid-auto-rows: 50px;
+         }
+    </style>
+    <h2>1. 多出来的行/高怎么设置呢？</h2>
+    作用于每一项上, 但是咋不是块元素了？padding都失效了
+    <div class="grid-container container1">
+        <span class="grid-item">1</span>
+        <span class="grid-item">2</span>
+        <span class="grid-item">3</span>
+        <span class="grid-item">4</span>
+        <span class="grid-item">5</span>
+        <span class="grid-item">6</span>
+        <span class="grid-item">7</span>
+        <span class="grid-item">8</span>
+        <span class="grid-item">9</span>
+    </div>
+
+</body>

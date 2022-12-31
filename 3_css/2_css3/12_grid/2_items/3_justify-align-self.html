@@ -1,0 +1,89 @@
+<style>
+    .grid-container {
+        background-color: #2196F3;
+        padding: 10px;
+        margin-bottom: 50px;
+        height: 400px;
+    }
+
+    .grid-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        font-size: 30px;
+    }
+</style>
+
+
+<body>
+
+    <style>
+        .container1 {
+            display: grid;
+            grid-template: repeat(3, 100px) / repeat(4, 100px);
+            grid-gap: 5px;
+
+            place-items: start center;
+        }
+
+        .item1-5 {
+            justify-self: start;
+            align-self: end;
+        }
+    </style>
+    <h2>1. justify-items / align-items</h2>
+    justify-self单独作用于子项的某项，反叛特性？
+    <div class="grid-container container1">
+        <span class="grid-item">1</span>
+        <span class="grid-item">2</span>
+        <span class="grid-item">3</span>
+        <span class="grid-item">4</span>
+        <span class="grid-item item1-5">5</span>
+        <span class="grid-item">6</span>
+        <span class="grid-item">7</span>
+        <span class="grid-item">8</span>
+        <span class="grid-item">9</span>
+    </div>
+
+
+    <style>
+        .container2 {
+            display: grid;
+            grid-template: repeat(3, 100px) / repeat(4, 100px);
+            grid-gap: 5px;
+
+            justify-content: space-between;
+            align-content: center;
+        }
+
+        .item2-5 {
+            /* place-self: center; */
+            /* 简写有点难记呀， align-self justify-self; */
+            place-self: end start;
+        }
+
+        .item2-6 {
+            display: grid;
+            /* place-content: center; */
+            place-items: center;
+        }
+
+        .item2-7 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <h2>2. justify-content / align-content</h2>
+    特别处理子项，不是具体里面东西对齐
+    <div class="grid-container container2">
+        <span class="grid-item">1</span>
+        <span class="grid-item">2</span>
+        <span class="grid-item">3</span>
+        <span class="grid-item">4</span>
+        <span class="grid-item item2-5">5</span>
+        <span class="grid-item item2-6">6</span>
+        <span class="grid-item item2-7">7</span>
+        <span class="grid-item">8</span>
+        <span class="grid-item">9</span>
+    </div>
+</body>

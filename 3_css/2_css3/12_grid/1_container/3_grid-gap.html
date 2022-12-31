@@ -1,0 +1,46 @@
+<style>
+    .grid-container {
+        background-color: #2196F3;
+        padding: 10px;
+        margin-bottom: 50px;
+    }
+
+    .grid-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        font-size: 30px;
+        text-align: center;
+    }
+</style>
+
+
+<body>
+
+    <style>
+        .container1 {
+            display: grid;
+            grid-template: repeat(3, 100px) / repeat(4, 1fr);
+            
+            /* grid-row-gap: 5px;
+            grid-column-gap: 3px; */
+
+            /* grid-gap: 5px 3px; */
+            
+            grid-gap: 5px;
+
+        }
+    </style>
+    <h2>1. grid-auto-flow</h2>
+    <div class="grid-container container1">
+        <span class="grid-item">1</span>
+        <span class="grid-item">2</span>
+        <span class="grid-item">3</span>
+        <span class="grid-item">4</span>
+        <span class="grid-item">5</span>
+        <span class="grid-item">6</span>
+        <span class="grid-item">7</span>
+        <span class="grid-item">8</span>
+        <span class="grid-item">9</span>
+    </div>
+</body>

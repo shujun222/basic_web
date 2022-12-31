@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<head>
+    <title>rem弹性布局</title>
+    <style>
+        html {
+            font-size: 16px;
+        }
+
+        .container {
+            background-color: #ccc;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            float: left;
+            box-sizing: border-box;
+            font-size: 0.8rem;
+        }
+
+        h2 {
+            clear: both;
+        }
+
+        .menus {
+            width: 100%;;
+        }
+        .menus li {
+            width: calc(100% / 17);
+            border: 1px solid red;
+        }
+    
+        .heros li {
+            width: 31%;
+            /* width: 20rem; */
+            margin: 5px;
+        }
+
+        img {
+            width: 100%;
+            
+        }
+
+        pre {
+            font-size: 1rem;
+        }
+       
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 1. 菜单栏 -->
+        <ul class="menus">
+            <li id="nav_0" class="selected"><a>推荐</a></li>
+            <li id="nav_1" class=""><a>本地</a></li>
+            <li id="nav_2" class=""><a>娱乐</a></li>
+            <li id="nav_3" class=""><a>军事</a></li>
+            <li id="nav_4" class=""><a>互联网</a></li>
+            <li id="nav_5" class=""><a>科技</a></li>
+            <li id="nav_6" class=""><a>生活</a></li>
+            <li id="nav_7" class=""><a>国际</a></li>
+            <li id="nav_8" class=""><a>国内</a></li>
+            <li id="nav_9" class=""><a>体育</a></li>
+            <li id="nav_10" class=""><a>汽车</a></li>
+            <li id="nav_11" class=""><a>财经</a></li>
+            <li id="nav_12" class=""><a>房产</a></li>
+            <li id="nav_13" class=""><a>时尚</a></li>
+            <li id="nav_14" class=""><a>教育</a></li>
+            <li id="nav_15" class=""><a>人文</a></li>
+            <li id="nav_16" class=""><a>图片</a></li>
+        </ul>
+
+
+        <div style="height: 100px;"></div>
+        <!-- 2. 图片排列 -->
+        <h2>Heros</h2>
+        <ul class="heros">
+            <li><img src="../imgs/1.jpeg" /></li>
+            <li><img src="../imgs/2.jpeg" /></li>
+            <li><img src="../imgs/3.jpeg" /></li>
+            <li><img src="../imgs/4.jpeg" /></li>
+            <li><img src="../imgs/5.jpeg" /></li>
+            <li><img src="../imgs/6.jpeg" /></li>
+        </ul>
+
+
+        <!-- 3. 样例 -->
+        <h2>For Examples</h2>
+        <a href="">？？</a> <br />
+
+        <h2>Summary</h2>
+    <pre>
+在百分比基础上增加rem来改变字体大小，访问rem 和 em
+优点：
+1. 灵活适配不同屏幕，字体和图片都可以了
+缺点：
+1. 只通过css还是无法做到：不同屏幕不同布局
+   比如：小屏幕隐藏菜单栏，大屏幕展开
+        
+    </pre>
+    </div>
+
+
+
+</body>
+
+<script>
+    window.onresize = function() {
+        let screenWidth = window.screen.width
+        // console.log("可见宽度？ document.body.clientWidth", document.body.clientWidth);
+        console.log("分辨率 window.screen.width", screenWidth);
+    
+        if (screenWidth < 600) {
+            var html_ = document.getElementsByTagName('html')[0];
+            html_.style.fontSize = (600 / screenWidth) * 16 + 'px';;
+        }
+
+    }
+</script>
+
+</html>

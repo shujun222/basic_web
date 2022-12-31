@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+ 
+<head>
+    <meta charset="UTF-8">
+    <title>栅格布局</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.css" rel="stylesheet">
+    <style>
+        .row {
+            background-color: #ccc;
+        }
+        
+        .col-md-4,
+        .col-md-3,
+        .col-md-6 {
+            border: 1px solid white;
+        }
+
+        h2{
+            margin-top: 50px;
+        }
+    </style>
+</head>
+ 
+<body>
+    <h2>bootstrap</h2>
+    默认把一行分为12格，直接用他的样式就好 
+    <a href="https://blog.csdn.net/m0_68618659/article/details/126411401">bootstrap栅格教程</a>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-12">1001</div>
+            <div class="col-md-4 col-sm-12">messi</div>
+            <div class="col-md-4 col-sm-12">男</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-12">1002</div>
+            <div class="col-md-4 col-sm-12">CR7</div>
+            <div class="col-md-4 col-sm-12">男</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">左侧</div>
+            <div class="col-md-6">右侧</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">1</div>
+            <div class="col-md-3">2</div>
+            <div class="col-md-3">3</div>
+            <div class="col-md-3">4</div>
+        </div>
+    </div>
+
+
+    <h2>antd</h2>
+    分为24格一行
+    <a href="https://ant.design/components/grid-cn#components-grid-demo-responsive">antd栅格文档</a>
+
+</body>
+ 
+</html>
