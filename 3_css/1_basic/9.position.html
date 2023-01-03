@@ -1,18 +1,27 @@
-<pre>
-position 属性指定了元素的定位类型。
-position 属性的五个值：
-static
-    HTML 元素的默认值，即没有定位，遵循正常的文档流对象。
-    静态定位的元素不会受到 top, bottom, left, right影响。 
-relative
-fixed
-absolute
-sticky
-    粘性定位的元素是依赖于用户的滚动，在 position:relative 与 position:fixed 定位之间切换。
-</pre>
-
 
 <style>
+    div {
+        width: 300px;
+        height: 100px;
+        outline: 1px solid gray;
+    }
+
+    .relative {
+        position: relative;
+    }
+
+    .absolute {
+        position: absolute;
+    }
+
+    .fixed {
+        position: fixed;
+        background-color: blue;
+        width: 100px;
+        bottom: 20px;
+        right: 20px;
+    }
+
     div.sticky {
         position: sticky;
         top: 0;
@@ -20,13 +29,45 @@ sticky
         background-color: #cae8ca;
         border: 2px solid #4CAF50;
     }
+
+    
 </style>
 
 <body>
+    <h2>1. static定位</h2>
+    默认定位，
+    <div>会把被人挤下去</div>
+    <div style="left: 20px;">top left之类的没有效果</div>
 
+
+    <h2>2. relative</h2>
+    <div class="relative">1. 也会把被人挤下去</div>
+    <div class="relative" style="left: 20px; top: 10px; right: 20px;">
+        2. top left right bottom之类的开始有效果了
+        3. 只写right，效果咋怪怪的
+    </div>
+
+
+    <h2>3. absolute定位</h2>
+    <div class="absolute" style="top: 800px; left: 400px">脱离文档流</div>
+    <div class="relative" style="height: 200px;">
+        相对定位可框住absolute
+        <div class="absolute" style="left: 10px">绝对定位</div>
+    </div>
+
+    <h2>4. fixed</h2>
+    <div class="fixed">fixed</div>
+
+    <h2>5. sticky</h2>
     <p>尝试滚动页面。</p>
     <p>注意: IE/Edge 15 及更早 IE 版本不支持 sticky 属性。</p>
-
+    <pre>
+它像是相对定位和固定定位的结合体，
+当滚动页面时它的效果与相对定位相同，
+当元素滚动到一定程度时它又会呈现出固定定位的效果。
+比如一些网页上的导航菜单，当页面加载完成时它在自己默认的位置，
+当我们向下滚动页面时它又会固定在页面的最顶端。
+    </pre>
     <div class="sticky">我是粘性定位!</div>
 
     <div style="padding-bottom:2000px">
@@ -37,5 +78,9 @@ sticky
         <p>滚动我</p>
         <p>来回滚动我</p>
     </div>
+
+    <h2>References</h2>
+    <a href="http://c.biancheng.net/css3/position.html">CSS position定位（5种方式）</a> <br/>
+    <a href="https://www.bilibili.com/video/BV1iE411W7ug/">[CSS] 认识 Position - 粤语 - bilibili</a> <br/>
 
 </body>

@@ -1,0 +1,35 @@
+<body>
+    根据名称、id、类来选取元素
+    <a href="https://www.w3school.com.cn/css/css_selectors.asp">CSS 选择器 - w3school    </a>
+    <style>
+        p {
+            text-align: center;
+            color: red;
+        }
+
+        #para1 {
+            color: green
+        }
+        .para2 {
+            color: blue;
+        }
+
+        /* 标签为p，class为para2的才行 */
+        p.para2 {
+            color: purple;
+        }
+
+        /* 分组，最大程度缩减代码 */
+        h1, h2, h3 {
+            text-align: center;
+            color: red;
+        }
+    </style>
+
+    <p>根据标签名称选取元素</p>
+    <div id="para1">选择id为para1的</div>
+    <div class="para2">选择class为para2的</div>
+    <p class="para2">同时满足标签p & class para2</p>
+
+    <h2>h2标题</h2>
+</body>

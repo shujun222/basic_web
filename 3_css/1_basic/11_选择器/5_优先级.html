@@ -1,0 +1,102 @@
+<body>
+    <a href="https://rodchen.blog.csdn.net/article/details/80466074">
+        CSS - 选择器优先级介绍 - 耳东蜗牛 - csdn
+    </a> <br/>
+
+    <a href="https://www.bilibili.com/video/BV1Fg4y1874w/">2分钟掌握 CSS 选择器优先级（特异性）- 峰华前端工程师</a>
+    <pre>
+！important 特殊性最高，详情访问重要性
+对于内联样式，加1000
+对于选中器中给定的ID属性值，加0100
+对于选择器中给定的类属性值，属性选择或伪类，加0010
+对于选择器中给定的元素选择器和伪元素，加0001.
+结合符和通配符选择器对特殊性没有任何贡献，0000
+
+内联样式 > ID选择器 > 
+伪类选择器 > 类选择器 = 属性选择器 >  
+元素选择器 = 关系选择器 = 伪元素选择器 > 
+通配符选择器
+</pre>
+
+    <img src="./selector.jpg" />
+
+    <style>
+        #ID-selector {
+            font-size: 10px;
+            color: red;
+        }
+
+        /* 伪类选择器 */
+        div:hover {
+            color: purple;
+        }
+
+        /* 类选择器 */
+        .class-selector {
+            font-size: 12px;
+            color: green;
+        }
+
+        /* 属性选择器 10 */
+        *[proprty-selector] {
+            font-size: 14px;
+            color: blue;
+        }
+
+        /* 伪元素选择器 */
+        *:first-child {
+            font-size: 16px;
+        }
+
+        /* 元素选择器 */
+        div {
+            margin-top: 10px;
+            font-size: 18px;
+            color: orange;
+        }
+
+        * div {
+            font-size: 20px;
+        }
+
+        /* 1 + 1 = 2 */
+        div::first-line {
+            font-size: 22px;
+            /* color: aqua; */
+        }
+
+        /* 通配符选择器 */
+        /* * {
+            font-size: 24px;
+        } */
+    </style>
+
+
+    <div id="ID-selector" 
+        class="class-selector"> 
+            1. id > class
+    </div>
+
+    <div proprty-selector="x" 
+        class="class-selector"> 
+            2. 类选择器和属性选择器一样，看css中谁后定义
+    </div>
+
+    <div proprty-selector="x" 
+        class="class-selector"> 
+            3. 伪类选择器 图上 = 属性选择器； 实际上是>
+    </div>
+    <a></a>
+
+    <div 
+        style="margin-top: 50px;"
+        proprty-selector="true" 
+        id="ID-selector" 
+        class="class-selector">
+        测试CSS选择器的特殊性, 
+        字体大小不起效果？
+        搞不懂，0100之类的叠加，后续再看
+    </div>
+
+    <div>元素选择器</div>
+</body>

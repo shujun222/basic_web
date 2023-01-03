@@ -1,23 +1,53 @@
-<style> 
-div {
-    width: 100px;
-    height: 100px;
-    background: red;
-    transition: width 2s, height 2s, background 5s, transform 2s;
-}
+<style>
+    .container1 {
+        width: 100px;
+        height: 100px;
+        background: red;
+        /* 随便写着哪里 */
+        /* transition: width 2s, height 2s, background 5s, transform 2s; */
+    }
 
-div:hover {
-    width: 200px;
-    height: 200px;
-    transform: rotate(180deg);
-    background: yellow;
-}
+    .container1:hover {
+        width: 200px;
+        height: 200px;
+        transform: rotate(180deg);
+        background: yellow;
+        transition: width 2s, height 2s, background 5s, transform 2s;
+    }
+
+
+    .container2 {
+        width: 100px;
+        height: 100px;
+        border: 3px solid black;
+        margin: 10px 0px 0px 10px;
+
+        /* transition-property: width, background;
+        transition-duration: .25s, 1s;
+        transition-delay: 2s;
+        transition-timing-function: ease;  */
+        /* 动画效果 */
+
+        /* transition: transition-property transition-duration transition-timing-function transition-delay; */
+        transition: all 1s ease 3s;
+    }
+
+    .container2:hover {
+        width: 200px;
+        background-color: blue;
+    }
 </style>
 
-<p><b>注意：</b>该实例无法在 Internet Explorer 9 及更早 IE 版本上工作。</p>
-<div>鼠标移动到 div 元素上，查看过渡效果。</div>
+<body>
+    <p>
+        <b>注意：</b>
+        该实例无法在 Internet Explorer 9 及更早 IE 版本上工作。
+        transform一般需要配合hover
+    </p>
+    <div class="container1">
+        鼠标移动到 div 元素上，查看过渡效果。
+    </div>
 
+    <div class="container2"></div>
 
-<pre>
-    transform一般需要配合hover
-</pre>
+</body>

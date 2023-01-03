@@ -1,13 +1,13 @@
 <body>
+<a href="https://www.w3school.com.cn/css/css_attribute_selectors.asp">CSS属性选择器</a>
 <pre>
-    和jquery选择器/css选择器很类似呀，到死谁是原创呢？
+和jquery选择器/css选择器很类似呀，到死谁是原创呢？
 
 CSS 属性选择器 ~=, |=, ^=, $=, *= 的区别
+1. "value 是完整单词" 类型的比较符号: ~=, |=
+2. "拼接字符串" 类型的比较符号: *=, ^=, $=
 
-"value 是完整单词" 类型的比较符号: ~=, |=
-"拼接字符串" 类型的比较符号: *=, ^=, $=
-
-1.attribute 属性中包含 value:　
+1.attribute 属性中包含 value:　~= *=
 [attribute~=value] 属性中包含独立的单词为 value，例如：
 [title~=flower]  -->  《img src="/i/eg_tulip.jpg" title="tulip flower" />
 [attribute*=value] 属性中做字符串拆分，只要能拆出来 value 这个词就行，例如：
@@ -31,10 +31,9 @@ a[src$=".pdf"]
         color: blue;
     }
 </style>
-
-<h2>将适用:</h2>
+<h2>~=将适用:</h2>
 <h1 title="hello world">Hello world</h1>
 <p title="student hello">Hello CSS students!</p>
 <hr>
 <h2>将不适用:</h2>
-<p title="student">Hi CSS students!</p>
+<p title="student_hello">Hi CSS students!</p>
