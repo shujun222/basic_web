@@ -1,0 +1,93 @@
+<style>
+    img {
+        width: 300px;
+        padding: 2px;
+        box-sizing: border-box;
+    }
+
+    .img {
+        position: relative;
+        counter-increment: aa;
+    }
+
+    .img::after {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        height: 20px;
+        background-color: rgba(0, 0, 0, .6);
+        padding: 3px;
+        color: #fff;
+        content: counter(aa);
+    }
+
+    #content {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        /* height: 3000px; */
+    }
+
+    /* 垂直先排序：1 5 9 13 17 21 25 */
+    .img:nth-child(4n+1) {
+        order: 1;
+    }
+
+    .img:nth-child(4n+2) {
+        order: 2;
+    }
+
+    .img:nth-child(4n+3) {
+        order: 3;
+    }
+
+    .img:nth-child(4n) {
+        order: 4;
+    }
+</style>
+
+<body>
+    <p>
+        利用flex将图片垂直排列，但是得预先知道图片所有高度，适合图片数量小的情况；
+        js中只需要改变container的高度即可 <br />
+        如果要让图片横行排列，可以使用order, 但是非常不好用，并没法达到完全1234这样横着排列效果，只是意思意思而已啦 <br />
+        <a href="https://www.bilibili.com/video/BV1xa4y147JP">[CSS] 瀑布流效果 - CodingStartup起码课 - bilibili </a>
+    </p>
+    <div id="content"></div>
+</body>
+
+<script>
+    // 1. 先完整加载图片
+    let template = '<div class="img"><img src="../imgs/#index#.jpeg" /></div>'
+    let html = ""
+    for (let index = 1; index < 27; index++) {
+        const element = template.replace("#index#", index);
+        html += element
+    }
+    let content = document.getElementById("content")
+    content.innerHTML = html
+
+    // 2. 动态改变图片的css
+    function changeCSS() {
+        let imgs = document.getElementsByTagName("img")
+        let nums = Math.floor(content.offsetWidth / imgs[0].offsetWidth)
+        console.log("nums", nums);
+
+        let allHeight = 0;
+        for (const img of imgs) {
+            allHeight += img.offsetHeight
+        }
+
+        // 多加一点高度
+        let height = allHeight / nums + 200
+        console.log("height", height);
+        content.style.height = height
+
+    }
+
+    window.onload = changeCSS
+
+    // 3. 窗口改变后随之调整
+    window.onresize = changeCSS
+
+</script>

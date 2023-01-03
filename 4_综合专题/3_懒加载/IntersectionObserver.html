@@ -11,14 +11,14 @@
     <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver">还是官网相对靠谱一点</a>
 
     <div id="content">
-        <!-- <img src="imgs/loading.gif" data-src="imgs/1.jpeg" />  -->
+        <!-- <img src="../imgs/loading.gif" data-src="../imgs/1.jpeg" />  -->
     </div>
 
 </body>
 
 <script>
     // 1. 初始化数据
-    let template = '<img src="imgs/loading.gif" data-src="imgs/#index#.jpeg" />'
+    let template = '<img src="../imgs/loading.gif" data-src="../imgs/#index#.jpeg" />'
     let imgsHtml = ""
     for (let i = 1; i < 15; i++) {
         imgsHtml += template.replace("#index#", i)

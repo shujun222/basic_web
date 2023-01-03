@@ -9,14 +9,14 @@
     <a href="">手写懒加载_欧阳老师_金渡教育_bilibili</a>
 
     <div id="content">
-        <!-- <img src="imgs/loading.gif" data-src="imgs/1.jpeg" />  -->
+        <!-- <img src="../imgs/loading.gif" data-src="../imgs/1.jpeg" />  -->
     </div>
 
 </body>
 
 <script>
     // 1. 初始化数据
-    let template = '<img src="imgs/loading.gif" data-src="imgs/#index#.jpeg" />'
+    let template = '<img src="../imgs/loading.gif" data-src="../imgs/#index#.jpeg" />'
     let imgsHtml = ""
     for (let i = 1; i < 15; i++) {
         imgsHtml += template.replace("#index#", i)
@@ -27,6 +27,7 @@
 
     let imgsDom = document.getElementsByTagName("img")
     let loadedIndex = 0
+    
     // 2. 懒加载
     function layzyImport() {
         // 可见区域
@@ -37,7 +38,7 @@
         for (let i = loadedIndex; i < imgsDom.length; i++) {
             
             if (imgsDom[i].offsetTop < clientHeight + scrollTop &&
-                imgsDom[i].getAttribute("src") == "imgs/loading.gif") {
+                imgsDom[i].getAttribute("src") == "../imgs/loading.gif") {
                 imgsDom[i].src = imgsDom[i].getAttribute("data-src")
                 loadedIndex = i + 1
                 console.log("i", i, imgsDom[i].offsetTop, clientHeight, scrollTop);

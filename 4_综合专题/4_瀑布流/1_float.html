@@ -1,0 +1,24 @@
+<style>
+    img {
+        width: 300px;
+        margin: 2px;
+        float: left;
+    }
+</style>
+
+<body>
+    <p>
+        直接图片img进行inline排列是很难看的，即便进行float也丑
+    </p>
+    <div id="content"></div>
+</body>
+
+<script>
+    let template = '<img src="../imgs/#index#.jpeg" />'
+    let html = ""
+    for (let index = 1; index < 27; index++) {
+        const element = template.replace("#index#", index);
+        html += element
+    }
+    document.getElementById("content").innerHTML = html
+</script>

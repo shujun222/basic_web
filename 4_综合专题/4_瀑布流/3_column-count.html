@@ -1,0 +1,49 @@
+<style>
+    img {
+        width: 300px;
+        padding: 2px;
+        box-sizing: border-box;
+    }
+
+    #content {
+        column-count: 4;
+    }
+</style>
+
+<body>
+    <p>
+        震惊：竟然可以这么简单？ column-count <br/>
+        优点：简答到离谱 <br/>
+        缺点：
+        1. 图片得一次性全部加载完成 <br/>
+        2. 图片竖着排列
+    </p>
+    <div id="content"></div>
+</body>
+
+<script>
+    // 1. 先完整加载图片
+    let template = '<img src="../imgs/#index#.jpeg" />'
+    let html = ""
+    for (let index = 1; index < 27; index++) {
+        const element = template.replace("#index#", index);
+        html += element
+    }
+    let content = document.getElementById("content")
+    content.innerHTML = html
+
+    // 2. 动态改变图片的css
+    function changeCSS() {
+        let imgs = document.getElementsByTagName("img")
+        let nums = Math.floor(content.offsetWidth / imgs[0].offsetWidth)
+        console.log("nums", nums);
+
+        content.style['column-count'] = nums
+    }
+
+    window.onload = changeCSS
+
+    // 3. 窗口改变后随之调整
+    window.onresize = changeCSS
+
+</script>

@@ -1,0 +1,69 @@
+<style>
+    img {
+        width: 300px;
+        padding: 2px;
+        /* float: left; */
+        box-sizing: border-box;
+    }
+
+    #content {
+        position: relative;
+    }
+</style>
+
+<body>
+    <p>
+        先把图片一次性全部加载出来，然后再去调整它们的css: absolute, left之类的 <br/>
+        <a href="https://www.bilibili.com/video/BV19K4y1K71i">web前端布局技巧-瀑布流布局 - bilibili</a>
+    </p>
+    <div id="content"></div>
+</body>
+
+<script>
+    // 1. 先完整加载图片
+    let template = '<img src="../imgs/#index#.jpeg" />'
+    let html = ""
+    for (let index = 1; index < 27; index++) {
+        const element = template.replace("#index#", index);
+        html += element
+    }
+    document.getElementById("content").innerHTML = html
+
+    // 2. 动态改变图片的css
+    function changeCSS() {
+        let content = document.getElementById("content")
+        let imgs = content.children;
+        let imgWidth = imgs[0].offsetWidth
+        // 一行能放下多少张
+        let nums = Math.floor(content.offsetWidth / imgWidth)
+       
+        let heights = new Array(nums).fill(0)
+        for (let index = 0; index < imgs.length; index++) {
+            const img = imgs[index];
+
+            let minHeight = Math.min(...heights)
+            let minIndex = heights.indexOf(minHeight)
+
+            // 不能这么直接覆盖，可能因为img.style不少的简单的对象 img.style.__proto__ == CSSStyleDeclaration.prototype 
+            // img.style = {
+            //     ...img.style,
+            //     position: 'absolute',
+            //     left: imgWidth * minIndex + "px",
+            //     top: minHeight + "px"
+            // }
+            img.style.position = "absolute"
+            img.style.left = imgWidth * minIndex + "px"
+            img.style.top = minHeight + "px"
+
+            heights[minIndex] += img.offsetHeight
+        }
+    }
+
+    // 这样还不行，得图片加载全部完成，才能获取到height
+    // changeCSS()
+    window.onload = changeCSS
+
+    // 3. 窗口改变后随之调整
+    window.onresize = changeCSS
+
+</script>
