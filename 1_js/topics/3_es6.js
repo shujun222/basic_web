@@ -107,6 +107,21 @@ function testMap() {
 // testMap()
 
 
+/**
+ * 这里有坑呀，[]和Array用法一样
+ * 但是map和{}可不一样哦，难道是为了方便迭代？map的数据堵在[[entries]]中
+ */
+function testMap2() {
+    let map = new Map()
+    map.a = "a"
+    console.log(map.get("a"));
+
+    map.set("b", "b")
+    console.log(map.b);
+    console.log(map.get("b"));
+}
+testMap2()
+
 // 3 list
 function testList() {
     // 0. 创建
@@ -144,3 +159,51 @@ function testList() {
     }
 }
 // testList()
+
+// 4. Array静态方法
+/**
+ * Array.from() 将类数组对象/迭代对象转为数组
+   用于将两类对象转为真正的数组：类似数组的对象（array-like object）
+   和可遍历（iterable）的对象（包括 ES6 新增的数据结构 Set 和 Map）。
+
+   Array.of()：将传入的参数初始化数组，对构造函数new Array()的一个补充
+
+ */
+function testArray() {
+    // 1. Array.from()
+    // 1.1 类似数组的对象
+    let arrayLike = {
+        '0': 'a',
+        '1': 'b',
+        '2': 'c',
+        length: 3
+    };
+    
+    // ES5的写法
+    var arr1 = [].slice.call(arrayLike); // ['a', 'b', 'c']
+    // ES6的写法
+    let arr2 = Array.from(arrayLike); // ['a', 'b', 'c']
+    console.log(arr1);
+    console.log(arr2);
+
+    // 1.2 可遍历（iterable）的对象
+    console.log(Array.from('hello'));
+    let namesSet = new Set(['a', 'b'])
+    console.log(Array.from(namesSet));
+
+
+    // 2. Array.of
+    // Array.of基本上可以用来替代Array()或new Array()，
+    // Array方法没有参数、一个参数、三个参数时，返回结果都不一样。
+    // 只有当参数个数不少于 2 个时，Array()才会返回由参数组成的新数组。
+    // 参数个数只有一个时，实际上是指定数组的长度。
+    console.log(Array()) // []
+    console.log(Array(3)) // [, , ,]
+    console.log(Array(3, 11, 8)) // [3, 11, 8]
+    
+    // Array.of总是返回参数值组成的数组。如果没有参数，就返回一个空数组。
+    console.log(Array.of()) // []
+    console.log(Array.of(3)) // [3]
+    console.log(Array.of(3, 11, 8)) // [3, 11, 8]
+}
+// testArray()
