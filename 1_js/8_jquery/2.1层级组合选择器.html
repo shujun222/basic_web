@@ -1,0 +1,36 @@
+<body>
+    层级选择器，也可以叫做组合选择器
+    <div class="testing">
+        <ul class="lang">
+            <li class="lang-javascript">JavaScript</li>
+            <li class="lang-python">Python</li>
+            <li class="lang-lua">Lua</li>
+            <div>
+                <li>div -> li</li>
+            </div>
+        </ul>
+
+        <li>大娃</li>
+        <li>二娃</li>
+    </div>
+</body>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+<script>
+    // 1. 后代 空格
+    let js = $("ul li")   
+    // 包括 div -> li
+    console.log("js", js.text()); 
+
+    // 2. 子元素 >
+    console.log($("ul > li").text());
+
+    // 3. 相邻兄弟 +
+    console.log($("ul+li").text());
+
+    // 4. 后续兄弟 ~
+    console.log($("ul~li").text());
+
+</script>

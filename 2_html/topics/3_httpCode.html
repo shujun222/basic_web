@@ -1,0 +1,59 @@
+<style>
+    span {
+        color: red
+    }
+</style>
+<body>
+    <p>
+        参考：<br/>
+        <a href="https://blog.csdn.net/weixin_62765236/article/details/126693844">Http常见状态码（简洁易懂）- 前端念初 - csdn        </a>
+        <a href="https://baike.baidu.com/item/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/5053660">HTTP状态码 - 百度百科</a>
+    </p>
+
+    <img src="./3_httpCode.png" />
+
+    状态码：客服端发出http请求，服务器或者缓存返回的一个标志，方便分类定位具体错误；
+    
+    <h2>1xx 信息状态码</h2>
+    <pre>
+代表请求已被接受，需要继续处理。这类响应是临时响应，一般不做特殊设置，服务器是不会返回的，
+所以也不常见；
+100 Continue
+通知客户端它的部分请求已经被服务器接收，且仍未被拒绝。客户端应当继续发送请求的剩余部分；
+    </pre>
+
+    <h2>2xx 成功状态码</h2>
+    <pre>
+服务请求成功，
+<span>200 ok</span>
+201 Created
+202 Accepted
+    </pre>
+
+    <h2>3xx 重定向状态码</h2>
+    <pre>
+客户端采取进一步的操作才能完成请求。
+301: 永久重定向
+<span>302：临时重定向, 没权限时后端重定向</span>
+<span>304 Not Modified</span>
+    协商缓存起效果：last Modified / etag起效果时
+    </pre>
+
+    <h2>4xx 客户端错误码</h2>
+    <pre>
+<span>400 Bad Request：</span>
+    服务器端无法理解客户端发送的请求，请求报文中可能存在语法错误。
+<span>403 Forbidden: 没权限</span>
+<span>404 Not Found:</span>
+    </pre>
+
+    <h2>5xx 服务器错误码</h2>
+    <pre>
+<span>500 Internal Server Error</span>
+<span>502 Bad Gateway</span>
+    作为网关或者代理工作的服务器尝试执行请求时，从上游服务器接收到无效的响应。
+503 Service Unavailable：
+抱歉，我现在正在忙着。该状态码表明服务器暂时处于超负载或正在停机维护，现在无法处理请求。
+    </pre>
+    
+</body>

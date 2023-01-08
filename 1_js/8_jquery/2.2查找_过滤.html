@@ -1,10 +1,13 @@
-<ul class="lang">
-    <li class="js dy">JavaScript</li>
-    <li class="dy">Python</li>
-    <li id="swift">Swift</li>
-    <li class="dy">Scheme</li>
-    <li name="haskell">Haskell</li>
-</ul>
+<body>
+    <ul class="lang">
+        <li class="js dy">JavaScript</li>
+        <li class="dy">Python</li>
+        <li id="swift">Swift</li>
+        <li class="dy">Scheme</li>
+        <li name="haskell">Haskell</li>
+    </ul>
+</body>
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
@@ -21,7 +24,7 @@
 
     swf.next(); // Scheme
     swf.prev(); // Python
-    swf.prev('.dy'); // Python，因为Python同时符合过滤器条件.dy
+    swf.prev('.dy'); // 多此一举呀
 
     // 2. 过滤 和函数式编程的map、filter类似
     var langs = $('ul.lang li'); // 拿到JavaScript, Python, Swift, Scheme和Haskell

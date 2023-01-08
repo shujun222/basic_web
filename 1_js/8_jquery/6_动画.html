@@ -3,35 +3,37 @@
 
 shujun 2022-05-25 -->
 
-<div style="height: 250px">
-    <div id="test-show-hide" style="background: #656565; width: 200px; height: 200px;">
-
+<body>
+    <div style="height: 250px">
+        <div id="test-show-hide" style="background: #656565; width: 200px; height: 200px;">
+    
+        </div>
+    
+        <div id="test-message" style="width: 200px; height: 100px; display: none">
+            恭喜您, 操作成功
+        </div>
     </div>
-
-    <div id="test-message" style="width: 200px; height: 100px; display: none">
-        恭喜您, 操作成功
+    
+    
+    <div>
+        <button id="hide_slow">hide('slow')</button>
+        <button id="hide_3000">hide('3000')</button>
+        <button id="show_slow">show('slow')</button>
+        <button id="toggle_slow">toggle('slow')</button>
     </div>
-</div>
+    
+    <div>
+        <button id="slideUp_slow">slideUp('slow')</button>
+        <button id="slideDown_slow">slideDown('slow')</button>
+        <button id="slideToggle_slow">slideToggle('slow')</button>
+    </div>
+    
+    <div>
+        <button id="animate_css_time">animate('css',time)</button>
+        <button id="animate_css_time_func">animate('css',time,func)</button>
+    </div>
+</body>
 
-
-
-<div>
-    <button id="hide_slow">hide('slow')</button>
-    <button id="hide_3000">hide('3000')</button>
-    <button id="show_slow">show('slow')</button>
-    <button id="toggle_slow">toggle('slow')</button>
-</div>
-
-<div>
-    <button id="slideUp_slow">slideUp('slow')</button>
-    <button id="slideDown_slow">slideDown('slow')</button>
-    <button id="slideToggle_slow">slideToggle('slow')</button>
-</div>
-
-<div>
-    <button id="animate_css_time">animate('css',time)</button>
-    <button id="animate_css_time_func">animate('css',time,func)</button>
-</div>
 
 <button id="message_show">message show</button>
 

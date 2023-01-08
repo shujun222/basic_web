@@ -12,6 +12,11 @@
     <script type="text/javascript">
       // 基于准备好的dom，初始化echarts实例
       var myChart = echarts.init(document.getElementById('main'));
+      
+      // purple-passion: 主题； 
+      // renderer：默认是canvas，可以修改为svg。
+      // 如果频繁切换数据建议使用canvas，如果是用在大屏建议svg，svg显示效果更好，在大屏不会出现模糊的现象。
+      // var myChart = echarts.init(document.getElementById('main'), 'purple-passion', {renderer:'svg'});
 
       // 指定图表的配置项和数据
       var option = {

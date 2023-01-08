@@ -21,5 +21,7 @@ function transfer(nums) {
 
 
 
-console.log(transfer([10, 2]));
-console.log(transfer([3, 30, 5, 9, 43]));
+// console.log(transfer([10, 2]));
+// console.log(transfer([3, 30, 5, 9, 43]));
+
+

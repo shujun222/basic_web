@@ -1,16 +1,23 @@
-jQuery的选择器就是帮助我们快速定位到一个或多个DOM节点。
-<br />
+<body>
+    jQuery的选择器就是帮助我们快速定位到一个或多个DOM节点.
+    id，类，标签，属性
 
-<div id="players">
-    <li>messi</li>
-    <li class="nice">haaland</li>
-    <li class="nice hard">cr7</li>
-    <li id="china">wulei</li>
-</div>
+    <br />
+
+    <div id="players">
+        <li>messi</li>
+        <li class="nice">haaland</li>
+        <li class="nice hard">cr7</li>
+        <li id="china">wulei</li>
+    </div>
+
+    <input name="email" />
+</body>
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script>
-    // 1. 单项选择
+    // 1. 单项选择: id, class, tag
     console.log($('#players'));
     console.log($('p'));
     console.log(jQuery('.nice.hard'));
