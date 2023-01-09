@@ -25,4 +25,26 @@ var permute = function(nums) {
     return res;
 };
 
+var permute = function(nums) {
+    let res = [], visited = new Array(nums.length).fill(0)
+    function dfs(tempList) {
+        if (tempList.length === nums.length) {
+            res.push(tempList)
+        }
+
+        for (let i = 0; i<nums.length; i++) {
+           if (visited[i] === 1) {
+               continue;
+           }
+
+           visited[i] = 1
+           dfs([...tempList, nums[i]])
+           visited[i] = 0
+        }
+    }
+    
+    dfs([])
+    return res;
+};
+
 console.log(permute([1,2,3]));
