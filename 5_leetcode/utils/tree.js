@@ -9,13 +9,16 @@ function createTree(values) {
     root = TreeNode(values[0])
     let queue = [root]
     i = 1
-    while (queue.length > 0) {
-        let node = queue.pop()
-        if (i < values.length) {
-            node.left = 
-        }
-    }
+    // while (queue.length > 0) {
+    //     let node = queue.pop()
+    //     if (i < values.length) {
+    //         node.left = 
+    //     }
+    // }
 
     return root
 }
-module.export = {createTree}
+module.exports = {
+    createTree, 
+    TreeNode,
+}
