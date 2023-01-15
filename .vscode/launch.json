@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\5_leetcode\\105_buildTree.js"
+            "program": "${workspaceFolder}\\5_leetcode\\146_LRUCache.js"
         }
     ]
 }
