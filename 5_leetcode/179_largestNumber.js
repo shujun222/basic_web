@@ -1,5 +1,8 @@
 /**
+ * 179. 最大数
+ * https://leetcode.cn/problems/largest-number/
  * 
+ * 2022/12 字节海外电商笔试题
  */
 
 // 最大数
@@ -24,4 +27,4 @@ function transfer(nums) {
 // console.log(transfer([10, 2]));
 // console.log(transfer([3, 30, 5, 9, 43]));
 
-
+console.log("10" - "2");
